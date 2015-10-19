@@ -39,4 +39,19 @@ router.post('/', function(req, res, next) {
   });
 
 });
+
+router.post("/users", function(req, res, next) {
+  var email = req.body.newEmail;
+  var username = req.body.newUsername;
+  var password = req.body.newPassword;
+
+  var user = {"username": username, "password": password, "email": email}
+
+  if(email.split('@') === email){
+    res.render('main', {error: email + " is not a valid email address. Try again."});
+  }
+
+  db.post("users", user)
+  .then(res.render('main', {user: user.username}));
+})
 module.exports = router;
