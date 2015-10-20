@@ -27,31 +27,17 @@ router.post('/', function(req, res, next) {
       user = result.body.results[0].value
       //And if their username and password match DB's values, let 'em in
       if( (user.username === username || user.email === username) && user.password === password) {
-        console.log(user.username, user.password);
         res.render('main', {user: user.username});
       } else res.render('login', {error: "We couln't find that username and password in our records. Give it another shot."});
     //FOR TESTING PURPOSES: If no user was found, give our DB some users to work with!
 
   } else {
     db.post("users", {"username": "Harrison", "password": "123", "email": "harrisonccole@gmail.com"});
-    res.render('login', {error: "We couln't find that username and password in our records. Give it another shot."});
+    res.render('login', {error: "We couldn't find that username and password in our records. Give it another shot."});
   }
   });
 
 });
 
-router.post("/users", function(req, res, next) {
-  var email = req.body.newEmail;
-  var username = req.body.newUsername;
-  var password = req.body.newPassword;
 
-  var user = {"username": username, "password": password, "email": email}
-
-  if(email.split('@') === email){
-    res.render('main', {error: email + " is not a valid email address. Try again."});
-  }
-
-  db.post("users", user)
-  .then(res.render('main', {user: user.username}));
-})
 module.exports = router;
