@@ -28,7 +28,8 @@ router.post('/', function(req, res, next) {
       //And if their username and password match DB's values, let 'em in
       if( (user.username === username || user.email === username) && user.password === password) {
         res.render('main', {user: user.username});
-      } else res.render('login', {error: "We couln't find that username and password in our records. Give it another shot."});
+        router.user = user;
+      } else res.render('login', {error: "We couldn't find that username and password in our records. Give it another shot."});
     //FOR TESTING PURPOSES: If no user was found, give our DB some users to work with!
 
   } else {
@@ -37,6 +38,11 @@ router.post('/', function(req, res, next) {
   }
   });
 
+});
+
+router.post('/october', function(req,res,next){
+  db.post("october",req.body);
+  console.log(req.body);
 });
 
 
