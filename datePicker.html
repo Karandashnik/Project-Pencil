@@ -21,16 +21,28 @@
 
   <div class="container">
     <div class="col-sm-12 col-md-6">
+      <!-- intention here is for a handlebars template to say "welcome john" or whatever at the top of the page. -->
+      <!-- I don't know where the jQuery etc. goes though -->
+  <script id="entry-template" type="text/x-handlebars-template">
+      <div class="entry">
+        <h1> Welcome {{name}}</h1>
+        <div class="body">
+          {{body}}
+        </div>
+      </div>
+  </script>
+      <!-- The intention here is the user can select a service and then enter all requests for that service.
+      A second piece of thisl will be an input where they can put the name of the child.... -->
       <div class="dropdown">
-      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-      Options
-      <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-      <li id ="beforeCare"><a href="#">Before Care</a></li>
-      <li id ="afterCare"><a href="#">After Care</a></li>
-      <li id ="both"><a href="#">All</a></li>
-      </ul>
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        Options
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li id ="beforeCare"><a href="#">Before Care</a></li>
+        <li id ="afterCare"><a href="#">After Care</a></li>
+        <li id ="both"><a href="#">All</a></li>
+        </ul>
       </div>
     </div>
     <div class="col-sm-12 col-md-6">

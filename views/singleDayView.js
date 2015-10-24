@@ -1,8 +1,9 @@
 var GUI = (function() {
 
-var AddSingleDayView = Backbone.View.extend({
+var AddSingleDayView = Backbone.View.extend({e.: $('#calendar')});
 	
 	render: function() {
+	
 	var $form = $('<form>');  //to contain everything
 	var $day = $('new Date()'); // but this gives today's date-- we want the clicked date.
 	var $singleDay = $('day.getDate()');
