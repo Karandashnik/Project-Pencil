@@ -36,6 +36,7 @@ app.use(session({secret: 'supernova', saveUninitialized: true, resave: true}));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
+//app.use(express.static("public"));
 
 app.use('/', routes);
 //app.use('/users', users);
