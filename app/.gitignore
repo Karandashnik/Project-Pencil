@@ -31,3 +31,6 @@ npm-debug.log
 
 #Config file
 config.js
+
+#FB login config file
+fb.js

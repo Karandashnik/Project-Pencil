@@ -12,6 +12,7 @@ var LocalStrategy = require('passport-local');
 var TwitterStrategy = require('passport-twitter');
 var GoogleStrategy = require('passport-google');
 var FacebookStrategy = require('passport-facebook');
+var fbConfig = require('./fb.js');
 var config = require('./config.js'); //config file contains all tokens and other private info
 var funct = require('./functions.js'); //funct file contains our helper functions for our Passport and database work
 
@@ -134,6 +135,19 @@ passport.use('local-signup', new LocalStrategy(
     });
   }
 ));
+//Facebook login
+passport.use('facebook', new FacebookStrategy({
+  clientID        : fbConfig.appID,
+  clientSecret    : fbConfig.appSecret,
+  callbackURL     : fbConfig.callbackUrl,
+  //passReqToCallback: true,
+  profileFields: ['id', 'name', 'displayName', 'picture.type(large)', 'email']
+},
+
+  // facebook will send back the tokens and profile
+  function(access_token, refresh_token, profile, done) {
+    funct.fbAuth(profile, done);
+}));
 
 // Passport session setup.
 passport.serializeUser(function(user, done) {

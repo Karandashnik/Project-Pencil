@@ -44,6 +44,20 @@ router.get('/logout', function(req, res){
   req.session.notice = "You have successfully been logged out " + name + "!";
 });
 
+// route for facebook authentication and login
+// different scopes while logging in
+router.get('/auth/facebook',
+  passport.authenticate('facebook', { scope : 'email' }
+));
+
+// handle the callback after facebook has authenticated the user
+router.get('/auth/facebook/callback',
+  passport.authenticate('facebook', {
+    successRedirect : '/',
+    failureRedirect : '/signin'
+  })
+);
+
 /* router.post('/', function(req, res, next) {
 
   //Intialize a variable to store active user

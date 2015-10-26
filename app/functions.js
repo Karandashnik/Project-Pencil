@@ -68,4 +68,24 @@ exports.localAuth = function (username, password) {
   });
 
   return deferred.promise;
-}
+};
+exports.fbAuth = function (profile, done) {
+  //db.deleteCollection('fb-users');
+   var user = {
+     "id": profile["id"],
+     "username": profile["name"].givenName,
+     "firstName": profile["name"].givenName,
+     "lastName": profile["name"].familyName,
+     "email": profile.emails[0].value || null
+   };
+   db.get('fb-users', profile["id"])
+   .then(function (result) {
+     return done(null, user);
+   })
+   .fail(function (result) {
+     db.put('fb-users', profile["id"], user)
+     .then(function (result) {
+       return done(null, user);
+     });
+   });
+};
