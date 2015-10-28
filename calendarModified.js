@@ -2,7 +2,7 @@ var Calendar = function() {
 	var wrap;
 	var label;
 	var months =["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-	var weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+	var weekdays = ["Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat"];
 
 	function init(newWrap) {
 		wrap = $(newWrap || "#calendar");
@@ -17,10 +17,14 @@ var Calendar = function() {
 	function createDays() {
 		for (var i = 0; i < weekdays.length; i++) {
 			var dW = weekdays[i];
+			var textnode = document.createTextNode(weekdays[i]);
 			var td = document.createElement('td');
+			td.setAttribute('class', "dOw"); //dOw for "day of week"
 			td.setAttribute('id', dW);
+			td.appendChild(textnode);
 			$("#weekdays").append(td);
 			$("#td").append(weekdays[i]);
+
 			// console.log(dW);
 		}
 	}
@@ -28,11 +32,12 @@ var Calendar = function() {
 	// function dayNums() {
 	// 	for (var j = 0; j < 5; j++){
 	// 		var tr = document.createElement('tr');
-	// 		for (var k = 0; k< 30; k++){
+	// 		$("#tbody").append(tr);
+	// 		for (var k = 0; k< 6; k++){
 	// 			var td = document.createElement('td');
-	// 			$("#tbody").append(tr);
+				
 	// 			var dN= k;
-	// 			td.setAttribute('id',k)
+	// 			td.setAttribute('id', dN)
 	// 			$("#tr").append(td);
 	// 			console.log(td);
 	// 			}
