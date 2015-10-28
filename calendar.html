@@ -11,18 +11,10 @@
 <div id="calendar">
   <div class="calHeader">
     <span class="left button" id="prev">&lang;</span>
-    <span class="month-year" id="label"> Oct 2015 </span>
+    <span class="month-year" id="label"> October 2015 </span>
     <span class="right button" id="next"> &rang; </span>
   </div>
-  <table id="days">
-    <td>sun</td>
-    <td>mon</td>
-    <td>tues</td>
-    <td>wed</td>
-    <td>thur</td>
-    <td>fri</td>
-    <td>sat</td>
-  </table>
+  <table id ="weekdays"></table>
   <div id="calGrid">
     <table class="curr">
       <tbody>
@@ -81,6 +73,8 @@
 	<script> 
 	var calendar = Calendar();
 	calendar.init();
+  calendar.createDays();
+  // calendar.dayNums();
 	</script>
 
 </body>

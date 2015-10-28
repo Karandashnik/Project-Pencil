@@ -2,60 +2,54 @@ var Calendar = function() {
 	var wrap;
 	var label;
 	var months =["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+	var weekdays = ["Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat"];
 
 	function init(newWrap) {
 		wrap = $(newWrap || "#calendar");
 		label = wrap.find("#label");
 
-		wrap.find("#prev").bind("click.calendar", function() { switchMonth(false);});
+		wrap.find("#prev").bind("click.calendar", function() { switchMonth(false); });
 		wrap.find("#next").bind("click.calendar", function() {switchMonth(true);});
-		label.bind("click.calendar", function() {switchMonth(null, newDate().getMonth(), new Date().getFullYear());	
+		label.bind("click.calendar", function() {switchMonth(null, newDate().getMonth(), new Date().getFullYear() );	
 		});
-
 	}
 
-	function switchMonth(next, month, year) {
-			var curr = label.text().trim().split(" "), calendar, tempYear = parseInt(curr[1], 10);
+	function createDays() {
+		for (var i = 0; i < weekdays.length; i++) {
+			var dW = weekdays[i];
+			var textnode = document.createTextNode(weekdays[i]);
+			var td = document.createElement('td');
+			td.setAttribute('class', "dOw"); //dOw for "day of week"
+			td.setAttribute('id', dW);
+			td.appendChild(textnode);
+			$("#weekdays").append(td);
+			$("#td").append(weekdays[i]);
+		}
+	}
 
+	// function dayNums() {
+	// 	for (var j = 0; j < 35; j++){
+	// 		var td = document.createElement('td');
+	// 		var textnum = document.createTextNode(j);
+	// 		// td.setAttribute('class', "nM"); //nM for "numbers in month"
+	// 		// td.setAttribute('id', j);
+	// 		td.appendChild(textnum);
+	// 		$("#tbody").append(td);
+	// 			var dN= j; //dn is day number//
+	// 			td.setAttribute('id', dN)
+	// 			console.log(td);
+	// 			}
+	// 		}
+	
+
+	function switchMonth(next, month, year) {
+
+			var curr = label.text().trim().split(" "), calendar, tempYear = parseInt(curr[1], 10);
 			month = month || ((next) ? ((curr[0] === "December") ? 0 : months.indexOf(curr[0]) + 1) : ( (curr[0] === "January") ? 11 : months.indexOf(curr[0]) - 1) );
 			year  = year  || ((next && month === 0) ? tempYear + 1 : (!next && month === 11) ? tempYear -1 : tempYear);
-	//
-	// function switchMonth(next, month, year) {
-	// 	var curr = label.text().trim().split(" "), calendar, tempYear = parseInt(curr[1], 10);
-	// 	if (!month) {
-	// 		if(curr[0] === "December") {
-	// 			month = 0;
-	// 		} else {
-	// 			month = months.indexOf(curr[0] +1);
-	// 		}
-	// 	} else {
-	// 		if(curr[0] ==="January") {
-	// 			month = 11;
-	// 		} else {
-	// 			month = months.indexOf(curr[0])-1;
-	// 		}
-	// 	}
-	// 	if (!year) { 
-	// 	    if (next && month === 0) { 
-	// 	        year = tempYear + 1; 
-	// 	    } else if (!next && month === 11) { 
-	// 	        year = tempYear - 1; 
-	// 	    } else { 
-	// 	        year = tempYear; 
-	// 	    } 
-	// 	}
-	// }
-
-	// }	
-
-
-
-	//
-
-
-			console.profile("createCal");
 			calendar = createCal(year, month);
-			console.profileEnd("createCal");
+			console.log (calendar);
+			console.log(curr);
 
 		$("#calGrid", wrap) 
 		.find(".curr")
@@ -69,8 +63,11 @@ var Calendar = function() {
 	}
 
 	function createCal(year, month) {
-		var day = 1, i , j, haveDays = true,
-			startDay = new Date(year, month, day).getDay(),
+		var day = 1;
+		var i;
+		var j;
+		var haveDays = true;
+		var startDay = new Date(year, month, day).getDay(),
 			daysInMonth = [31, (((year%4===0)&&(year%100!==0))||(year%400===0)) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ],
 			calendar = [];
 		if (createCal.cache[year]) {
@@ -131,10 +128,12 @@ var Calendar = function() {
 		
 		return {
 			init : init,
+			createDays : createDays,
+			// dayNums: dayNums,
 			switchMonth : switchMonth,
 			createCal : createCal
 			};
 
-}
+}	
 
 
