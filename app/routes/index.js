@@ -4,10 +4,7 @@ var orch = require('orchestrate');
 var config = require('../config');
 var passport = require('passport');
 var LocalStrategy = require('passport-local');
-var TwitterStrategy = require('passport-twitter');
-var GoogleStrategy = require('passport-google');
 var FacebookStrategy = require('passport-facebook');
-
 var db = orch(config.dbKey);
 
 //===============ROUTES=================

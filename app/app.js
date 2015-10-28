@@ -118,8 +118,12 @@ passport.use('local-signin', new LocalStrategy(
 passport.use('local-signup', new LocalStrategy(
   {passReqToCallback : true}, //allows us to pass back the request to the callback
   function(req, username, password, done) {
-    funct.localReg(username, password)
+    var email = req.body.email;
+    var firstName = req.body.firstName;
+    var lastName = req.body.lastName;
+    funct.localReg(username, password, email, firstName, lastName)
     .then(function (user) {
+      //console.log("keys in users are " + Object.keys(user));
       if (user) {
         console.log("REGISTERED: " + user.username);
         req.session.success = 'You are successfully registered and logged in ' + user.username + '!';
@@ -132,7 +136,7 @@ passport.use('local-signup', new LocalStrategy(
       }
     })
     .fail(function (err){
-      console.log(err.body);
+      console.log("Error is " + err.body);
     });
   }
 ));

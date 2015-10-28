@@ -4,14 +4,17 @@ var bcrypt = require('bcryptjs'),
     db = require('orchestrate')(config.dbKey); //config.dbKey holds Orchestrate token
 
 //used in local-signup strategy
-exports.localReg = function (username, password) {
+exports.localReg = function (username, password, email, firstName, lastName) {
   var deferred = Q.defer();
   var hash = bcrypt.hashSync(password, 8);
   var user = {
     "username": username,
     "password": hash,
-    "avatar": "http://placepuppy.it/images/homepage/Beagle_puppy_6_weeks.JPG"
+    "email": email,
+    "firstName": firstName,
+    "lastName": lastName
   }
+
   //check if username is already assigned in our database
   db.get('local-users', username)
   .then(function (result){ //case in which user already exists in db
@@ -24,6 +27,7 @@ exports.localReg = function (username, password) {
         console.log('Username is free for use');
         db.put('local-users', username, user)
         .then(function () {
+
           console.log("USER: " + user);
           deferred.resolve(user);
         })

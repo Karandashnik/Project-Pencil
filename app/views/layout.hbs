@@ -4,21 +4,21 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="User Authentication">
+  <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>User Authentication</title>
+  <title>Penciled In</title>
 
   <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
 
   </head>
 
   <body>
 
     <div class="container">
+        <nav class="navbar navbar-default" role="navigation">
 
-      <nav class="navbar navbar-default" role="navigation">
       <div class="container-fluid">
 
       <!-- Brand and toggle get grouped for better mobile display -->
@@ -38,7 +38,6 @@
               {{#if user}}
                 <p class="navbar-text">
                   <strong>Hi,</strong>
-                  <img src="{{user.avatar}}" width="20" height="20">
                   {{user.username}}
                 </p>
                 </li>
@@ -48,7 +47,6 @@
                     <a href="/logout">Log Out</a>
                   </li>
               {{else}}
-                <a href="/signin">Sign In</a>
                 </li>
               {{/if}}
           </ul>
@@ -79,6 +77,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
     <!-- Latest compiled and minified JavaScript -->
-  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -29,48 +29,93 @@
   <h2>{{error}}</h2>
 </body>
 </html>-->
-<div class="jumbotron">
-  <h1>Sign in</h1>
-  <p>We're using passport.js to demonstrate user authentication. Please sign-in with your Local, Twitter, Google, or Facebook account to view your profile.</p>
-  <p>
-    <a data-toggle="collapse" href="#local" class="btn btn-warning btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> Sign in Locally</a>
-    <a href="/auth/twitter" class="btn btn-info btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> Sign in with Twitter</a>
-    <a href="/auth/google" class="btn btn-danger btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> Sign in with Google</a>
-    <a href="/auth/facebook" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> Sign in with Facebook</a>
-  </p>
-
-  <div id="local" class="collapse">
-    <a data-toggle="collapse" href="#local-sign-in" class="btn btn-default btn-md" role="button">I already have an account</a>
-    <a data-toggle="collapse" href="#local-reg" class="btn btn-default btn-md" role="button">I need to make an account</a>
+<!--Sign In Form-->
+<div class= "container-fluid">
+  <div class = "row">
+    <div class="col-md-4"> </div>
+    <div class="col-md-4">
+      <form id="local-sign-in" class= "form-signin" action="/login" method="post">
+        <h1 class="form-signin-heading">Sign In</h1>
+        <div class="form-group">
+          <label for="inputUsername" class='sr-only'>Username</label>
+          <input type="text" id="inputUsername" class="form-control" placeholder="Username" required="" autofocus="" name="username">
+        </div>
+        <div class="form-group">
+          <label for="inputPassword" class='sr-only'>Password</label>
+          <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="" name="password">
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary btn-lg btn-block" type="submit">Sign in</button>
+        </div>
+        <div class="form-group">
+          <a href="/auth/facebook" class="btn btn-primary btn-lg btn-block" role="button"><span class="glyphicon glyphicon-user"></span> Sign in with Facebook</a>
+        </div>
+      </form>
+      <div id="local">
+        <button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal">I don't have an account yet</button>
+      </div>
+    </div>
+    <div class="col-md-4"> </div>
   </div>
+</div>
 
-  <form id="local-sign-in" class="collapse" action="/login" method="post">
-    <div>
-        <p></p>
-        <label>Username:</label>
-        <input type="text" name="username"/>
-    </div>
-    <div>
-        <label>Password:</label>
-        <input type="password" name="password"/>
-    </div>
-    <div>
-        <input type="submit" class="btn btn-primary btn-sm" value="Log In"/>
-    </div>
-  </form>
+<!-- Modal/Pop-up for Signing Up -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
 
-  <form id="local-reg" class="collapse" action="/local-reg" method="post">
-    <div>
-        <p></p>
-        <label>New Username:</label>
-        <input type="text" name="username"/>
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Sign Up</h4>
+      </div>
+      <div class="modal-body">
+        <form id="local-reg" action="/local-reg" method="post">
+          <div class="row">
+            <div class="form-group col-md-6 col-md-offset-3">
+              <h1 class="form-signin-heading">Sign Up</h1>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-6 col-md-offset-3">
+              <label for="inputEmail" class="sr-only">Email address</label>
+              <input type="email" id="inputEmail" class="form-control" placeholder="Email Address" required="" autofocus="" name="email">
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-6 col-md-offset-3">
+              <label for="inputFirstName" class="sr-only">First Name</label>
+              <input type="text" id="inputFirstName" class="form-control" placeholder="First name" required="" autofocus="" name="firstName">
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-6 col-md-offset-3">
+              <label for="inputLastName" class="sr-only">Last Name</label>
+              <input type="text" id="inputLastName" class="form-control" placeholder="Last name" required="" autofocus="" name="lastName">
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-6 col-md-offset-3">
+              <label for="inputUsername" class="sr-only">Create Username</label>
+              <input type="text" id="inputUsername" class="form-control" placeholder="Create Username" required="" autofocus="" name="username">
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-6 col-md-offset-3">
+              <label for="inputPassword" class="sr-only">Create Password</label>
+              <input type="password" id="inputPassword" class="form-control" placeholder="Create Password" required="" name="password">
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-6 col-md-offset-3">
+              <button class="btn btn-primary btn-lg btn-block" type="submit">Sign Up</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Nevermind</button>
+      </div>
     </div>
-    <div>
-        <label>New Password:</label>
-        <input type="password" name="password"/>
-    </div>
-    <div>
-        <input type="submit" class="btn btn-primary btn-sm" value="Register"/>
-    </div>
-  </form>
+  </div>
 </div>
