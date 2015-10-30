@@ -84,7 +84,9 @@ router.get('/auth/facebook/callback',
   });
 
 }); */
-
+router.post('/calendar', function(req, res){
+  res.render('calendar');
+});
 
 
 router.post('/october', function(req,res,next){
