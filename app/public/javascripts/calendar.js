@@ -3,14 +3,35 @@ var Calendar = function() {
 	var label;
 	var months =["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 	var weekdays = ["Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat"];
+	var currDate = new Date();
+	var currMonth =currDate.getMonth();
+	// console.log(currMonth);
+	var currYear = currDate.getFullYear(); 
+	// console.log(currYear);
 
 	function init(newWrap) {
+		$( document ).ready(function() {
+		   switchMonth(null, currMonth, currYear);
+		   // console.log("banana");
+		});
+
+
 		wrap = $(newWrap || "#calendar");
 		label = wrap.find("#label");
 
-		wrap.find("#prev").bind("click.calendar", function() { switchMonth(false); });
-		wrap.find("#next").bind("click.calendar", function() {switchMonth(true);});
-		label.bind("click.calendar", function() {switchMonth(null, newDate().getMonth(), new Date().getFullYear() );	
+		// wrap.find("#curr").bind("click.calendar", function() {
+		// switchMonth(null, newDate().getMonth(), new Date().getFullYear() );	
+		// });
+
+
+		wrap.find("#prev").bind("click.calendar", function() {
+		 switchMonth(false);
+		});
+		wrap.find("#next").bind("click.calendar", function() {
+		 switchMonth(true);
+		});
+		label.bind("click.calendar", function() {
+		switchMonth(null, newDate().getMonth(), new Date().getFullYear() );	
 		});
 	}
 
@@ -27,29 +48,35 @@ var Calendar = function() {
 		}
 	}
 
-	// function dayNums() {
-	// 	for (var j = 0; j < 35; j++){
-	// 		var td = document.createElement('td');
-	// 		var textnum = document.createTextNode(j);
-	// 		// td.setAttribute('class', "nM"); //nM for "numbers in month"
-	// 		// td.setAttribute('id', j);
-	// 		td.appendChild(textnum);
-	// 		$("#tbody").append(td);
-	// 			var dN= j; //dn is day number//
-	// 			td.setAttribute('id', dN)
-	// 			console.log(td);
-	// 			}
-	// 		}
-	
+	function dayNums() {
+			var numRows = 5;
+			var numCols = 7;
+		    for (var r=0, id=1; r<numRows; ++r) {
+	           	var tr = document.createElement('tr');
+	            $(".curr").append(tr);
+	           	for (var c=0; c<numCols; ++c, ++id) {
+	                var td = document.createElement('td');
+	                td.setAttribute('id', id);
+	                tr.appendChild(td);
+	            }
+	        }
+	        
+	}
 
 	function switchMonth(next, month, year) {
 
-			var curr = label.text().trim().split(" "), calendar, tempYear = parseInt(curr[1], 10);
+			var curr = label.text().trim().split(" ");  // replace this madness with moments.js //
+			var calendar;
+			var tempYear = parseInt(curr[1], 10);
 			month = month || ((next) ? ((curr[0] === "December") ? 0 : months.indexOf(curr[0]) + 1) : ( (curr[0] === "January") ? 11 : months.indexOf(curr[0]) - 1) );
 			year  = year  || ((next && month === 0) ? tempYear + 1 : (!next && month === 11) ? tempYear -1 : tempYear);
+			console.log(year);
 			calendar = createCal(year, month);
-			console.log (calendar);
-			console.log(curr);
+			console.log(month);
+			// console.log (calendar);
+			// console.log(curr);
+
+			
 
 		$("#calGrid", wrap) 
 		.find(".curr")
@@ -68,7 +95,7 @@ var Calendar = function() {
 		var j;
 		var haveDays = true;
 		var startDay = new Date(year, month, day).getDay(),
-			daysInMonth = [31, (((year%4===0)&&(year%100!==0))||(year%400===0)) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ],
+			daysInMonth = [31, (((year%4===0)&&(year%100!==0))||(year%400===0)) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ],  
 			calendar = [];
 		if (createCal.cache[year]) {
 			if(createCal.cache[year][month]) {
@@ -88,7 +115,8 @@ var Calendar = function() {
 							startDay++;
 						}
 					} else if ( day <= daysInMonth[month]) {
-						calendar[i][j] = day++;
+						calendar
+						[i][j] = day++;
 					} else {
 						calendar[i][j] = "";
 						haveDays = false;
@@ -120,7 +148,7 @@ var Calendar = function() {
 			}
 			
 			createCal.cache[year][month] = { calendar : function () { return calendar.clone(); }, label : months[month] + " " + year };
-
+			console.log(createCal.cache[year][month]);
 			return createCal.cache[year][month];
 		}
 		createCal.cache = {};
@@ -129,11 +157,11 @@ var Calendar = function() {
 		return {
 			init : init,
 			createDays : createDays,
-			// dayNums: dayNums,
+			dayNums: dayNums,
 			switchMonth : switchMonth,
 			createCal : createCal
 			};
 
-}	
+};	
 
 
