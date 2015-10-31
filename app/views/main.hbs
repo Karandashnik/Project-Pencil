@@ -35,7 +35,7 @@
       <p>First Name: {{user.firstName}}</p>
       <p>Last Name: {{user.lastName}}</p>
     </div>
-    <form id= "seeCalendar" action = "/calendar" method="post"><input type="submit" value = "See Calendar"></form>
+    <form id= "seeCalendar" action = "/calendar" method="get"><input type="submit" value = "See Calendar"></form>
   </div>
 
 {{else}}
@@ -49,4 +49,7 @@
   </div>
 
 {{/if}}
-<script type="text/javascript" src="javascripts/main.js"></script>
+<script type="text/javascript" src="../public/javascripts/views.js"></script>
+<script type="text/javascript" src="../public/javascripts/models.js"></script>
+<script type="text/javascript" src="../public/javascripts/collections.js"></script>
+<script type="text/javascript" src="../public/javascripts/main.js"></script>

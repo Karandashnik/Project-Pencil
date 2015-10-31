@@ -67,18 +67,22 @@
    </table>
  </div>
 </div>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.2.3/backbone-min.js'></script>
-<script src="../public/javascripts/calendar.js"></script>
-<script src="../public/javascripts/calendarViews.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<!--underscore-->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js" type="text/javascript"></script>
+<!--backbone-->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.2/backbone-min.js" type="text/javascript"></script>
+<script type="text/javascript" src="/javascripts/calendar.js"></script>
+<script type="text/javascript" src="/javascripts/views.js"></script>
+<script type="text/javascript" src="/javascripts/models.js"></script>
+<script type="text/javascript" src="/javascripts/collections.js"></script>
+<script type="text/javascript" src="/javascripts/main.js"></script>
 
 	<script>
 	var calendar = Calendar();
 	calendar.init();
   calendar.createDays();
-  // calendar.dayNums();
+  calendar.dayNums();
 	</script>
 
 </body>

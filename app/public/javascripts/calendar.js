@@ -5,14 +5,12 @@ var Calendar = function() {
 	var weekdays = ["Sun", "Mon", "Tues", "Wed", "Thu", "Fri", "Sat"];
 	var currDate = new Date();
 	var currMonth =currDate.getMonth();
-	// console.log(currMonth);
-	var currYear = currDate.getFullYear(); 
-	// console.log(currYear);
+	var currYear = currDate.getFullYear();
 
 	function init(newWrap) {
 		$( document ).ready(function() {
 		   switchMonth(null, currMonth, currYear);
-		   // console.log("banana");
+	  	 //console.log("banana");
 		});
 
 
@@ -20,7 +18,7 @@ var Calendar = function() {
 		label = wrap.find("#label");
 
 		// wrap.find("#curr").bind("click.calendar", function() {
-		// switchMonth(null, newDate().getMonth(), new Date().getFullYear() );	
+		// switchMonth(null, newDate().getMonth(), new Date().getFullYear() );
 		// });
 
 
@@ -31,7 +29,7 @@ var Calendar = function() {
 		 switchMonth(true);
 		});
 		label.bind("click.calendar", function() {
-		switchMonth(null, newDate().getMonth(), new Date().getFullYear() );	
+		switchMonth(null, newDate().getMonth(), new Date().getFullYear() );
 		});
 	}
 
@@ -60,7 +58,7 @@ var Calendar = function() {
 	                tr.appendChild(td);
 	            }
 	        }
-	        
+
 	}
 
 	function switchMonth(next, month, year) {
@@ -70,15 +68,9 @@ var Calendar = function() {
 			var tempYear = parseInt(curr[1], 10);
 			month = month || ((next) ? ((curr[0] === "December") ? 0 : months.indexOf(curr[0]) + 1) : ( (curr[0] === "January") ? 11 : months.indexOf(curr[0]) - 1) );
 			year  = year  || ((next && month === 0) ? tempYear + 1 : (!next && month === 11) ? tempYear -1 : tempYear);
-			console.log(year);
 			calendar = createCal(year, month);
-			console.log(month);
-			// console.log (calendar);
-			// console.log(curr);
 
-			
-
-		$("#calGrid", wrap) 
+		$("#calGrid", wrap)
 		.find(".curr")
 			.removeClass("curr")
 			.addClass("temp")
@@ -95,7 +87,7 @@ var Calendar = function() {
 		var j;
 		var haveDays = true;
 		var startDay = new Date(year, month, day).getDay(),
-			daysInMonth = [31, (((year%4===0)&&(year%100!==0))||(year%400===0)) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ],  
+			daysInMonth = [31, (((year%4===0)&&(year%100!==0))||(year%400===0)) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ],
 			calendar = [];
 		if (createCal.cache[year]) {
 			if(createCal.cache[year][month]) {
@@ -103,7 +95,7 @@ var Calendar = function() {
 				}
 			}
 			else {
-				createCal.cache[year]={};	
+				createCal.cache[year]={};
 			}
 			i = 0;
 			while(haveDays) {
@@ -126,7 +118,7 @@ var Calendar = function() {
 					}
 				}
 				i++;
-			}	
+			}
 			if (calendar[5]) {
 				for (i = 0; i < calendar[5].length; i++) {
 					if (calendar[5][i] !== "") {
@@ -135,7 +127,7 @@ var Calendar = function() {
 				}
 				calendar = calendar.slice(0, 5);
 			}
-			
+
 			for (i = 0; i < calendar.length; i++) {
 				calendar[i] = "<tr><td>" + calendar[i].join("</td><td>") + "</td></tr>";
 			}
@@ -146,14 +138,14 @@ var Calendar = function() {
 			if (month === new Date().getMonth()) {
 				$('td', calendar).filter(function () { return $(this).text() === new Date().getDate().toString(); }).addClass("today");
 			}
-			
+
 			createCal.cache[year][month] = { calendar : function () { return calendar.clone(); }, label : months[month] + " " + year };
 			console.log(createCal.cache[year][month]);
 			return createCal.cache[year][month];
 		}
 		createCal.cache = {};
 
-		
+
 		return {
 			init : init,
 			createDays : createDays,
@@ -161,7 +153,4 @@ var Calendar = function() {
 			switchMonth : switchMonth,
 			createCal : createCal
 			};
-
-};	
-
-
+};
