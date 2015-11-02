@@ -27,6 +27,19 @@ var Calendar = function() {
 		wrap.find("#next").bind("click.calendar", function() {
 		 switchMonth(true);
 		});
+		//adds event listener to dayviews
+		$('.container').on('click', '.dayView', function () {
+			var day = event.target.id;
+			var monthYear = label.text().trim().split(" ");
+			var month = monthYear[0];
+			var year = monthYear[1];
+			var wholeDay = month + " " + day + ", " + year;
+			var dayCollection = new DayCollection();
+			var dayModel = new DayModel({id: wholeDay, day: day, month: month, year: year});
+			var dayView = new DayView({model: dayModel, collection: dayCollection});
+			dayView.render();
+			$("#" + day).append(dayView.$el);
+		});
 		label.bind("click.calendar", function() {
 		switchMonth(null, newDate().getMonth(), new Date().getFullYear() );
 		});
@@ -130,15 +143,16 @@ var Calendar = function() {
 			// 	calendar = calendar.slice(0, 5);
 			// 	console.log("calendar after slice is " + calendar);
 			// }
-
 			for (i = 0; i < calendar.length; i++) {
-				calendarHtml = "<tr>"
+				var calendarHtml = "<tr>"
 				for (j = 0; j < calendar[i].length; j++) {
 					day = calendar[i][j];
-					if (day !== undefined){
-						calendarHtml += "<td id=" + day + ">" + day + "</td>";
+					if (day === "" || day === undefined){
+						var tdTag = "<td></td>"
+						calendarHtml += tdTag;
 					} else {
-						calendarHtml += "<td></td>";
+						var tdTag = "<td id=" + day + " class=dayView data-toggle=modal data-target=#bookingModal>" + day + "</td>";
+						calendarHtml += tdTag;
 					}
 				}
 				calendarHtml += "</tr>";
@@ -156,14 +170,15 @@ var Calendar = function() {
 			console.log("createCal.cache[year][month] is " + createCal.cache[year][month]);
 			return createCal.cache[year][month];
 		}
+
 		createCal.cache = {};
 
 
 		return {
-			init : init,
-			createDays : createDays,
+			init: init,
+			createDays: createDays,
 			//dayNums: dayNums,
-			switchMonth : switchMonth,
-			createCal : createCal
+			switchMonth: switchMonth,
+			createCal: createCal
 			};
 };

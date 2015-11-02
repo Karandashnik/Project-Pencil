@@ -1,21 +1,20 @@
 
 var DayModel = Backbone.Model.extend({
   defaults: {
-    date: new Date().getDate(),
-    month: new Date().getMonth(),
-    year: new Date().getYear(),
+    day: "",
+    month: "",
+    year: "",
     occupied: false,
     bookings: {},
-    id: this.date+this.month+this.year
+    id: ""
   }
 });
 
 var BookingModel = Backbone.Model.extend({
   defaults: {
-    service: '',
+    service: "",
     user: {},
-    startDate: null,
-    endDate: null
+    date: ""
   }
 });
 
