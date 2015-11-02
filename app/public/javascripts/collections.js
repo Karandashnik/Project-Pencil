@@ -1,7 +1,7 @@
 
 var DayCollection = Backbone.Collection.extend({
     model: DayModel,
-    url: '/october'
+    url: '/month'
 });
 
 var BookingCollection = Backbone.Collection.extend({
