@@ -10,7 +10,6 @@ var Calendar = function() {
 	function init(newWrap) {
 		$( document ).ready(function() {
 		   switchMonth(null, currMonth, currYear);
-	  	 //console.log("banana");
 		});
 
 
@@ -46,20 +45,20 @@ var Calendar = function() {
 		}
 	}
 
-	function dayNums() {
-			var numRows = 5;
-			var numCols = 7;
-		    for (var r=0, id=1; r<numRows; ++r) {
-	           	var tr = document.createElement('tr');
-	            $(".curr").append(tr);
-	           	for (var c=0; c<numCols; ++c, ++id) {
-	                var td = document.createElement('td');
-	                td.setAttribute('id', id);
-	                tr.appendChild(td);
-	            }
-	        }
-
-	}
+	// function dayNums() {
+	// 		var numRows = 5;
+	// 		var numCols = 7;
+	// 	    for (var r=0, id=1; r<numRows; ++r) {
+	//            	var tr = document.createElement('tr');
+	//             $(".curr").append(tr);
+	//            	for (var c=0; c<numCols; ++c, ++id) {
+	//                 var td = document.createElement('td');
+	//                 td.setAttribute('id', "OMG");
+	//                 tr.appendChild(td);
+	//             }
+	//         }
+	//
+	// }
 
 	function switchMonth(next, month, year) {
 
@@ -119,17 +118,31 @@ var Calendar = function() {
 				}
 				i++;
 			}
-			if (calendar[5]) {
-				for (i = 0; i < calendar[5].length; i++) {
-					if (calendar[5][i] !== "") {
-						calendar[4][i] = "<span>" + calendar[4][i] + "</span><span>" + calendar[5][i] + "</span>";
-					}
-				}
-				calendar = calendar.slice(0, 5);
-			}
+			//this function was created shared days if there were more than 5 weeks in a month
+
+			// if (calendar[5]) {
+			// 	for (i = 0; i < calendar[5].length; i++) {
+			// 		if (calendar[5][i] !== "") {
+			// 			calendar[4][i] = "<span>" + calendar[4][i] + "</span><span>" + calendar[5][i] + "</span>";
+			// 		}
+			// 	}
+			// 	console.log("calendar before slice is " + calendar);
+			// 	calendar = calendar.slice(0, 5);
+			// 	console.log("calendar after slice is " + calendar);
+			// }
 
 			for (i = 0; i < calendar.length; i++) {
-				calendar[i] = "<tr><td>" + calendar[i].join("</td><td>") + "</td></tr>";
+				calendarHtml = "<tr>"
+				for (j = 0; j < calendar[i].length; j++) {
+					day = calendar[i][j];
+					if (day !== undefined){
+						calendarHtml += "<td id=" + day + ">" + day + "</td>";
+					} else {
+						calendarHtml += "<td></td>";
+					}
+				}
+				calendarHtml += "</tr>";
+				calendar[i] = calendarHtml;
 			}
 
 			calendar = $("<table>" + calendar.join("") + "</table").addClass("curr");
@@ -140,7 +153,7 @@ var Calendar = function() {
 			}
 
 			createCal.cache[year][month] = { calendar : function () { return calendar.clone(); }, label : months[month] + " " + year };
-			console.log(createCal.cache[year][month]);
+			console.log("createCal.cache[year][month] is " + createCal.cache[year][month]);
 			return createCal.cache[year][month];
 		}
 		createCal.cache = {};
@@ -149,7 +162,7 @@ var Calendar = function() {
 		return {
 			init : init,
 			createDays : createDays,
-			dayNums: dayNums,
+			//dayNums: dayNums,
 			switchMonth : switchMonth,
 			createCal : createCal
 			};
