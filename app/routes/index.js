@@ -89,10 +89,30 @@ router.get('/calendar', function(req, res){
 });
 
 
-router.post('/october', function(req,res,next){
-  db.post("october",req.body);
-  console.log(req.body);
-});
+
+
+//Registering a Child//
+db.put('kids', '1', {
+    "childName":"Vienna"
+})
+
+db.get('kids', '1')
+  .then(function(result){
+    console.log(result.path);
+    console.log('banana');
+//maybe write some mocha tests here?
+  });
+
+  db.put('kids', '2', {
+      "childName":"Breton"
+  })
+
+  db.get('kids', '2')
+    .then(function(result){
+      console.log(result.path);
+      console.log('banana2');
+  //maybe write some mocha tests here?
+    });
 
 
 module.exports = router;
