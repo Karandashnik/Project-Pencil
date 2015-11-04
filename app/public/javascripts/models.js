@@ -1,4 +1,5 @@
 
+
 var DayModel = Backbone.Model.extend({
   defaults: {
     day: "",

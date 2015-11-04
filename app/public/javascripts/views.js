@@ -1,3 +1,4 @@
+
 ///////////////////////////////////////
 ///////////CALENDAR VIEWS//////////////
 ///////////////////////////////////////
@@ -9,7 +10,7 @@ var DayView = Backbone.View.extend({
   },
 
   update: function(newBooking) {
-    //this.model.set("bookings"[0], newBooking);
+
   },
   render: function() {
     console.log("DayView is rendering");
@@ -23,36 +24,8 @@ var DayView = Backbone.View.extend({
     var createBookingView = new CreateBookingView({model: bookingModel, collection: bookingCollection});
     createBookingView.render();
     $("#calendar").append(createBookingView.$el);
-    // var html = "<div class='modal fade' role='dialog'><h2>Day "+this.model.attributes.date+"</h2><p>Your bookings: </p><br><ul>";
-    // this.model.attributes.bookings.forEach(function(booking) {
-    //   html += "<li>"+booking.attributes.title+"</li>"
-    // });
-    // html += "</ul></div>"
-    // this.$el.append(html);
   }
 });
-//Create a model for each day, and a view and collection for each model
-//This doesn't work, since you can't call .forEach after a document.getElementsByTagName().
-// var allDays = document.getElementsByTagName("td");
-// allDays.forEach(function(td){
-//   var dayModel = new DayModel({id: td.innerHTML});
-//   var dayView = new DayView({model: dayModel});
-//   var bookingCollection = new BookingCollection({});
-// });
-
-//previous DayView, don't want to delete yet
-// var DayView = Backbone.View.extend({
-//   initialize: function() {
-//     this.listenTo(this.collection, 'add', this.saveNewModel);
-//   },
-//   saveNewModel: function(newModel) {
-//     console.log("Saving", newModel);
-//     newModel.save();
-//   },
-//   render: function() {
-//     this.$el.html("<p>"+this.dateMonth+ " "+this.dateDay+", "+this.dateYear);
-//   }
-// })
 
 ///////////////////////////////////////////////
 ////////////////BOOKING VIEW///////////////////
@@ -65,7 +38,31 @@ var CreateBookingView = Backbone.View.extend({
     var modal = "<div id='bookingModal' class='modal fade' role='dialog'><div class='modal-dialog'>" +
                 "<div class='modal-content'><div class='modal-header'><button type='button' class='close clear' data-dismiss='modal'>&times;</button>" +
                 "<h4 class='modal-title'>Make Appointment</h4></div><div class='modal-body'></div>" +
-                "<div>" + date + user + "</div>" +
+                "<form id='' action='/month' method='post'><div class='row'><div class='form-group col-md-6 col-md-offset-3'>" +
+                "<h1 class='form-signin-heading'>" + date + "</h1></div></div><div class='row'>" +
+                "<div class='form-group col-md-6 col-md-offset-3'>" +
+                "<label class='radio-inline'><input type='radio' name='optradio'>Before Care</label>" +
+                "<label class='radio-inline'><input type='radio' name='optradio'>After Care</label>" +
+                "<label class='radio-inline'><input type='radio' name='optradio'>Both</label>" +
+                "</div></div></form>" +
+                // <div class='row'>
+                // <div class='form-group col-md-6 col-md-offset-3'> +
+                //       <label for='inputEmail' class='sr-only'>Email address</label>
+                //       <input type='email' id='inputEmail' class='form-control' placeholder='Email Address' required='' autofocus='' name='email'>
+                //     </div>
+                //   </div>
+                //   <div class='row'>
+                //     <div class='form-group col-md-6 col-md-offset-3'>
+                //       <label for='inputEmail' class='sr-only'>Email address</label>
+                //       <input type='email' id='inputEmail' class='form-control' placeholder='Email Address' required='' autofocus='' name='email'>
+                //     </div>
+                //   </div>
+                //   <div class="row">
+                //     <div class="form-group col-md-6 col-md-offset-3">
+                //       <button class="btn btn-primary btn-lg btn-block" type="submit">Sign Up</button>
+                //     </div>
+                //   </div>
+                // </form>
                 "<div class='modal-footer'><button type='button' class='btn btn-default clear' data-dismiss='modal'>Nevermind</button></div></div></div></div>"
     this.$el.html(modal);
   },
