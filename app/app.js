@@ -56,6 +56,14 @@ app.use(function(req, res, next){
   next();
 });
 
+
+app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap/dist'));
+app.use('/backbone', express.static(__dirname + '/node_modules/backbone'));
+app.use('/underscore', express.static(__dirname + '/node_modules/backbone/node_modules/underscore'));
+app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist'));
+app.use('/handlebars', express.static(__dirname + '/node_modules/handlebars/dist'));
+
+
 // catch 404 and forward to error handler
 //app.use(function(req, res, next) {
 //  var err = new Error('Not Found');
