@@ -7,18 +7,27 @@
 	<link rel="stylesheet" href="/stylesheets/calendarStyle.css" media="screen">
 </head>
 <body>
-
-<div id="calendar">
-  <div class="calHeader">
-    <span class="left button" id="prev">&lang;</span>
-    <span class="month-year" id="label"> </span>
-    <span class="right button" id="next"> &rang; </span>
-  </div>
-  <table id ="weekdays"></table>
-  <div id="calGrid">
-    <table class="curr">
-   </table>
- </div>
+<div class="container-fluid">
+	<div id="calendar">
+		<div class="row">
+			<div class="col-xs-12 col-md-8">
+			  <div class="calHeader">
+			    <span class="left button" id="prev">&lang;</span>
+			    <span class="month-year" id="label"> </span>
+			    <span class="right button" id="next"> &rang; </span>
+				</div>
+			</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 col-md-8">
+		  <table id ="weekdays"></table>
+		  <div id="calGrid">
+		    <table class="curr">
+		   </table>
+	 		</div>
+	</div>
+</div>
+</div>
 </div>
 <script src="http://code.jquery.com/jquery-2.1.4.js"></script>
 <!--underscore-->

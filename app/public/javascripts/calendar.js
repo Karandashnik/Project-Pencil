@@ -50,7 +50,7 @@ var Calendar = function() {
 			var dW = weekdays[i];
 			var textnode = document.createTextNode(weekdays[i]);
 			var td = document.createElement('td');
-			td.setAttribute('class', "dOw"); //dOw for "day of week"
+			td.setAttribute('class', "dOw"); //dOw for "day of week" 
 			td.setAttribute('id', dW);
 			td.appendChild(textnode);
 			$("#weekdays").append(td);

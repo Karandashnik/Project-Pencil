@@ -3,27 +3,28 @@ body {
 }
 
 #calendar {
+  margin: 50px auto
   -moz-box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
   -webkit-box-shadow: 0px 3xp 3px rgba(0, 0, 0, 0.25);
   margin: 50px auto;
   font: 13px/1.5 "Helvetica Neue", Helvatica, Arial, sans-serif;
-  display: table;  
+  display: table;
 }
 
 #calendar .calHeader {
   cursor: default;
   background: DarkRed;
-  height: 34px; 
+  height: 34px;
   position: relative;
   color: #fff;
-    -webkit-border-top-left-radius: 5px; 
-    -webkit-border-top-right-radius: 5px; 
-    -moz-border-radius-topleft: 5px; 
-    -moz-border-radius-topright: 5px; 
-  border-top-left-radius: 5px; 
-  border-top-right-radius: 5px; 
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
   font-weight: bold;
-  text-shadow: 0px -1px 0 #87260C; 
+  text-shadow: 0px -1px 0 #87260C;
   text-transform: uppercase;
 }
 
@@ -46,12 +47,12 @@ body {
 }
 
 #calendar .calHeader .right.button {
-  right:0; 
-    top:0; 
-    border-left:1px solid #ae2a0c; 
-    -webkit-border-top-right-radius: 5px; 
-    -moz-border-radius-topright: 5px; 
-    border-top-right-radius: 5px; 
+  right:0;
+    top:0;
+    border-left:1px solid #ae2a0c;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topright: 5px;
+    border-top-right-radius: 5px;
 }
 
 #calendar .calHeader .button:hover {
@@ -71,20 +72,23 @@ body {
 }
 
 #calendar td {
-  color:#2b2b2b; 
-    width:50px; 
-    height:50px; 
-    line-height:30px; 
-    text-align:center; 
-    border:1px solid #fff; 
-    cursor:default; 
+  color:#2b2b2b;
+    width:50px;
+    height:50px;
+    line-height:30px;
+    width: 50%;
+    height: 50%;
+    line-height: 25%;
+    text-align:center;
+    border:1px solid #fff;
+    cursor:default;
 }
 
 #calendar #days td {
-    height:26px; 
-    line-height: 26px; 
-    text-transform:uppercase; 
-    font-size:90%; 
+    height:26px;
+    line-height: 26px;
+    text-transform:uppercase;
+    font-size:90%;
     color:#DarkRed;
 }
 
@@ -93,21 +97,21 @@ body {
 }
 
 #calendar #calGrid td.today {
-   background:#ededed; 
-    color:#8c8c8c; 
-    box-shadow:1px 1px 0px #fff inset; 
-    -moz-box-shadow:1px 1px 0px #fff inset; 
-    -webkit-box-shadow:1px 1px 0px #fff inset; 
+   background:#ededed;
+    color:#8c8c8c;
+    box-shadow:1px 1px 0px #fff inset;
+    -moz-box-shadow:1px 1px 0px #fff inset;
+    -webkit-box-shadow:1px 1px 0px #fff inset;
 }
 
 #calendar #calGrid td:not(.nil):hover {
-  color:#fff; 
-    text-shadow: #6C1A07 0px -1px; 
-    background:#CD310D; 
-    background: -moz-linear-gradient(top, #b32b0c, #cd310d); 
-    background: -webkit-gradient(linear, left top, left bottom, from(#b32b0c), to(#cd310d)); 
-    -moz-box-shadow:0px 0px 0px; 
-    -webkit-box-shadow:0px 0px 0px; 
+  color:#fff;
+    text-shadow: #6C1A07 0px -1px;
+    background:#CD310D;
+    background: -moz-linear-gradient(top, #b32b0c, #cd310d);
+    background: -webkit-gradient(linear, left top, left bottom, from(#b32b0c), to(#cd310d));
+    -moz-box-shadow:0px 0px 0px;
+    -webkit-box-shadow:0px 0px 0px;
 }
 
 #calendar #calGrid td span {
@@ -121,6 +125,7 @@ body {
 
 #calendar #calGrid td span:last-child {
   top:5px;
+
 }
 
 #calendar #calGrid table.curr {

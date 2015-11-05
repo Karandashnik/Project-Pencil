@@ -92,27 +92,38 @@ router.get('/calendar', function(req, res){
 
 
 //Registering a Child//
-db.put('kids', '1', {
-    "childName":"Vienna"
-})
+// router.post('/kid-reg', function(req, res){
+//     then(function(res){
+//       console.log('testingKidPost');
+//       res.render('')
+// }
+// })
 
-db.get('kids', '1')
-  .then(function(result){
-    console.log(result.path);
-    console.log('banana');
-//maybe write some mocha tests here?
-  });
 
-  db.put('kids', '2', {
-      "childName":"Breton"
-  })
 
-  db.get('kids', '2')
-    .then(function(result){
-      console.log(result.path);
-      console.log('banana2');
-  //maybe write some mocha tests here?
-    });
+
+//Testing DB Connectivity//
+// db.put('kids', '1', {
+//     "childName":"Vienna"
+// })
+//
+// db.get('kids', '1')
+//   .then(function(result){
+//     console.log(result.path);
+//     console.log('banana');
+// //maybe write some mocha tests here?
+//   });
+//
+//   db.put('kids', '2', {
+//       "childName":"Breton"
+//   })
+//
+//   db.get('kids', '2')
+//     .then(function(result){
+//       console.log(result.path);
+//       console.log('banana2');
+//   //maybe write some mocha tests here?
+//     });
 
 
 module.exports = router;
