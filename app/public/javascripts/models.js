@@ -33,6 +33,3 @@ var KidsModel = Backbone.Model.extend({
     // kids: {},//MOVE to USER MODEL
   }
 });
-
-
-})
