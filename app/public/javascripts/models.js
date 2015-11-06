@@ -24,3 +24,13 @@ var DashboardModel = Backbone.Model.extend({
     bookings: {}
   }
 })
+
+var KidModel = Backbone.Model.extend({
+  defaults: {
+    kidFirstName: "Happy",
+    kidLastName: "",
+    kidMidInitial: "",
+    kidFullName:"",
+    username:"", //for the associated parent//
+  }
+});
