@@ -59,4 +59,9 @@ router.get('/calendar', function(req, res){
   res.render('calendar', {user: req.user});
 });
 
+router.post('/kids', function(req, res, next){
+  db.post("kids",req.body);
+  console.log(req.body);
+});
+
 module.exports = router;

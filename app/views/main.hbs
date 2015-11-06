@@ -31,8 +31,11 @@
       <p>Last Name: {{user.lastName}}</p>
     </div>
     <form id= "seeCalendar" action = "/calendar" method="get"><input type="submit" value = "See Calendar"></form>
+    <div id="kidList"></div>
   </div>
-
+<script>
+var currentUser = "{{user.username}}";
+</script>
 {{else}}
   <div>
     <h1>Penciled In</h1>
