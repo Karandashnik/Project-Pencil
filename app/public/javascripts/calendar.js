@@ -16,11 +16,6 @@ var Calendar = function() {
 		wrap = $(newWrap || "#calendar");
 		label = wrap.find("#label");
 
-		// wrap.find("#curr").bind("click.calendar", function() {
-		// switchMonth(null, newDate().getMonth(), new Date().getFullYear() );
-		// });
-
-
 		wrap.find("#prev").bind("click.calendar", function() {
 		 switchMonth(false);
 		});
@@ -57,21 +52,6 @@ var Calendar = function() {
 			$("#td").append(weekdays[i]);
 		}
 	}
-
-	// function dayNums() {
-	// 		var numRows = 5;
-	// 		var numCols = 7;
-	// 	    for (var r=0, id=1; r<numRows; ++r) {
-	//            	var tr = document.createElement('tr');
-	//             $(".curr").append(tr);
-	//            	for (var c=0; c<numCols; ++c, ++id) {
-	//                 var td = document.createElement('td');
-	//                 td.setAttribute('id', "OMG");
-	//                 tr.appendChild(td);
-	//             }
-	//         }
-	//
-	// }
 
 	function switchMonth(next, month, year) {
 
@@ -131,18 +111,7 @@ var Calendar = function() {
 				}
 				i++;
 			}
-			//this function was created shared days if there were more than 5 weeks in a month
 
-			// if (calendar[5]) {
-			// 	for (i = 0; i < calendar[5].length; i++) {
-			// 		if (calendar[5][i] !== "") {
-			// 			calendar[4][i] = "<span>" + calendar[4][i] + "</span><span>" + calendar[5][i] + "</span>";
-			// 		}
-			// 	}
-			// 	console.log("calendar before slice is " + calendar);
-			// 	calendar = calendar.slice(0, 5);
-			// 	console.log("calendar after slice is " + calendar);
-			// }
 			for (i = 0; i < calendar.length; i++) {
 				var calendarHtml = "<tr>"
 				for (j = 0; j < calendar[i].length; j++) {

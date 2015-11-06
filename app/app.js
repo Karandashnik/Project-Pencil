@@ -8,6 +8,11 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var session = require('express-session');
 var passport = require('passport');
+var $ = require('jquery');
+global.jQuery = $;
+//require('bootstrap');
+var _ = require('underscore');
+var Backbone = require('backbone');
 var LocalStrategy = require('passport-local');
 var FacebookStrategy = require('passport-facebook');
 var fbConfig = require('./fb.js');
@@ -15,7 +20,6 @@ var config = require('./config.js'); //config file contains all tokens and other
 var funct = require('./functions.js'); //funct file contains our helper functions for our Passport and database work
 
 var routes = require('./routes/index');
-//var users = require('./routes/users');
 
 var app = express();
 
@@ -34,10 +38,12 @@ app.use(session({secret: 'supernova', saveUninitialized: true, resave: true}));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
-//app.use(express.static("public"));
+app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap/dist'));
+app.use('/backbone', express.static(__dirname + '/node_modules/backbone'));
+app.use('/underscore', express.static(__dirname + '/node_modules/backbone/node_modules/underscore'));
+app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist'));
 
 app.use('/', routes);
-//app.use('/users', users);
 
 // Session-persisted message middleware
 app.use(function(req, res, next){
@@ -55,39 +61,6 @@ app.use(function(req, res, next){
 
   next();
 });
-
-// catch 404 and forward to error handler
-//app.use(function(req, res, next) {
-//  var err = new Error('Not Found');
-//  err.status = 404;
-//  next(err);
-//});
-
-// Configure express to use handlebars templates
-
-// error handlers
-
-// development error handler
-// will print stacktrace
-//if (app.get('env') === 'development') {
-//  app.use(function(err, req, res, next) {
-//    res.status(err.status || 500);
-//    res.render('error', {
-//      message: err.message,
-//      error: err
-//    });
-//  });
-//}
-
-// production error handler
-// no stacktraces leaked to user
-//app.use(function(err, req, res, next) {
-//  res.status(err.status || 500);
-//  res.render('error', {
-//    message: err.message,
-//    error: {}
-//  });
-//});
 
 //===============PASSPORT=================
 // Use the LocalStrategy within Passport to login/”signin” users.
@@ -112,6 +85,7 @@ passport.use('local-signin', new LocalStrategy(
     });
   }
 ));
+
 // Use the LocalStrategy within Passport to register/"signup" users.
 passport.use('local-signup', new LocalStrategy(
   {passReqToCallback : true}, //allows us to pass back the request to the callback

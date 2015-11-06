@@ -1,4 +1,5 @@
 
+
 var DayModel = Backbone.Model.extend({
   defaults: {
     day: "",
@@ -20,6 +21,16 @@ var BookingModel = Backbone.Model.extend({
 
 var DashboardModel = Backbone.Model.extend({
   defaults: {
-    bookings: []
+    bookings: {}
   }
 })
+
+var KidModel = Backbone.Model.extend({
+  defaults: {
+    kidFirstName: "Happy",
+    kidLastName: "",
+    kidMidInitial: "",
+    kidFullName:"",
+    username:"", //for the associated parent//
+  }
+});
