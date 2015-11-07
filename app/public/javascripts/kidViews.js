@@ -57,11 +57,3 @@ var UserKidsView = Backbone.View.extend({
 
 
 });
-$(document).ready(function(){
-
-var kidCollection = new KidCollection();
-var kidModel = new KidModel();
-var addKidsView = new AddKidView({collection: kidCollection, model: kidModel});
-addKidsView.render();
-$("#kidList").append(addKidsView.$el);
-});

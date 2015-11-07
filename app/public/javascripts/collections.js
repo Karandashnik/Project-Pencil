@@ -12,5 +12,8 @@ var BookingCollection = Backbone.Collection.extend({
 
 var KidCollection = Backbone.Collection.extend ({
   model: KidModel,
-  url: '/kids'
+  url: '/kids',
+  initialize: function() {
+    this.fetch({data: {username: currentUser}});
+  }
 });

@@ -60,8 +60,28 @@ router.get('/calendar', function(req, res){
 });
 
 router.post('/kids', function(req, res, next){
-  db.post("kids",req.body);
-  console.log(req.body);
+  db.post('kids',req.body);
 });
 
+router.get('/kids', function(req, res, next){
+  db.search('kids', req.query.username)
+  .then(function (result) {
+    var kidResults = result.body.results;
+    var kidArray = [];
+    for (i=0; i<kidResults.length; i++){
+      var individualKid = {
+        id: kidResults[i].path.key,
+        kidFirstName: kidResults[i].value.kidFirstName,
+        kidLastName: kidResults[i].value.kidLastName,
+        kidMidInitial: kidResults[i].value.kidMidInitial,
+        username: kidResults[i].value.username
+      }
+      kidArray.push(individualKid);
+    };
+    res.send(kidArray);
+  })
+  .fail(function (err) {
+    console.log(err);
+  })
+})
 module.exports = router;

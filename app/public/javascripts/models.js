@@ -27,10 +27,9 @@ var DashboardModel = Backbone.Model.extend({
 
 var KidModel = Backbone.Model.extend({
   defaults: {
-    kidFirstName: "Happy",
+    kidFirstName: "",
     kidLastName: "",
     kidMidInitial: "",
-    kidFullName:"",
     username:"", //for the associated parent//
   }
 });
