@@ -76,6 +76,7 @@ var CreateBookingView = Backbone.View.extend({
         }
       }
     }
+  window.alert('Booking saved! Yay!');
   }
 });
 

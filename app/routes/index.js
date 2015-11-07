@@ -69,8 +69,7 @@ router.get('/calendar', function(req, res){
 //                kid routes
 //===============================================
 router.post('/kids', function(req, res, next){
-  console.log("POSTING A KID!");
-  db.post('kids',req.body);
+  db.post('kids',req.body)
 });
 
 router.get('/kids', function(req, res, next){
@@ -84,6 +83,7 @@ router.get('/kids', function(req, res, next){
         kidFirstName: kidResults[i].value.kidFirstName,
         kidLastName: kidResults[i].value.kidLastName,
         kidMidInitial: kidResults[i].value.kidMidInitial,
+        kidFullName: kidResults[i].value.kidFullName,
         username: kidResults[i].value.username
       }
       kidArray.push(individualKid);
@@ -99,9 +99,17 @@ router.get('/kids', function(req, res, next){
 //                 booking routes
 //===============================================
   router.post('/bookings', function(req, res, next){
-    console.log("BOOKINGS POST IS WORKING");
-    db.post('bookings',req.body);
+    db.post('bookings',req.body)
+    .then(function (result) {
+      var id =result.path.key;
+      res.send({id: id});
+    })
   });
+
+//===============================================
+//                 dashboard routes
+//===============================================
+
 
 
 module.exports = router;

@@ -14,10 +14,8 @@ var AddKidView = Backbone.View.extend({
       var midInit = $('#midInit').val();
       var lastName = $('#lastName').val();
       var fullName = firstName + ' ' + midInit + ' ' + lastName;
-      var newKid = new KidModel({kidFirstName: firstName, kidLastName: lastName, kidMidInitial: midInit, kidFullName: fullName, username: currentUser});
-      this.collection.add(newKid);
-      newKid.save();
-      this.render();
+      this.collection.create({kidFirstName: firstName, kidLastName: lastName, kidMidInitial: midInit, kidFullName: fullName, username: currentUser});
+    //  this.render();
       // console.log(newKid.get("username"));
       // console.log(firstName);
   },
