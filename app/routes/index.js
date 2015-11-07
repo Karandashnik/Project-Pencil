@@ -13,6 +13,9 @@ router.get('/', function(req, res){
   res.render('main', {user: req.user});
 });
 
+//===============================================
+//      login/register/authenticate routes
+//===============================================
 //displays our signup page
 router.get('/signin', function(req, res){
   res.render('login');
@@ -54,14 +57,59 @@ router.get('/auth/facebook/callback',
     failureRedirect : '/signin'
   })
 );
+
+//===============================================
+//              calendar routes
+//===============================================
 //route to go to org/calendar page
 router.get('/calendar', function(req, res){
   res.render('calendar', {user: req.user});
 });
-
+//===============================================
+//                kid routes
+//===============================================
 router.post('/kids', function(req, res, next){
-  db.post("kids",req.body);
-  console.log(req.body);
+  db.post('kids',req.body)
 });
+
+router.get('/kids', function(req, res, next){
+  db.search('kids', req.query.username)
+  .then(function (result) {
+    var kidResults = result.body.results;
+    var kidArray = [];
+    for (i=0; i<kidResults.length; i++){
+      var individualKid = {
+        id: kidResults[i].path.key,
+        kidFirstName: kidResults[i].value.kidFirstName,
+        kidLastName: kidResults[i].value.kidLastName,
+        kidMidInitial: kidResults[i].value.kidMidInitial,
+        kidFullName: kidResults[i].value.kidFullName,
+        username: kidResults[i].value.username
+      }
+      kidArray.push(individualKid);
+    };
+    res.send(kidArray);
+  })
+  .fail(function (err) {
+    console.log(err);
+  })
+})
+
+//===============================================
+//                 booking routes
+//===============================================
+  router.post('/bookings', function(req, res, next){
+    db.post('bookings',req.body)
+    .then(function (result) {
+      var id =result.path.key;
+      res.send({id: id});
+    })
+  });
+
+//===============================================
+//                 dashboard routes
+//===============================================
+
+
 
 module.exports = router;

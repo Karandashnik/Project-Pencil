@@ -14,10 +14,8 @@ var AddKidView = Backbone.View.extend({
       var midInit = $('#midInit').val();
       var lastName = $('#lastName').val();
       var fullName = firstName + ' ' + midInit + ' ' + lastName;
-      var newKid = new KidModel({kidFirstName: firstName, kidLastName: lastName, kidMidInitial: midInit, kidFullName: fullName, username: currentUser});
-      this.collection.add(newKid);
-      newKid.save();
-      this.render();
+      this.collection.create({kidFirstName: firstName, kidLastName: lastName, kidMidInitial: midInit, kidFullName: fullName, username: currentUser});
+    //  this.render();
       // console.log(newKid.get("username"));
       // console.log(firstName);
   },
@@ -29,7 +27,7 @@ var AddKidView = Backbone.View.extend({
 
 
   initialize: function() {
-    console.log('testing bananas');
+    //console.log('testing bananas');
   },
 
   render: function() {
@@ -56,12 +54,4 @@ var UserKidsView = Backbone.View.extend({
   },
 
 
-});
-$(document).ready(function(){
-
-var kidCollection = new KidCollection();
-var kidModel = new KidModel();
-var addKidsView = new AddKidView({collection: kidCollection, model: kidModel});
-addKidsView.render();
-$("#kidList").append(addKidsView.$el);
 });

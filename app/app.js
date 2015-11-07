@@ -1,6 +1,6 @@
 var express = require('express');
 var path = require('path');
-var favicon = require('serve-favicon');
+//var favicon = require('serve-favicon');
 var logger = require('morgan');
 var hbs = require('hbs');
 var cookieParser = require('cookie-parser');
@@ -137,8 +137,5 @@ passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
 
-var port = process.env.PORT || 5000; //select your port or let it pull from your .env file
-app.listen(port);
-console.log("listening on " + port + "!");
 
 module.exports = app;

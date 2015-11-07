@@ -26,11 +26,11 @@ var Calendar = function() {
 		$('.container').on('click', '.dayView', function () {
 			var day = event.target.id;
 			var monthYear = label.text().trim().split(" ");
-			var month = monthYear[0];
+			var month = months.indexOf(monthYear[0]);
 			var year = monthYear[1];
-			var wholeDay = month + " " + day + ", " + year;
+			var wholeDay = new Date(year, month, day);
 			var dayCollection = new DayCollection();
-			var dayModel = new DayModel({id: wholeDay, day: day, month: month, year: year});
+			var dayModel = new DayModel({id: wholeDay, wholeDay: wholeDay});
 			var dayView = new DayView({model: dayModel, collection: dayCollection});
 			dayView.render();
 			$("#" + day).append(dayView.$el);
