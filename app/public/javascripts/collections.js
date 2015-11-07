@@ -7,7 +7,7 @@ var DayCollection = Backbone.Collection.extend({
 
 var BookingCollection = Backbone.Collection.extend({
   model: BookingModel,
-  url: '/booking'
+  url: '/bookings'
 });
 
 var KidCollection = Backbone.Collection.extend ({

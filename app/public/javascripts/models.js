@@ -14,8 +14,9 @@ var DayModel = Backbone.Model.extend({
 var BookingModel = Backbone.Model.extend({
   defaults: {
     service: "",
+    kid: {},
     user: {},
-    date: ""
+    date: {}
   }
 });
 

@@ -29,7 +29,7 @@ var AddKidView = Backbone.View.extend({
 
 
   initialize: function() {
-    console.log('testing bananas');
+    //console.log('testing bananas');
   },
 
   render: function() {

@@ -13,6 +13,9 @@ router.get('/', function(req, res){
   res.render('main', {user: req.user});
 });
 
+//===============================================
+//      login/register/authenticate routes
+//===============================================
 //displays our signup page
 router.get('/signin', function(req, res){
   res.render('login');
@@ -54,12 +57,19 @@ router.get('/auth/facebook/callback',
     failureRedirect : '/signin'
   })
 );
+
+//===============================================
+//              calendar routes
+//===============================================
 //route to go to org/calendar page
 router.get('/calendar', function(req, res){
   res.render('calendar', {user: req.user});
 });
-
+//===============================================
+//                kid routes
+//===============================================
 router.post('/kids', function(req, res, next){
+  console.log("POSTING A KID!");
   db.post('kids',req.body);
 });
 
@@ -84,4 +94,14 @@ router.get('/kids', function(req, res, next){
     console.log(err);
   })
 })
+
+//===============================================
+//                 booking routes
+//===============================================
+  router.post('/bookings', function(req, res, next){
+    console.log("BOOKINGS POST IS WORKING");
+    db.post('bookings',req.body);
+  });
+
+
 module.exports = router;
