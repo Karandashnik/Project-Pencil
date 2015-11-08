@@ -22,22 +22,34 @@ var Calendar = function() {
 		wrap.find("#next").bind("click.calendar", function() {
 		 switchMonth(true);
 		});
-		//adds event listener to dayviews
-		$('.container').on('click', '.dayView', function () {
-			var day = event.target.id;
-			var monthYear = label.text().trim().split(" ");
-			var month = months.indexOf(monthYear[0]);
-			var year = monthYear[1];
-			var wholeDay = new Date(year, month, day);
-			var dayCollection = new DayCollection();
-			var dayModel = new DayModel({id: wholeDay, wholeDay: wholeDay});
-			var dayView = new DayView({model: dayModel, collection: dayCollection});
-			dayView.render();
-			$("#" + day).append(dayView.$el);
-		});
+		//adds event listener to dayviews so modal pops up to create booking
+		$('.container').on('click', '.dayView', 	function() {
+				var day = event.target.id;
+				console.log(day);
+				var monthYear = label.text().trim().split(" ");
+				var month = months.indexOf(monthYear[0]);
+				var year = monthYear[1];
+				var date = new Date(year, month, day);
+				var bookingModel = new BookingModel({date: date, user: currentUser})
+				var createBookingView = new CreateBookingView({collection: main.bookingCollection, model: bookingModel});
+				createBookingView.render();
+				$("#calendar").append(createBookingView.$el);
+			});
 		label.bind("click.calendar", function() {
 		switchMonth(null, newDate().getMonth(), new Date().getFullYear() );
 		});
+	}
+
+	function prepareCreateBookingView() {
+		var day = event.target.id;
+		var monthYear = label.text().trim().split(" ");
+		var month = months.indexOf(monthYear[0]);
+		var year = monthYear[1];
+		var date = new Date(year, month, day);
+		var bookingModel = new BookingModel({date: date, user: currentUser})
+		var createBookingView = new CreateBookingView({collection: main.bookingCollection, model: bookingModel});
+		createBookingView.render();
+		$("#calendar").append(createBookingView.$el);
 	}
 
 	function createDays() {
