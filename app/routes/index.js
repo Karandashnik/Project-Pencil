@@ -71,9 +71,8 @@ router.get('/calendar', function(req, res){
 router.post('/kids', function(req, res, next){
   db.post('kids',req.body)
   .then(function (result) {
-    var id =result.path.key;
+    var id = result.path.key;
     res.send({id: id});
-    console.log("id " + id);
   })
 });
 
@@ -110,6 +109,28 @@ router.get('/kids', function(req, res, next){
       res.send({id: id});
     })
   });
+
+  router.get('/bookings', function(req, res, next){
+    db.search('bookings', req.query.user)
+    .then(function (result) {
+      var bookingResults = result.body.results;
+      var bookingArray = [];
+      for (i=0; i<bookingResults.length; i++){
+        var individualBooking = {
+          id: bookingResults[i].path.key,
+          service: bookingResults[i].value.service,
+          kid: bookingResults[i].value.kid,
+          user: bookingResults[i].value.user,
+          date: bookingResults[i].value.date
+        }
+        bookingArray.push(individualBooking);
+      };
+      res.send(bookingArray);
+    })
+    .fail(function (err) {
+      console.log(err);
+    })
+  })
 
 //===============================================
 //                 dashboard routes

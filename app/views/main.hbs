@@ -19,17 +19,13 @@
 {{#if user}}
   <div>
     <h1>Penciled In</h1>
-    <p>Below is your profile information!</p>
   </div>
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title">Profile Information</h3>
-    </div>
-    <div class="panel-body">
+  <div>
+    <!-- <div>
       <p>Username: {{user.username}}</p>
       <p>First Name: {{user.firstName}}</p>
       <p>Last Name: {{user.lastName}}</p>
-    </div>
+    </div> -->
     <div id="upcomingBookings">
     </div>
     <form id= "seeCalendar" action = "/calendar" method="get"><input type="submit" value = "See Calendar"></form>

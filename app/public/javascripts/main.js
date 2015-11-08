@@ -1,11 +1,18 @@
-var mainKids = {};
+var main = {};
 $(function() { //when DOM is ready...
-  mainKids.kidCollection = new KidCollection();
-  mainKids.kidModel = new KidModel();
-  mainKids.addKidView = new AddKidView({collection: mainKids.kidCollection, model: mainKids.kidModel});
-  mainKids.addKidView.render();
-  $("#kidList").append(mainKids.addKidView.$el);
-  mainKids.userKidsView = new UserKidsView({collection: mainKids.kidCollection, model: mainKids.kidModel});
-  mainKids.userKidsView.render();
- $("#kidList").append(mainKids.userKidsView.$el);
+  //create kid stuff
+  main.kidCollection = new KidCollection();
+  main.addKidView = new AddKidView({collection: main.kidCollection});
+  main.addKidView.render();
+  $("#kidList").append(main.addKidView.$el);
+  main.userKidsView = new UserKidsView({collection: main.kidCollection});
+  main.userKidsView.render();
+ $("#kidList").append(main.userKidsView.$el);
+  //create booking stuff
+  main.bookingCollection = new BookingCollection();
+  main.usersBookingView = new UsersBookingView({collection: main.bookingCollection});
+  main.usersBookingView.render()
+;  $("#upcomingBookings").append(main.usersBookingView.$el);
+  //create day stuff
+  main.dayCollection = new DayCollection();
 });

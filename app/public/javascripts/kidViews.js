@@ -13,7 +13,7 @@ var UserKidsView = Backbone.View.extend({
 
   render: function() {
     var listBody = "";
-    var kiddos = mainKids.kidCollection.pluck("kidFullName");
+    var kiddos = this.collection.pluck("kidFullName");
     console.log(kiddos);
     var title = "<h4 class='listTitle'>" + 'Registered Children' + "</h4>";
     var editButton = "<button class = 'btn btn-warning btn-xs' 'type = button'>" + 'Edit' + "</button>";
@@ -49,6 +49,7 @@ var AddKidView = Backbone.View.extend({
   },
 
   saveKid: function(event) {
+      //event.preventDefault() is called to allow the post request to give response
       event.preventDefault();
       var firstName = $('#firstName').val();
       var midInit = $('#midInit').val();
