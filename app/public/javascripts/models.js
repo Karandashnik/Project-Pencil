@@ -31,6 +31,7 @@ var KidModel = Backbone.Model.extend({
     kidFirstName: "",
     kidLastName: "",
     kidMidInitial: "",
+    kidFullName: "",
     username:"", //for the associated parent//
   }
 });

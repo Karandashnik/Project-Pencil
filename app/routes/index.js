@@ -70,6 +70,11 @@ router.get('/calendar', function(req, res){
 //===============================================
 router.post('/kids', function(req, res, next){
   db.post('kids',req.body)
+  .then(function (result) {
+    var id =result.path.key;
+    res.send({id: id});
+    console.log("id " + id);
+  })
 });
 
 router.get('/kids', function(req, res, next){

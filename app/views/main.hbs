@@ -35,6 +35,17 @@
     <form id= "seeCalendar" action = "/calendar" method="get"><input type="submit" value = "See Calendar"></form>
     <div id="kidList"></div>
   </div>
+  <!-- handlebars template for entering list of kids -->
+     <!-- <script id="listOfKids-template" type="text/x-handlebars-template">
+      <div>
+        <h3> {{user.username}} Registered Kids </h3>
+        <ul>
+          {{#each []}}
+           <li>{{this.fullName}}</li>
+           {{/each}}
+        </ul>
+      </div>
+    </script> -->
 <script>
 var currentUser = "{{user.username}}";
 </script>

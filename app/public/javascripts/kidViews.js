@@ -1,4 +1,32 @@
 ///////////////////////////////////////////////
+//////////////userKids View///////////////////
+///////////////////////////////////////////////
+var UserKidsView = Backbone.View.extend({
+
+  render: function() {
+    var listBody = "";
+    var kiddos = mainKids.kidCollection.pluck("kidFullName");
+    console.log(kiddos);
+    var title = "<h4 class='listTitle'>" + 'Registered Children' + "</h4>"
+    for (i = 0; i <kiddos.length; i++) {
+    var listContents =  "<div class='row'>" +
+                        "<div class='col-md-6 col-md-offset-3'>" +
+                        "<ul class ='listOfKids'>" +
+                        "<li class='oneKid'>" + kiddos[i] + "</li>" +
+                        "</ul>" +
+                        "</div>" +
+                        "</div>"
+    listBody += listContents;
+  }
+    this.$el.html(title + listBody);
+  },
+
+  initialize: function() {
+    this.collection.on('update', this.render, this);
+  }
+});
+
+///////////////////////////////////////////////
 //////////////addKid View///////////////////
 ///////////////////////////////////////////////
 
@@ -9,12 +37,14 @@ var AddKidView = Backbone.View.extend({
     'click #cancel' : 'deleteIt',
   },
 
-  saveKid: function() {
+  saveKid: function(event) {
+      event.preventDefault();
       var firstName = $('#firstName').val();
       var midInit = $('#midInit').val();
       var lastName = $('#lastName').val();
       var fullName = firstName + ' ' + midInit + ' ' + lastName;
       this.collection.create({kidFirstName: firstName, kidLastName: lastName, kidMidInitial: midInit, kidFullName: fullName, username: currentUser});
+      //add function to clear the form//
     //  this.render();
       // console.log(newKid.get("username"));
       // console.log(firstName);
@@ -40,18 +70,5 @@ var AddKidView = Backbone.View.extend({
     $form.append([$firstName, $midInit, $lastName, $submit, $cancel]);
     this.$el.html($form);
   }
-
-});
-
-var UserKidsView = Backbone.View.extend({
-
-  render: function() {
-    // var listOfKids = $('<ul>');
-    // var regKids
-  },
-  events: function() {
-
-  },
-
 
 });
