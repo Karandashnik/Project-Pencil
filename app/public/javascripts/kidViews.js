@@ -38,17 +38,14 @@ var AddKidView = Backbone.View.extend({
   },
 
   saveKid: function(event) {
-      event.preventDefault();
+      // event.preventDefault();
       var firstName = $('#firstName').val();
       var midInit = $('#midInit').val();
       var lastName = $('#lastName').val();
       var fullName = firstName + ' ' + midInit + ' ' + lastName;
       this.collection.create({kidFirstName: firstName, kidLastName: lastName, kidMidInitial: midInit, kidFullName: fullName, username: currentUser});
-      //add function to clear the form//
-    //  this.render();
-      // console.log(newKid.get("username"));
-      // console.log(firstName);
   },
+
 
   deleteIt: function() {
     this.clear();
@@ -57,7 +54,7 @@ var AddKidView = Backbone.View.extend({
 
 
   initialize: function() {
-    //console.log('testing bananas');
+    // this.collection.on('update', this.reset, this);
   },
 
   render: function() {
@@ -65,8 +62,8 @@ var AddKidView = Backbone.View.extend({
     var $firstName = $('<input type ="text" name="firstName" id ="firstName" placeholder="first name">');
     var $midInit = $('<input type ="text" name="midInit" id ="midInit" placeholder="MI">');
     var $lastName = $('<input type ="text" name="lastName" id ="lastName" placeholder="last name">');
-    var $submit = $('<button id="submit">Submit</button>');
-    var $cancel = $('<button id="cancel">Cancel</button>');
+    var $submit = $('<button type="submit" id="submit">Submit</button>');
+    var $cancel = $('<button type="reset" id="cancel">Cancel</button>');
     $form.append([$firstName, $midInit, $lastName, $submit, $cancel]);
     this.$el.html($form);
   }
