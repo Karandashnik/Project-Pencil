@@ -2,22 +2,33 @@
 //////////////userKids View///////////////////
 ///////////////////////////////////////////////
 var UserKidsView = Backbone.View.extend({
+  events: {
+    ".click #edit" : "edit",
+    ".click #delete" : "deleteItem"
+  },
+
+  edit: function() {
+    console.log('edit soon');
+  },
 
   render: function() {
     var listBody = "";
     var kiddos = mainKids.kidCollection.pluck("kidFullName");
     console.log(kiddos);
-    var title = "<h4 class='listTitle'>" + 'Registered Children' + "</h4>"
+    var title = "<h4 class='listTitle'>" + 'Registered Children' + "</h4>";
+    var editButton = "<button class = 'btn btn-warning btn-xs' 'type = button'>" + 'Edit' + "</button>";
     for (i = 0; i <kiddos.length; i++) {
     var listContents =  "<div class='row'>" +
-                        "<div class='col-md-6 col-md-offset-3'>" +
+                        "<div class='col-md-4'>" +
                         "<ul class ='listOfKids'>" +
                         "<li class='oneKid'>" + kiddos[i] + "</li>" +
-                        "</ul>" +
-                        "</div>" +
+                        // "<li class='oneKid'>" + kiddos[i] + editButton + "</li>" +
+                        // "<li class='edit'>" + editButton + "</li>" +
+                        "</ul>" + "</div>" +
+                        "<div class='col-md-2'>" + editButton + "</div>" +
                         "</div>"
     listBody += listContents;
-  }
+  };
     this.$el.html(title + listBody);
   },
 
@@ -38,7 +49,7 @@ var AddKidView = Backbone.View.extend({
   },
 
   saveKid: function(event) {
-      // event.preventDefault();
+      event.preventDefault();
       var firstName = $('#firstName').val();
       var midInit = $('#midInit').val();
       var lastName = $('#lastName').val();
@@ -50,8 +61,6 @@ var AddKidView = Backbone.View.extend({
   deleteIt: function() {
     this.clear();
   },
-
-
 
   initialize: function() {
     // this.collection.on('update', this.reset, this);
