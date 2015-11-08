@@ -9,7 +9,9 @@ var AddKidView = Backbone.View.extend({
     'click #cancel' : 'deleteIt',
   },
 
-  saveKid: function() {
+  saveKid: function(event) {
+      //event.preventDefault() is called to allow the post request to give response
+      event.preventDefault();
       var firstName = $('#firstName').val();
       var midInit = $('#midInit').val();
       var lastName = $('#lastName').val();
