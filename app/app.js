@@ -40,7 +40,7 @@ app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap/dist'));
 app.use('/backbone', express.static(__dirname + '/node_modules/backbone'));
-app.use('/underscore', express.static(__dirname + '/node_modules/backbone/node_modules/underscore'));
+app.use('/underscore', express.static(__dirname + '/node_modules/underscore'));
 app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist'));
 
 app.use('/', routes);
