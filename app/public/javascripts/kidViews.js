@@ -3,20 +3,25 @@
 ///////////////////////////////////////////////
 var UserKidsView = Backbone.View.extend({
   events: {
-    ".click #edit" : "edit",
-    ".click #delete" : "deleteItem"
+    "click #delete" : "deleteItem",
+    "click #edit" : "editKid",
+    "click #addKid" : "createAddKidView",
   },
 
-  edit: function() {
-    console.log('edit soon');
+  createAddKidView: function() {
+     addKidView = new AddKidView({collection: main.kidCollection});
+     addKidView.render();
+     $('#kidList').append(addKidView.$el);
   },
 
   render: function() {
+    var addKidButton = '<button class = "addKidView btn btn-primary btn-lg" id="addKid" data-toggle="modal" data-target="#kidModal">Add Kid</button>';
+
     var listBody = "";
     var kiddos = this.collection.pluck("kidFullName");
     console.log(kiddos);
     var title = "<h4 class='listTitle'>" + 'Registered Children' + "</h4>";
-    var editButton = "<button class = 'btn btn-warning btn-xs' 'type = button'>" + 'Edit' + "</button>";
+    var editButton = "<button class = 'btn btn-warning btn-xs' 'button id='edit' 'type = button'>" + 'Edit' + "</button>";
     for (i = 0; i <kiddos.length; i++) {
     var listContents =  "<div class='row'>" +
                         "<div class='col-md-4'>" +
@@ -26,10 +31,10 @@ var UserKidsView = Backbone.View.extend({
                         // "<li class='edit'>" + editButton + "</li>" +
                         "</ul>" + "</div>" +
                         "<div class='col-md-2'>" + editButton + "</div>" +
-                        "</div>"
+                        "</div>";
     listBody += listContents;
-  };
-    this.$el.html(title + listBody);
+  }
+    this.$el.html(addKidButton + title + listBody);
   },
 
   initialize: function() {
@@ -46,7 +51,7 @@ var AddKidView = Backbone.View.extend({
   events: {
     'click #submit' : 'saveKid',
     'click #cancel' : 'deleteIt',
-  },
+    },
 
   saveKid: function(event) {
       //event.preventDefault() is called to allow the post request to give response
@@ -58,24 +63,44 @@ var AddKidView = Backbone.View.extend({
       this.collection.create({kidFirstName: firstName, kidLastName: lastName, kidMidInitial: midInit, kidFullName: fullName, username: currentUser});
   },
 
-
   deleteIt: function() {
     this.clear();
   },
 
   initialize: function() {
-    // this.collection.on('update', this.reset, this);
+    this.collection.on('update', this.clear, this);
   },
 
   render: function() {
-    var $form = $('<form>');
-    var $firstName = $('<input type ="text" name="firstName" id ="firstName" placeholder="first name">');
-    var $midInit = $('<input type ="text" name="midInit" id ="midInit" placeholder="MI">');
-    var $lastName = $('<input type ="text" name="lastName" id ="lastName" placeholder="last name">');
-    var $submit = $('<button type="submit" id="submit">Submit</button>');
-    var $cancel = $('<button type="reset" id="cancel">Cancel</button>');
-    $form.append([$firstName, $midInit, $lastName, $submit, $cancel]);
-    this.$el.html($form);
-  }
+    var self = this;
+
+    var $kidModal = "<div id='kidModal' class='modal fade' role='dialog'>" +
+                "<div class='modal-dialog'>" +
+                "<div class='modal-content'>" +
+                "<div class='modal-header'>" +
+                "<button type='button' class='close clear' data-dismiss='modal'>&times;</button>" +
+                "<h4 class='modal-title'>Add a Child</h4>" +
+                "</div>" +
+                "<div class='modal-body'>" +
+                "<div class='row'>" +
+                "<div class='form-group col-sm-6 col-md-4 col-md-offset-4'>" +
+                "<input type ='text' name='firstName' id ='firstName' placeholder='First Name'>" +
+                "</div>" +
+                "<div class='form-group form-group-xs col-sm-4 col-md-4 col-md-offset-4'>" +
+                "<input type ='text' name='midInit' id ='midInit' placeholder='MI'>" +
+                "</div>" +
+                "<div class='form-group col-sm-6 col-md-3 col-md-offset-4'>" +"<input type ='text' name='lastName' id ='lastName' placeholder='Last Name'>" +
+                "</div>" +
+                "</div>" +
+                "<div class='modal-footer'>" +
+                "<button type='submit' class='btn btn-warning' id='submit'>Submit</button>" +
+                "<button type='reset' class='btn btn-success' id='reset'>Clear</button>" +
+                "<button type='button' class='btn btn-primary clear' data-dismiss='modal'>Nevermind</button>" +
+                "</div>" +
+                "</div>" +
+                "</div>" +
+                "</div>";
+                self.$el.html($kidModal);
+    },
 
 });
