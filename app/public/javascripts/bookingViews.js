@@ -31,7 +31,7 @@ var CreateBookingView = Backbone.View.extend({
                   "<button type='button' class='close clear' data-dismiss='modal'>&times;</button>" +
                   "<h4 class='modal-title'>Make Booking</h4>" +
                   "</div>" +
-                  "<div class='modal-body'>" +
+                  "<div id='bookingModalBody' class='modal-body'>" +
                   "<form>" +
                   "<div class='row'>" +
                   "<div class='form-group col-md-8 col-md-offset-2'>" +
@@ -41,7 +41,7 @@ var CreateBookingView = Backbone.View.extend({
                   formBody +
                   "<div class='row'>" +
                   "<div class='form-group col-md-6 col-md-offset-3'>" +
-                  "<button id='saveBooking' class='btn btn-primary btn-lg btn-block' type='submit'>Add Booking</button>" +
+                  "<button id='saveBooking' class='btn btn-primary btn-lg btn-block' type='button'>Add Booking</button>" +
                   "</div>" +
                   "</div>" +
                   "</form>" +
@@ -57,29 +57,109 @@ var CreateBookingView = Backbone.View.extend({
   },
   events: {
       "click .clear": "clear",
-      "click #saveBooking": "saveBooking"
+      "click #saveBooking": "collectBookings"
   },
   clear: function(){
     this.model.clear();
     this.$el.html("");
     $('.modal-backdrop').remove();
   },
-  saveBooking: function(){
+  collectBookings: function() {
     var kids = main.kidCollection.pluck("kidFirstName");
     var date = this.model.get("date");
+    var newBookings = [];
     for (var i = 0; i<kids.length; i++) {
       var radios = document.getElementsByName(kids[i]);
       for (var j = 0; j<radios.length; j++) {
         if (radios[j].checked) {
           var kidObject = main.kidCollection.findWhere({kidFirstName: radios[j].name}).attributes;
-          this.collection.create({service: radios[j].value, kid: kidObject, user: this.model.get("user"), date: this.model.get("date")});
-          //this.addBookingToDay({service: radios[j].value, kid: kidObject, user: this.model.get("user"), date: this.model.get("date")});
+          var newBooking = {service: radios[j].value, kid: kidObject, user: currentUser, date: date, dateId: this.model.get("dateId")};
+          newBookings.push(newBooking);
         }
       }
     }
+    console.log(newBookings);
+    newBookings.length === 0 ? this.bookingNullError() : this.doesBookingExist(newBookings);
   },
-  addBookingToDay: function(obj){
-
+  doesBookingExist: function(newBookings) {
+    //event.preventDefault();
+    var self = this;
+    this.collection.deferred.done(function() {
+      if (newBookings.length > 1) {
+        var alreadyExists = [];
+        var doesNotExist = [];
+        for (var i=0; i<newBookings.length; i++) {
+          //console.log(self.collection.models);
+          var existingBooking = self.collection.where({dateId: newBookings[i].dateId})
+          var shouldWeSave = true;
+          //console.log(existingBooking);
+          if (existingBooking) {
+            for (var j=0; j<existingBooking.length; j++) {
+              if (existingBooking[j].get("kid").kidFirstName === newBookings[i].kid.kidFirstName) {
+                shouldWeSave = false;
+                alreadyExists.push(newBookings[i]);
+              }
+            }
+          }
+          if (shouldWeSave) {
+            doesNotExist.push(newBookings[i]);
+          }
+        }
+        //console.log(alreadyExists);
+        //console.log(doesNotExist);
+        alreadyExists.length === 0 ? self.saveBookings(doesNotExist) : self.bookingExistsError(alreadyExists);
+      } else {
+        //console.log(self.collection.models);
+        var existingBooking = self.collection.where({dateId: newBookings[0].dateId});
+        var shouldWeSave = true;
+        if (existingBooking) {
+          for (var i=0; i<existingBooking.length; i++) {
+            if (existingBooking[i].get("kid").kidFirstName === newBookings[0].kid.kidFirstName) {
+              shouldWeSave = false;
+              self.bookingExistsError(newBookings);
+            }
+          }
+        }
+        if (shouldWeSave) {
+          self.saveBookings(newBookings)
+        }
+      }
+    })
+  },
+  bookingNullError: function(){
+    $("#bookingModalBody").prepend("<h5 class='bookingError'>You must select a booking in order to save.</h5>")
+  },
+  bookingExistsError: function(alreadyExists){
+    if (alreadyExists.length > 1) {
+      kidNames = [];
+      for (var i=0; i<alreadyExists.length; i++) {
+        kidNames.push(alreadyExists[i].kid.kidFirstName);
+      }
+      var lastKid = kidNames.pop();
+      var kidString = kidNames.join(', ');
+      $("#bookingModalBody").prepend("<div class= 'col-md-8 col-md-offset-2'><h5 class='bookingError'>" + kidString + ", and " + lastKid + " are already scheduled for care on this day.</h5><p>Head to your <a href='/'>dashboard</a> to edit bookings.</p></div>");
+    } else {
+      var kidString = alreadyExists[0].kid.kidFirstName;
+      console.log(kidString);
+      $("#bookingModalBody").prepend("<div class= 'col-md-8 col-md-offset-2'><h5 class='bookingError'>" + kidString + " is already scheduled for care on this day.</h5><p>Head to your <a href='/'>dashboard</a> to edit bookings.</p></div>")
+    }
+  },
+  saveBookings: function(bookingsArray){
+    var self = this;
+    console.log("made it to saving");
+    //console.log(bookingsArray);
+    main.calendarDayCollection.deferred.done(function() {
+      for (var i = 0; i<bookingsArray.length; i++) {
+        console.log("made it save loop");
+        var calendarDayModel = new CalendarDayModel({date: bookingsArray[i].date, dateId: bookingsArray[i].dateId, bookings: [bookingsArray[i]], user: currentUser, bookingCount: 1});
+        var calendarDayView = new CalendarDayView({model: calendarDayModel});
+        calendarDayView.investigateNewModel();
+        self.collection.create(bookingsArray[i]);
+        console.log("Saving booking...");
+        //$("#bookingNotification").prepend("<div class= 'col-md-8 col-md-offset-2'><h4>Your appointments were successfully saved.</h4></div>")
+      };
+    });
+    this.clear();
   }
 });
 
@@ -103,7 +183,7 @@ var UsersBookingView = Backbone.View.extend({
       if (self.collection.length !== 0) {
         listOfBookings = [];
         self.collection.each(function(model){
-          var booking = {date: model.get("date"), kid: model.get("kid"), service: model.get("service"), user: model.get("user")};
+          var booking = {date: model.get("date"), dateId: model.get("dateId"), kid: model.get("kid"), service: model.get("service"), user: currentUser};
           listOfBookings.push(booking);
         });
         listOfBookings.sort(self.sortBookings);
