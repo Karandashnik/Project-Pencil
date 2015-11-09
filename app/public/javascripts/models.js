@@ -1,9 +1,12 @@
 
 
-var DayModel = Backbone.Model.extend({
+var CalendarDayModel = Backbone.Model.extend({
   defaults: {
     date: "",
-    bookings: {}
+    dateId: "",
+    user: "",
+    bookingCount: 0,
+    bookings: []
   }
 });
 
@@ -12,7 +15,8 @@ var BookingModel = Backbone.Model.extend({
     service: "",
     kid: {},
     user: "",
-    date: {}
+    date: "",
+    dateId: ""
   }
 });
 

@@ -3,6 +3,7 @@
 ///////////////////////////////////////////////
 var UserKidsView = Backbone.View.extend({
   events: {
+
     "click #edit" : "editKid",
     "click #addKid" : "createAddKidView",
   },
@@ -26,8 +27,12 @@ var UserKidsView = Backbone.View.extend({
 
     var listBody = "";
     var kiddos = this.collection.pluck("kidFullName");
-    console.log(kiddos);
+    //console.log(kiddos);
     var title = "<h4 class='listTitle'>" + 'Registered Children' + "</h4>";
+<<<<<<< HEAD
+=======
+    var editButton = "<button id= 'edit' class= 'btn btn-warning btn-xs'>Edit</button>";
+>>>>>>> master
     for (i = 0; i <kiddos.length; i++) {
     var listContents =  "<div class='row'>" +
                         "<div class='col-md-4'>" +

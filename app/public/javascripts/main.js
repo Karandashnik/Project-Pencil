@@ -18,5 +18,5 @@ $(function() { //when DOM is ready...
   main.usersBookingView.render()
 ;  $("#upcomingBookings").append(main.usersBookingView.$el);
   //create day stuff
-  main.dayCollection = new DayCollection();
+  main.calendarDayCollection = new CalendarDayCollection();
 });

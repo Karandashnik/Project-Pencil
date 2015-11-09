@@ -2,11 +2,11 @@
 ///////////////////////////////////////
 ///////////CALENDAR VIEWS//////////////
 ///////////////////////////////////////
-var DayView = Backbone.View.extend({
+var CalendarDayView = Backbone.View.extend({
   initialize: function() {
     //Listen for events being added to the day
     //this.collection.on('add', this.render, this);
-    this.collection.on('update', this.render, this);
+    //this.collection.on('update', this.render, this);
   },
 
   // render: function () {
@@ -21,7 +21,19 @@ var DayView = Backbone.View.extend({
   //      });
   //},
   render: function() {
-    //var p = this.collection.fetch({data: {user: currentUser}});
+    console.log("calendarDayView rendering....!!");
 
-  }
+  },
+  investigateNewModel: function() {
+    var existingDay = main.calendarDayCollection.findWhere({dateId: this.model.get("dateId")});
+    existingDay ? this.updateExistingDay(existingDay) : this.saveNewDay();
+  },
+  updateExistingDay: function(existingDay) {
+    var newBookings = _.clone(existingDay.get("bookings"));
+  },
+  saveNewDay: function() {
+   main.calendarDayCollection.create(this.model);
+   this.render();
+  },
+
 });

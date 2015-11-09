@@ -65,6 +65,37 @@ router.get('/auth/facebook/callback',
 router.get('/calendar', function(req, res){
   res.render('calendar', {user: req.user});
 });
+
+router.post('/days', function(req, res, next){
+  db.post('days',req.body)
+  .then(function (result) {
+    var id = result.path.key;
+    res.send({id: id});
+  })
+});
+
+router.get('/days', function(req, res, next){
+  db.search('days', req.query.user)
+  .then(function (result) {
+    var dayResults = result.body.results;
+    var dayArray = [];
+    for (i=0; i<dayResults.length; i++){
+      var individualDay = {
+        id: dayResults[i].path.key,
+        date: dayResults[i].value.date,
+        dateId: dayResults[i].value.dateId,
+        user: dayResults[i].value.user,
+        bookingCount: dayResults[i].value.bookingCount,
+        bookings: dayResults[i].value.bookings
+      }
+      dayArray.push(individualDay);
+    };
+    res.send(dayArray);
+  })
+  .fail(function (err) {
+    console.log(err);
+  })
+})
 //===============================================
 //                kid routes
 //===============================================
@@ -118,12 +149,14 @@ router.get('/kids', function(req, res, next){
   router.post('/bookings', function(req, res, next){
     db.post('bookings',req.body)
     .then(function (result) {
+      console.log("POSTING BOOKING!");
       var id =result.path.key;
       res.send({id: id});
     })
   });
 
   router.get('/bookings', function(req, res, next){
+    console.log(req.query.user);
     db.search('bookings', req.query.user)
     .then(function (result) {
       var bookingResults = result.body.results;
@@ -134,7 +167,8 @@ router.get('/kids', function(req, res, next){
           service: bookingResults[i].value.service,
           kid: bookingResults[i].value.kid,
           user: bookingResults[i].value.user,
-          date: bookingResults[i].value.date
+          date: bookingResults[i].value.date,
+          dateId: bookingResults[i].value.dateId
         }
         bookingArray.push(individualBooking);
       };
