@@ -24,13 +24,19 @@ build/Release
 
 # Dependency directory
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git-
-node_modules
+app/node_modules/orchestrate/node_modules/request/node_modules/har-validator/node_modules/commander/node_modules
 
 # Debug log from npm
-../npm-debug.log
+npm-debug.log
+app/npm-debug.log
 
 #Config file
 config.js
 
+/app/node_modules
 #FB login config file
 fb.js
+
+# IntelliJ Ignore
+*.iml
+
