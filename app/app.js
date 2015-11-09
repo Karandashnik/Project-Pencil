@@ -57,10 +57,12 @@ app.use(function(req, res, next){
 });
 
 
-app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap/dist'));
+app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap'));
+app.use('/jquery', express.static(__dirname + '/node_modules/jquery'));
+app.use('/backboneLocalStorage', express.static(__dirname + '/node_modules/backbone.localstorage'));
 app.use('/backbone', express.static(__dirname + '/node_modules/backbone'));
-app.use('/underscore', express.static(__dirname + '/node_modules/backbone/node_modules/underscore'));
-app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist'));
+app.use('/underscore', express.static(__dirname + '/node_modules/underscore'));
+app.use('/jquery', express.static(__dirname + '/node_modules/jquery'));
 app.use('/handlebars', express.static(__dirname + '/node_modules/handlebars/dist'));
 
 

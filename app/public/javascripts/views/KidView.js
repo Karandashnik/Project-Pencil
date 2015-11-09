@@ -1,8 +1,6 @@
-///////////////////////////////////////
-///////////KID VIEWS//////////////
-///////////////////////////////////////
-
-//var addKidTemplate = require('./addKid.hbs');
+var addKidTemplate = require('./templates/profile.hbs');
+var Handlebars = require('hbs');
+var Backbone = require('backbone');
 
 var KidView = Backbone.View.extend({
     tagName: 'li',
@@ -26,9 +24,9 @@ var KidView = Backbone.View.extend({
     render: function () {
         console.log("KidView is rendering");
 
-        var source = $("#profile-template").html();
+        //var source = $("#profile-template").html();
 
-        var template = Handlebars.compile(source);
+        var template = Handlebars.compile(addKidTemplate);
 
         this.$el.html(template);
 
@@ -44,6 +42,8 @@ var KidView = Backbone.View.extend({
         ////ADD KIDFULLNAME to KIDS ARRAY {};
     }
 });
+
+module.exports = KidView;
 
 
 
