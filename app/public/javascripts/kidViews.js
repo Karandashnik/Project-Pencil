@@ -29,10 +29,9 @@ var UserKidsView = Backbone.View.extend({
     var kiddos = this.collection.pluck("kidFullName");
     //console.log(kiddos);
     var title = "<h4 class='listTitle'>" + 'Registered Children' + "</h4>";
-<<<<<<< HEAD
-=======
+
     var editButton = "<button id= 'edit' class= 'btn btn-warning btn-xs'>Edit</button>";
->>>>>>> master
+
     for (i = 0; i <kiddos.length; i++) {
     var listContents =  "<div class='row'>" +
                         "<div class='col-md-4'>" +
