@@ -24,13 +24,13 @@ var Calendar = function() {
 		});
 		//adds event listener to dayviews so modal pops up to create booking
 		$('.container').on('click', '.dayView', 	function() {
-				var day = event.target.id;
-				console.log(day);
-				var monthYear = label.text().trim().split(" ");
-				var month = months.indexOf(monthYear[0]);
-				var year = monthYear[1];
+				var id = event.target.id;
+				var yearMonthDay = id.split("-");
+				var year = yearMonthDay[0];
+				var month = yearMonthDay[1];
+				var day = yearMonthDay[2];
 				var date = new Date(year, month, day);
-				var bookingModel = new BookingModel({date: date, user: currentUser})
+				var bookingModel = new BookingModel({date: date, dateId: id, user: currentUser})
 				var createBookingView = new CreateBookingView({collection: main.bookingCollection, model: bookingModel});
 				createBookingView.render();
 				$("#calendar").append(createBookingView.$el);
@@ -123,7 +123,6 @@ var Calendar = function() {
 				}
 				i++;
 			}
-
 			for (i = 0; i < calendar.length; i++) {
 				var calendarHtml = "<tr>"
 				for (j = 0; j < calendar[i].length; j++) {
@@ -132,7 +131,7 @@ var Calendar = function() {
 						var tdTag = "<td></td>"
 						calendarHtml += tdTag;
 					} else {
-						var tdTag = "<td id=" + day + " class=dayView data-toggle=modal data-target=#bookingModal>" + day + "</td>";
+						var tdTag = "<td id=" + year + "-" + month + "-" + day + " class=dayView data-toggle=modal data-target=#bookingModal>" + day + "</td>";
 						calendarHtml += tdTag;
 					}
 				}

@@ -3,20 +3,20 @@
 ///////////////////////////////////////////////
 var UserKidsView = Backbone.View.extend({
   events: {
-    ".click #edit" : "edit",
-    ".click #delete" : "deleteItem"
+    "click #edit" : "edit",
+    "click #delete" : "deleteItem"
   },
 
-  edit: function() {
-    console.log('edit soon');
+  edit: function(e) {
+    console.log(e);
   },
 
   render: function() {
     var listBody = "";
     var kiddos = this.collection.pluck("kidFullName");
-    console.log(kiddos);
+    //console.log(kiddos);
     var title = "<h4 class='listTitle'>" + 'Registered Children' + "</h4>";
-    var editButton = "<button class = 'btn btn-warning btn-xs' 'type = button'>" + 'Edit' + "</button>";
+    var editButton = "<button id= 'edit' class= 'btn btn-warning btn-xs'>Edit</button>";
     for (i = 0; i <kiddos.length; i++) {
     var listContents =  "<div class='row'>" +
                         "<div class='col-md-4'>" +
