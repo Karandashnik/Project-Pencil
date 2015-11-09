@@ -3,10 +3,10 @@
 ///////////////////////////////////////////////
 var UserKidsView = Backbone.View.extend({
   events: {
-    "click #delete" : "deleteItem",
     "click #edit" : "editKid",
     "click #addKid" : "createAddKidView",
   },
+
 
   createAddKidView: function() {
      addKidView = new AddKidView({collection: main.kidCollection});
@@ -49,9 +49,16 @@ var UserKidsView = Backbone.View.extend({
 var AddKidView = Backbone.View.extend({
 
   events: {
+    'click #clear' : 'clear',
     'click #submit' : 'saveKid',
     'click #cancel' : 'deleteIt',
     },
+
+  clear: function(){
+      document.getElementById("firstName").value = "";
+      document.getElementById("midInit").value = "";
+      document.getElementById("lastName").value = "";
+  },
 
   saveKid: function(event) {
       //event.preventDefault() is called to allow the post request to give response
@@ -92,9 +99,10 @@ var AddKidView = Backbone.View.extend({
                 "<div class='form-group col-sm-6 col-md-3 col-md-offset-4'>" +"<input type ='text' name='lastName' id ='lastName' placeholder='Last Name'>" +
                 "</div>" +
                 "</div>" +
+                // "</form"> +
                 "<div class='modal-footer'>" +
                 "<button type='submit' class='btn btn-warning' id='submit'>Submit</button>" +
-                "<button type='reset' class='btn btn-success' id='reset'>Clear</button>" +
+                "<button type='reset' class='btn btn-success' id='clear'>Clear</button>" +
                 "<button type='button' class='btn btn-primary clear' data-dismiss='modal'>Nevermind</button>" +
                 "</div>" +
                 "</div>" +
