@@ -57,11 +57,11 @@ var UserKidsView = Backbone.View.extend({
 var AddKidView = Backbone.View.extend({
 
   events: {
-    'click #clear' : 'clear',
+    'click #clearAddKid' : 'clearAddKid',
     'click #submit' : 'saveKid',
     },
 
-  clear: function(){
+  clearAddKid: function(){
       document.getElementById("firstName").value = "";
       document.getElementById("midInit").value = "";
       document.getElementById("lastName").value = "";
@@ -108,7 +108,7 @@ var AddKidView = Backbone.View.extend({
                 // "</form"> +
                 "<div class='modal-footer'>" +
                 "<button type='submit' class='btn btn-warning' id='submit'>Submit</button>" +
-                "<button type='reset' class='btn btn-success' id='clear'>Clear</button>" +
+                "<button type='reset' class='btn btn-success' id='clearAddKid'>Clear</button>" +
                 "<button type='button' class='btn btn-primary clear' data-dismiss='modal'>Nevermind</button>" +
                 "</div>" +
                 "</div>" +
