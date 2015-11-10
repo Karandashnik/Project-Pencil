@@ -150,9 +150,9 @@ var CreateBookingView = Backbone.View.extend({
     //console.log(bookingsArray);
     main.calendarDayCollection.deferred.done(function() {
       for (var i = 0; i<bookingsArray.length; i++) {
-        console.log("made it save loop");
+        console.log("made it to save loop");
         var calendarDayModel = new CalendarDayModel({date: bookingsArray[i].date, dateId: bookingsArray[i].dateId, bookings: [bookingsArray[i]], user: currentUser, bookingCount: 1});
-        var calendarDayView = new CalendarDayView({model: calendarDayModel});
+        var calendarDayView = new CalendarDayView({model: calendarDayModel, collection: main.calendarDayCollection});
         calendarDayView.investigateNewModel();
         self.collection.create(bookingsArray[i]);
         console.log("Saving booking...");
