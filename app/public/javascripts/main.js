@@ -11,12 +11,14 @@ $(function() { //when DOM is ready...
  main.editKidView = new EditKidView({collection: main.kidCollection});
  main.editKidView.render();
  $("#kidList").append(main.editKidView.$el);
- 
+
   //create booking stuff
   main.bookingCollection = new BookingCollection();
   main.usersBookingView = new UsersBookingView({collection: main.bookingCollection});
-  main.usersBookingView.render()
-;  $("#upcomingBookings").append(main.usersBookingView.$el);
+  main.usersBookingView.render();
+  $("#upcomingBookings").append(main.usersBookingView.$el);
   //create day stuff
   main.calendarDayCollection = new CalendarDayCollection();
+  main.calendarDayView = new CalendarDayView({collection: main.calendarDayCollection});
+  main.calendarDayView.render();
 });

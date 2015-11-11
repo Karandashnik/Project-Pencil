@@ -28,7 +28,7 @@ var CreateBookingView = Backbone.View.extend({
                   "<div class='modal-dialog'>" +
                   "<div class='modal-content'>" +
                   "<div class='modal-header'>" +
-                  "<button type='button' class='close clear' data-dismiss='modal'>&times;</button>" +
+                  "<button type='button' class='close clearAll' data-dismiss='modal'>&times;</button>" +
                   "<h4 class='modal-title'>Make Booking</h4>" +
                   "</div>" +
                   "<div id='bookingModalBody' class='modal-body'>" +
@@ -44,10 +44,11 @@ var CreateBookingView = Backbone.View.extend({
                   "<button id='saveBooking' class='btn btn-primary btn-lg btn-block' type='button'>Add Booking</button>" +
                   "</div>" +
                   "</div>" +
+                  "<div id='bookingModalMsg'></div>" +
                   "</form>" +
                   "</div>" +
                   "<div class='modal-footer'>" +
-                  "<button type='button' class='btn btn-default clear' data-dismiss='modal'>Nevermind</button>" +
+                  "<button type='button' class='btn btn-default clearAll' data-dismiss='modal'>Nevermind</button>" +
                   "</div>" +
                   "</div>" +
                   "</div>" +
@@ -56,10 +57,13 @@ var CreateBookingView = Backbone.View.extend({
     })
   },
   events: {
-      "click .clear": "clear",
+      "click .clearAll": "clearAll",
       "click #saveBooking": "collectBookings"
   },
-  clear: function(){
+  clearMsgs: function() {
+    $("#bookingModalMsg").html("");
+  },
+  clearAll: function() {
     this.model.clear();
     this.$el.html("");
     $('.modal-backdrop').remove();
@@ -127,9 +131,11 @@ var CreateBookingView = Backbone.View.extend({
     })
   },
   bookingNullError: function(){
-    $("#bookingModalBody").prepend("<h5 class='bookingError'>You must select a booking in order to save.</h5>")
+    $("#bookingModalMsg").html("");
+    $("#bookingModalMsg").append("<h5 class='bookingError'>You must select a booking in order to save.</h5>")
   },
   bookingExistsError: function(alreadyExists){
+    $("#bookingModalMsg").html("");
     if (alreadyExists.length > 1) {
       kidNames = [];
       for (var i=0; i<alreadyExists.length; i++) {
@@ -137,11 +143,11 @@ var CreateBookingView = Backbone.View.extend({
       }
       var lastKid = kidNames.pop();
       var kidString = kidNames.join(', ');
-      $("#bookingModalBody").prepend("<div class= 'col-md-8 col-md-offset-2'><h5 class='bookingError'>" + kidString + ", and " + lastKid + " are already scheduled for care on this day.</h5><p>Head to your <a href='/'>dashboard</a> to edit bookings.</p></div>");
+      $("#bookingModalMsg").append("<div class= 'col-md-8 col-md-offset-2'><h5 class='bookingError'>" + kidString + ", and " + lastKid + " are already scheduled for care on this day.</h5><p>Head to your <a href='/'>dashboard</a> to edit bookings.</p></div>");
     } else {
       var kidString = alreadyExists[0].kid.kidFirstName;
       console.log(kidString);
-      $("#bookingModalBody").prepend("<div class= 'col-md-8 col-md-offset-2'><h5 class='bookingError'>" + kidString + " is already scheduled for care on this day.</h5><p>Head to your <a href='/'>dashboard</a> to edit bookings.</p></div>")
+      $("#bookingModalMsg").append("<div class= 'col-md-8 col-md-offset-2'><h5 class='bookingError'>" + kidString + " is already scheduled for care on this day.</h5><p>Head to your <a href='/'>dashboard</a> to edit bookings.</p></div>")
     }
   },
   saveBookings: function(bookingsArray){
@@ -150,16 +156,16 @@ var CreateBookingView = Backbone.View.extend({
     //console.log(bookingsArray);
     main.calendarDayCollection.deferred.done(function() {
       for (var i = 0; i<bookingsArray.length; i++) {
-        console.log("made it save loop");
+        console.log("made it to save loop");
         var calendarDayModel = new CalendarDayModel({date: bookingsArray[i].date, dateId: bookingsArray[i].dateId, bookings: [bookingsArray[i]], user: currentUser, bookingCount: 1});
-        var calendarDayView = new CalendarDayView({model: calendarDayModel});
+        var calendarDayView = new CalendarDayView({model: calendarDayModel, collection: main.calendarDayCollection});
         calendarDayView.investigateNewModel();
         self.collection.create(bookingsArray[i]);
         console.log("Saving booking...");
         //$("#bookingNotification").prepend("<div class= 'col-md-8 col-md-offset-2'><h4>Your appointments were successfully saved.</h4></div>")
       };
     });
-    this.clear();
+    this.clearAll();
   }
 });
 

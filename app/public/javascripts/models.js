@@ -20,12 +20,6 @@ var BookingModel = Backbone.Model.extend({
   }
 });
 
-var DashboardModel = Backbone.Model.extend({
-  defaults: {
-    bookings: {}
-  }
-})
-
 var KidModel = Backbone.Model.extend({
   defaults: {
     kidFirstName: "",
