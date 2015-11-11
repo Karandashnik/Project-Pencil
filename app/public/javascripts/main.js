@@ -1,5 +1,6 @@
 var main = {};
 $(function() { //when DOM is ready...
+
  //create kid stuff
  main.kidCollection = new KidCollection();
  main.addKidView = new AddKidView({collection: main.kidCollection});

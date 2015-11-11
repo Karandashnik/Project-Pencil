@@ -74,6 +74,14 @@ router.post('/days', function(req, res, next){
   })
 });
 
+router.put('/days/:id', function(req, res, next) {
+  db.put('days', req.params.id, req.body)
+  .then(function (result) {
+    console.log(result);
+    res.send({});
+  })
+})
+
 router.get('/days', function(req, res, next){
   db.search('days', req.query.user)
   .then(function (result) {
