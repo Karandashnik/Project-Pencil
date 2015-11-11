@@ -8,9 +8,7 @@ $(function() { //when DOM is ready...
  main.userKidsView = new UserKidsView({collection: main.kidCollection});
  main.userKidsView.render();
 $("#kidList").append(main.userKidsView.$el);
-main.editKidView = new EditKidView({collection: main.kidCollection});
-main.editKidView.render();
-$("#kidList").append(main.editKidView.$el);
+
 
  //create booking stuff
  main.bookingCollection = new BookingCollection();

@@ -6,6 +6,7 @@ var UserKidsView = Backbone.View.extend({
     this.listenTo(this.collection, "add", this.render);
     this.listenTo(this.collection, "remove", this.render);
     this.listenTo(this.collection, "change", this.render);
+
   },
 
   events: {
@@ -49,7 +50,7 @@ var UserKidsView = Backbone.View.extend({
                      listBody += listContents;
   }
     this.$el.html(addKidButton + '<br>' +  title + listBody);
-  
+
   }
 
 
@@ -168,6 +169,7 @@ deleteOne: function() {
 },
 
 render: function() {
+  
   var firstName = this.model.get("kidFirstName");
   var midInit = this.model.get("kidMidInitial");
   var lastName = this.model.get("kidLastName");
