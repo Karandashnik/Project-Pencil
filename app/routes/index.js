@@ -107,6 +107,16 @@ router.post('/kids', function(req, res, next){
   })
 });
 
+router.put('/kids/:id', function(req,res,next) {
+  db.put('kids', req.params.id, req.body)
+  .then(function (result) {
+    console.log("Kid was updated...");
+    console.log(result.path);
+    var id = result.path.key;
+    res.send({id: id});
+  })
+});
+
 router.get('/kids', function(req, res, next){
   db.search('kids', req.query.username)
   .then(function (result) {
