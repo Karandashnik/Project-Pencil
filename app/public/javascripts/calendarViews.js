@@ -7,12 +7,18 @@ var CalendarDayView = Backbone.View.extend({
   render: function() {
     var self = this;
     this.collection.deferred.done(function() {
-
+      var days = []
+      self.collection.each(function(model) {
+        days.push(model.get("dateId"));
+      })
+      for (var i=0; i<days.length; i++) {
+        self.markCalendar(days[i]);
+      }
     })
   },
   markCalendar: function(id) {
     console.log("rendering calendarDayView");
-    $('#'+ id).append("<span class='glyphicon glyphicon-certificate'></span>");
+    $("#" + id).addClass("calendarDayNumber");
   },
   investigateNewModel: function() {
     console.log("investigating new model");
