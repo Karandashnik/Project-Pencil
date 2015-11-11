@@ -3,170 +3,266 @@
 ///////////////////////////////////////////////
 
 var CreateBookingView = Backbone.View.extend({
-  render: function(){
-    var self = this;
-    main.kidCollection.deferred.done(function() {
-      var date = self.model.get("date");
-      var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-      var dateString = date.toLocaleString('en-US', options)
-      var kids = main.kidCollection.pluck("kidFirstName");
-      var formBody = "";
-      for (i=0; i<kids.length; i++) {
+
+  _getModal: function (formBody, dateString) {
+    return "<div id='bookingModal' class='modal fade' role='dialog'>" +
+      "<div class='modal-dialog'>" +
+      "<div class='modal-content'>" +
+      "<div class='modal-header'>" +
+      "<button type='button' class='close clearAll' data-dismiss='modal'>&times;</button>" +
+      "<h4 class='modal-title'>Make Booking</h4>" +
+      "</div>" +
+      "<div id='bookingModalBody' class='modal-body'>" +
+      "<form>" +
+      "<div class='row'>" +
+      "<div class='form-group col-md-8 col-md-offset-2'>" +
+      "<h3 class=''>" + dateString + "</h3>" +
+      "</div>" +
+      "</div>" +
+      formBody +
+      "<div class='row'>" +
+      "<div class='form-group col-md-6 col-md-offset-3'>" +
+      "<button id='saveBooking' class='btn btn-primary btn-lg btn-block' type='button'>Add Booking</button>" +
+      "</div>" +
+      "</div>" +
+      "<div id='bookingModalMsg'></div>" +
+      "</form>" +
+      "</div>" +
+      "<div class='modal-footer'>" +
+      "<button type='button' class='btn btn-default clearAll' data-dismiss='modal'>Nevermind</button>" +
+      "</div>" +
+      "</div>" +
+      "</div>" +
+      "</div>"
+  },
+
+  _getFormBody: function (kids) {
+    var formBody = "";
+
+    _.each(kids, function (kid) {
       var contents = "<div class='row'>" +
-                       "<div class='form-group col-md-6 col-md-offset-3'>" +
-                       "<h4 class='kids'>" + kids[i] + "</h4>" +
-                       "<div id=" + kids[i] + " class='input-group'>" +
-                       "<label class='radio-inline'><input type='radio' name=" + kids[i] + " value='Morning Care'>Morning Care</label>" +
-                       "<label class='radio-inline'><input type='radio' name=" + kids[i] + " value='After Care'>After Care</label>" +
-                       "<label class='radio-inline'><input type='radio' name=" + kids[i] + " value='Both'>Both</label>" +
-                       "</div>" +
-                       "</div>" +
-                       "</div>"
-        formBody += contents;
-      }
-      var modal = "<div id='bookingModal' class='modal fade' role='dialog'>" +
-                  "<div class='modal-dialog'>" +
-                  "<div class='modal-content'>" +
-                  "<div class='modal-header'>" +
-                  "<button type='button' class='close clearAll' data-dismiss='modal'>&times;</button>" +
-                  "<h4 class='modal-title'>Make Booking</h4>" +
-                  "</div>" +
-                  "<div id='bookingModalBody' class='modal-body'>" +
-                  "<form>" +
-                  "<div class='row'>" +
-                  "<div class='form-group col-md-8 col-md-offset-2'>" +
-                  "<h3 class=''>" + dateString + "</h3>" +
-                  "</div>" +
-                  "</div>" +
-                  formBody +
-                  "<div class='row'>" +
-                  "<div class='form-group col-md-6 col-md-offset-3'>" +
-                  "<button id='saveBooking' class='btn btn-primary btn-lg btn-block' type='button'>Add Booking</button>" +
-                  "</div>" +
-                  "</div>" +
-                  "<div id='bookingModalMsg'></div>" +
-                  "</form>" +
-                  "</div>" +
-                  "<div class='modal-footer'>" +
-                  "<button type='button' class='btn btn-default clearAll' data-dismiss='modal'>Nevermind</button>" +
-                  "</div>" +
-                  "</div>" +
-                  "</div>" +
-                  "</div>";
+        "<div class='form-group col-md-6 col-md-offset-3'>" +
+        "<h4 class='kids'>" + kid + "</h4>" +
+        "<div id=" + kid + " class='input-group'>" +
+        "<label class='radio-inline'><input type='radio' name=" + kid + " value='Morning Care'>Morning Care</label>" +
+        "<label class='radio-inline'><input type='radio' name=" + kid + " value='After Care'>After Care</label>" +
+        "<label class='radio-inline'><input type='radio' name=" + kid + " value='Both'>Both</label>" +
+        "</div>" +
+        "</div>" +
+        "</div>";
+
+      formBody += contents;
+    });
+
+    return formBody;
+  },
+
+  _getDateString: function () {
+    var date = this.model.get("date");
+    var options = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
+
+    return date.toLocaleString('en-US', options);
+  },
+
+  render: function () {
+    main.kidCollection.deferred.done(function () {
+      var formBody = this._getFormBody(main.kidCollection.pluck("kidFirstName"));
+      var modal = this._getModal(formBody, this._getDateString());
+
       self.$el.html(modal);
     })
   },
+
   events: {
       "click .clearAll": "clearAll",
       "click #saveBooking": "collectBookings"
   },
+
   clearMsgs: function() {
     $("#bookingModalMsg").html("");
   },
+
   clearAll: function() {
     this.model.clear();
     this.$el.html("");
     $('.modal-backdrop').remove();
   },
-  collectBookings: function() {
-    var kids = main.kidCollection.pluck("kidFirstName");
-    var date = this.model.get("date");
+
+  _getKidObject: function (radio) {
+    return main.kidCollection.findWhere({kidFirstName: radio.name}).attributes;
+  },
+
+  _findBookings: function (kids) {
     var newBookings = [];
-    for (var i = 0; i<kids.length; i++) {
-      var radios = document.getElementsByName(kids[i]);
-      for (var j = 0; j<radios.length; j++) {
-        if (radios[j].checked) {
-          var kidObject = main.kidCollection.findWhere({kidFirstName: radios[j].name}).attributes;
-          var newBooking = {service: radios[j].value, kid: kidObject, user: currentUser, date: date, dateId: this.model.get("dateId")};
-          newBookings.push(newBooking);
-        }
+
+    _.each(kids, function (kid) {
+      var radios = document.getElementsByName(kid);
+
+      if (radios) {
+        _.each(radios, function (radio) {
+          if (radio.checked) {
+            newBookings.push({
+              service: radio.value,
+              kid: this._getKidObject(radio),
+              user: currentUser,
+              date: this.model.get("date"),
+              dateId: this.model.get("dateId")
+            });
+          }
+        }, this);
       }
+    }, this);
+
+    return newBookings;
+  },
+
+  collectBookings: function () {
+    var kids = main.kidCollection.pluck("kidFirstName");
+    var newBookings = this._findBookings(kids) || [];
+
+    newBookings.length === 0 ? this._bookingNullError() : this._doesBookingExist(newBookings);
+  },
+
+  _bookingNamesMatch: function (bookingA, bookingB) {
+    return bookingA.get('kid').kidFirstName === bookingB.kid.kidFirstName;
+  },
+
+  _getBookingByDateId: function (booking) {
+    return this.collection.where({dateId: booking.dateId})
+  },
+
+  _greaterThanOneBooking: function (newBookings) {
+    var alreadyExists = [],
+      doesNotExist = [];
+
+    _.each(newBookings, function (newBooking) {
+      var existingBookings = this._getBookingByDateId(newBooking);
+      var shouldWeSave = true;
+
+      if (existingBookings) {
+        _.each(existingBookings, function (existingBooking) {
+          if (this._bookingNamesMatch(existingBooking, newBooking)) {
+            shouldWeSave = false;
+            alreadyExists.push(newBooking);
+          }
+        }, this);
+      }
+
+      if (shouldWeSave) {
+        doesNotExist.push(newBooking);
+      }
+    }, this);
+
+    alreadyExists.length === 0 ? this._saveBookings(doesNotExist) : this._bookingExistsError(alreadyExists);
+  },
+
+  _lessThanOneBooking: function (newBookings) {
+    var initialExistingBooking = newBookings[0];
+    var existingBooking = this._getBookingByDateId(initialExistingBooking);
+    var shouldWeSave = true;
+
+    if (existingBooking) {
+      _.each(existingBooking, function (booking) {
+        if (this._bookingNamesMatch(booking, initialExistingBooking)) {
+          shouldWeSave = false;
+          this._bookingExistsError(newBookings);
+        }
+      }, this);
     }
-    console.log(newBookings);
-    newBookings.length === 0 ? this.bookingNullError() : this.doesBookingExist(newBookings);
-  },
-  doesBookingExist: function(newBookings) {
-    //event.preventDefault();
-    var self = this;
-    this.collection.deferred.done(function() {
-      if (newBookings.length > 1) {
-        var alreadyExists = [];
-        var doesNotExist = [];
-        for (var i=0; i<newBookings.length; i++) {
-          //console.log(self.collection.models);
-          var existingBooking = self.collection.where({dateId: newBookings[i].dateId})
-          var shouldWeSave = true;
-          //console.log(existingBooking);
-          if (existingBooking) {
-            for (var j=0; j<existingBooking.length; j++) {
-              if (existingBooking[j].get("kid").kidFirstName === newBookings[i].kid.kidFirstName) {
-                shouldWeSave = false;
-                alreadyExists.push(newBookings[i]);
-              }
-            }
-          }
-          if (shouldWeSave) {
-            doesNotExist.push(newBookings[i]);
-          }
-        }
-        //console.log(alreadyExists);
-        //console.log(doesNotExist);
-        alreadyExists.length === 0 ? self.saveBookings(doesNotExist) : self.bookingExistsError(alreadyExists);
-      } else {
-        //console.log(self.collection.models);
-        var existingBooking = self.collection.where({dateId: newBookings[0].dateId});
-        var shouldWeSave = true;
-        if (existingBooking) {
-          for (var i=0; i<existingBooking.length; i++) {
-            if (existingBooking[i].get("kid").kidFirstName === newBookings[0].kid.kidFirstName) {
-              shouldWeSave = false;
-              self.bookingExistsError(newBookings);
-            }
-          }
-        }
-        if (shouldWeSave) {
-          self.saveBookings(newBookings)
-        }
-      }
-    })
-  },
-  bookingNullError: function(){
-    $("#bookingModalMsg").html("");
-    $("#bookingModalMsg").append("<h5 class='bookingError'>You must select a booking in order to save.</h5>")
-  },
-  bookingExistsError: function(alreadyExists){
-    $("#bookingModalMsg").html("");
-    if (alreadyExists.length > 1) {
-      kidNames = [];
-      for (var i=0; i<alreadyExists.length; i++) {
-        kidNames.push(alreadyExists[i].kid.kidFirstName);
-      }
-      var lastKid = kidNames.pop();
-      var kidString = kidNames.join(', ');
-      $("#bookingModalMsg").append("<div class= 'col-md-8 col-md-offset-2'><h5 class='bookingError'>" + kidString + ", and " + lastKid + " are already scheduled for care on this day.</h5><p>Head to your <a href='/'>dashboard</a> to edit bookings.</p></div>");
-    } else {
-      var kidString = alreadyExists[0].kid.kidFirstName;
-      console.log(kidString);
-      $("#bookingModalMsg").append("<div class= 'col-md-8 col-md-offset-2'><h5 class='bookingError'>" + kidString + " is already scheduled for care on this day.</h5><p>Head to your <a href='/'>dashboard</a> to edit bookings.</p></div>")
+
+    if (shouldWeSave) {
+      this._saveBookings(newBookings)
     }
   },
-  saveBookings: function(bookingsArray){
-    var self = this;
-    console.log("made it to saving");
-    //console.log(bookingsArray);
-    main.calendarDayCollection.deferred.done(function() {
-      for (var i = 0; i<bookingsArray.length; i++) {
-        console.log("made it to save loop");
-        var calendarDayModel = new CalendarDayModel({date: bookingsArray[i].date, dateId: bookingsArray[i].dateId, bookings: [bookingsArray[i]], user: currentUser, bookingCount: 1});
-        var calendarDayView = new CalendarDayView({model: calendarDayModel, collection: main.calendarDayCollection});
-        calendarDayView.investigateNewModel();
-        self.collection.create(bookingsArray[i]);
-        console.log("Saving booking...");
-        //$("#bookingNotification").prepend("<div class= 'col-md-8 col-md-offset-2'><h4>Your appointments were successfully saved.</h4></div>")
-      };
+
+  _doesBookingExist: function (newBookings) {
+    this.collection.deferred.done(_.bind(function () {
+      newBookings.length > 1 ? this._greaterThanOneBooking(newBookings) : this._lessThanOneBooking(newBookings);
+    }, this));
+  },
+
+  _bookingNullError: function () {
+    var errorMessage = "<h5 class='bookingError'>You must select a booking in order to save.</h5>";
+
+    this._addBookingModalMessage(errorMessage)
+  },
+
+  _getKidNames: function (bookings) {
+    return _.map(bookings, function (booking) {
+      return booking.kid.kidFirstName;
     });
+  },
+
+  _getMultipleKidsMessage: function (kidString, lastKid) {
+    return "<div class= 'col-md-8 col-md-offset-2'><h5 class='bookingError'>" + kidString + ", and " + lastKid + " are already scheduled for care on this day.</h5><p>Head to your <a href='/'>dashboard</a> to edit bookings.</p></div>";
+  },
+
+  _getSingleKidsMessage: function (kidString) {
+    return "<div class= 'col-md-8 col-md-offset-2'><h5 class='bookingError'>" + kidString + " is already scheduled for care on this day.</h5><p>Head to your <a href='/'>dashboard</a> to edit bookings.</p></div>";
+  },
+
+  _addBookingModalMessage: function (message) {
+    $("#bookingModalMsg").html("");
+    $("#bookingModalMsg").prepend(message)
+  },
+
+  _bookingExistsError: function (alreadyExists) {
+    var kidNames,
+        lastKid,
+        kidString;
+
+    $("#bookingModalMsg").html("");
+
+    if (alreadyExists.length > 1) {
+      kidNames = this._getKidNames(alreadyExists);
+
+      lastKid = kidNames.pop();
+      kidString = kidNames.join(', ');
+      this._addBookingModalMessage(this._getMultipleKidsMessage(kidString, lastKid));
+    } else {
+      kidString = alreadyExists[0].kid.kidFirstName;
+      this._addBookingModalMessage(this._getSingleKidsMessage(kidString));
+    }
+  },
+
+  _constructCalendarModel: function (booking) {
+    return new CalendarDayModel({
+      date: booking.date,
+      dateId: booking.dateId,
+      bookings: [booking],
+      user: currentUser,
+      bookingCount: 1
+    });
+  },
+
+  _constructCalendarDayView: function (calendarDayModel) {
+    return new CalendarDayView({
+      model: calendarDayModel,
+      collection: main.calendarDayCollection
+    });
+  },
+
+  _saveBookings: function (bookingsArray) {
+    main.calendarDayCollection.deferred.done(_.bind(function () {
+      _.each(bookingsArray, function (booking) {
+        var calendarDayView = this._constructCalendarDayView(this._constructCalendarModel(booking));
+
+        calendarDayView.investigateNewModel();
+        this.collection.create(booking, {
+          success: _.bind(function (model, response) {
+            console.log(response);
+            //$("#bookingNotification").prepend("<div class= 'col-md-8 col-md-offset-2'><h4>Your appointments were successfully saved.</h4></div>")
+          }, this),
+          error: _.bind(function (model, response) {
+            alert('wrong');
+          }, this)
+        });
+      }, this);
+    }, this));
+
     this.clearAll();
   }
+
 });
 
 var BookingView = Backbone.View.extend({
@@ -211,5 +307,6 @@ var UsersBookingView = Backbone.View.extend({
 		var bookingView = new BookingView({model: newModel, collection: main.bookingCollection});
 		bookingView.render();
 		$("#upcomingBookings").append(bookingView.$el);
-	},
-})
+	}
+
+});
