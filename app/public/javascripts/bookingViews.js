@@ -65,12 +65,12 @@ var CreateBookingView = Backbone.View.extend({
   },
 
   render: function () {
-    main.kidCollection.deferred.done(function () {
+    main.kidCollection.deferred.done(_.bind(function () {
       var formBody = this._getFormBody(main.kidCollection.pluck("kidFirstName"));
       var modal = this._getModal(formBody, this._getDateString());
 
-      self.$el.html(modal);
-    })
+      this.$el.html(modal);
+    }, this))
   },
 
   events: {
