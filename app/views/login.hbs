@@ -1,30 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Jot</title>
+  <link rel="icon" type="image/png" href="images/jotFavicon.png"/>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Finally a simple, intuitive scheduling app for small businesses and organizations."
+  <meta name="keywords" content="scheduling, appointments, small business, quick, easy, intuitive">
+  <meta name="author" content="">
+  <!-- <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.rc.1/handlebars.min.js"></script> -->
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" media="screen">
+  <link href="stylesheets/jotStyles.css" rel="stylesheet" media="screen">
+</head>
+<body>
+  <div class="navbar navbar-inverse navbar-fixed-top" id="topNav" role="navigation">
+      <div class="container">
+        <!-- this is the hamburger collapse menu -->
+        <div class="navbar-header">
+
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+    </div>
+
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-left navStyle">
+          <li class="active" id="jotTitle"><a href="index.html">Jot</a></li>
+          <li><a href="#">How it Works</a></li>
+          <li><a href="#">About</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right navStyle ">
+          <li><a href="#">Log In</a></li>
+          <li><a href="#">Sign Up</a></li>
+        </ul>
+      </div>
+  </div>
+  <div class="connectLayers">
+  <div class="container" id="loginBackgroundImage">
+    <img src="images/admissionsKidsBackup.jpg" class="img-responsive img-rounded" id= "loginBackground" alt="backgroundImage">
+  </div>
+
 <!--Sign In Form-->
-<div class= "container-fluid">
-  <div class = "row">
-    <div class="col-md-4"> </div>
-    <div class="col-md-4">
-      <form id="local-sign-in" class= "form-signin" action="/login" method="post">
-        <h1 class="form-signin-heading">Sign In</h1>
-        <div class="form-group">
-          <label for="inputUsername" class='sr-only'>Username</label>
-          <input type="text" id="inputUsername" class="form-control" placeholder="Username" required="" autofocus="" name="username">
+
+  <div class= "container-fluid boxForLogin">
+    <div class = "row">
+      <div class="col-md-6">
+        <form id="local-sign-in" class= "form-signin" action="/login" method="post">
+          <h1 class="form-signin-heading">My Jot</h1>
+          <div class="form-group">
+            <label for="inputUsername" class='sr-only'>Username</label>
+            <input type="text" id="inputUsername" class="form-control" placeholder="Username" required="" autofocus="" name="username">
+          </div>
+          <div class="form-group">
+            <label for="inputPassword" class='sr-only'>Password</label>
+            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="" name="password">
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Sign in</button>
+          </div>
+          <div class="form-group">
+            <a href="/auth/facebook" class="btn btn-primary btn-lg btn-block" role="button"><span class="glyphicon glyphicon-user"></span> Sign in with Facebook</a>
+          </div>
+        </form>
+        <div id="local">
+          <button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal">I don't have an account yet</button>
         </div>
-        <div class="form-group">
-          <label for="inputPassword" class='sr-only'>Password</label>
-          <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="" name="password">
-        </div>
-        <div class="form-group">
-          <button class="btn btn-primary btn-lg btn-block" type="submit">Sign in</button>
-        </div>
-        <div class="form-group">
-          <a href="/auth/facebook" class="btn btn-primary btn-lg btn-block" role="button"><span class="glyphicon glyphicon-user"></span> Sign in with Facebook</a>
-        </div>
-      </form>
-      <div id="local">
-        <button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal">I don't have an account yet</button>
       </div>
     </div>
-    <div class="col-md-4"> </div>
   </div>
 </div>
 
@@ -41,42 +88,42 @@
       <div class="modal-body">
         <form id="local-reg" action="/local-reg" method="post">
           <div class="row">
-            <div class="form-group col-md-6 col-md-offset-3">
+            <div class="form-group col-sm-6">
               <h1 class="form-signin-heading">Sign Up</h1>
             </div>
           </div>
           <div class="row">
-            <div class="form-group col-md-6 col-md-offset-3">
+            <div class="form-group col-sm-6">
               <label for="inputEmail" class="sr-only">Email address</label>
               <input type="email" id="inputEmail" class="form-control" placeholder="Email Address" required="" autofocus="" name="email">
             </div>
           </div>
           <div class="row">
-            <div class="form-group col-md-6 col-md-offset-3">
+            <div class="form-group col-sm-6">
               <label for="inputFirstName" class="sr-only">First Name</label>
               <input type="text" id="inputFirstName" class="form-control" placeholder="First name" required="" autofocus="" name="firstName">
             </div>
           </div>
           <div class="row">
-            <div class="form-group col-md-6 col-md-offset-3">
+            <div class="form-group col-sm-6">
               <label for="inputLastName" class="sr-only">Last Name</label>
               <input type="text" id="inputLastName" class="form-control" placeholder="Last name" required="" autofocus="" name="lastName">
             </div>
           </div>
           <div class="row">
-            <div class="form-group col-md-6 col-md-offset-3">
+            <div class="form-group col-sm-6">
               <label for="inputUsername" class="sr-only">Create Username</label>
               <input type="text" id="inputUsername" class="form-control" placeholder="Create Username" required="" autofocus="" name="username">
             </div>
           </div>
           <div class="row">
-            <div class="form-group col-md-6 col-md-offset-3">
+            <div class="form-group col-sm-6">
               <label for="inputPassword" class="sr-only">Create Password</label>
               <input type="password" id="inputPassword" class="form-control" placeholder="Create Password" required="" name="password">
             </div>
           </div>
           <div class="row">
-            <div class="form-group col-md-6 col-md-offset-3">
+            <div class="form-group col-sm-6">
               <button class="btn btn-primary btn-lg btn-block" type="submit">Sign Up</button>
             </div>
           </div>
@@ -88,6 +135,7 @@
     </div>
   </div>
 </div>
+
 <script>
 var currentUser = '';
 </script>

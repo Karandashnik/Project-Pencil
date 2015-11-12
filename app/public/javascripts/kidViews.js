@@ -40,16 +40,18 @@ var UserKidsView = Backbone.View.extend({
     console.log(kiddos);
     var title = "<h4 class='listTitle'>" + 'Registered Children' + "</h4>";
     var listBody = "";
+    var styleListOpen = "<ul class= 'yourKids'>";
+    var styleListClose = "</ul>";
     for (var i = 0; i < kiddos.length; i++) {
 
-    var listContents =
+    var listContents = "<li>" +
                      "<div class= 'col-xs-6 col-md-3 oneKid' + id="+kiddos[i] +" >" + kiddos[i]  +
-                     "<button type='button' class='btn btn-xs btn-info editKid' data-toggle='modal' data-target='#editKidModal' id="+kiddos[i] +"</button>" +
+                     "<button type='button' class='btn btn-sm btn-info editKid' data-toggle='modal' data-target='#editKidModal' id="+kiddos[i] +"</button>" +
                      "</div>" +
-                     "</div>";
+                     "</div>" + "</li>";
                      listBody += listContents;
   }
-    this.$el.html(addKidButton + '<br>' +  title + listBody);
+    this.$el.html(title + styleListOpen + listBody + styleListClose + addKidButton);
 
   }
 
@@ -169,7 +171,7 @@ deleteOne: function() {
 },
 
 render: function() {
-  
+
   var firstName = this.model.get("kidFirstName");
   var midInit = this.model.get("kidMidInitial");
   var lastName = this.model.get("kidLastName");

@@ -1,0 +1,43 @@
+body {
+  background-color: #477599;
+
+}
+.connectLayers {
+  position: relative
+}
+
+#loginBackgroundImage {
+  z-index: 100;
+  margin: -1em;
+  padding: 0;
+  position: absolute;  /*this keeps the login on top of the image*/
+}
+
+#loginBackground {
+  width: 100%;
+}
+
+.boxForLogin {
+     border-radius: 25px;
+     width: 50%;
+     padding: 2%;
+     /*border: 25px solid navy;*/
+     margin: auto;
+     background-color:#F5F0EB;
+     position: absolute;
+     top: 45%;
+     left:25%;
+     z-index: 5000;
+}
+
+#myModal {
+    z-index: 6000;
+}
+
+.navStyle {
+  padding: .5em;
+  margin: 0em 1em;
+}
+
+.jotLogo {
+width: 25%}

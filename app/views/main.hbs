@@ -1,3 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Jot</title>
+  <link rel="icon" type="image/png" href="images/jotFavicon.png"/>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Finally a simple, intuitive scheduling app for small businesses and organizations."
+  <meta name="keywords" content="scheduling, appointments, small business, quick, easy, intuitive">
+  <meta name="author" content="">
+  <!-- <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.rc.1/handlebars.min.js"></script> -->
+  <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" media="screen">
+  <link href="stylesheets/dashboardStyles.css" rel="stylesheet" media="screen">
+</head>
 <!--this script is needed to get rid of the '#_=_' hash that Facebook sends with the callback-->
 <script type="text/javascript">
     if (window.location.hash && window.location.hash == '#_=_') {
@@ -19,17 +34,23 @@
 {{#if user}}
   <div>
     <h1>Jot</h1>
+    <img src="images/jotTempLogo2.jpg" class="img-responsive jotLogo">
   </div>
-  <div>
+
     <!-- <div>
       <p>Username: {{user.username}}</p>
       <p>First Name: {{user.firstName}}</p>
       <p>Last Name: {{user.lastName}}</p>
     </div> -->
+
+    <form id= "seeCalendar" action = "/calendar" method="get"><input type="submit" value = "See Calendar"></form>
+  <div id="styleforKidList">
+    <div id="kidList"></div>
+  </div>
+  <div class="boxForBookings">
     <div id="upcomingBookings">
     </div>
-    <form id= "seeCalendar" action = "/calendar" method="get"><input type="submit" value = "See Calendar"></form>
-    <div id="kidList"></div>
+  </div>
 <script>
 var currentUser = "{{user.username}}";
 </script>
