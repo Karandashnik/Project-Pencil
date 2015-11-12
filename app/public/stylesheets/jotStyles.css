@@ -1,43 +1,90 @@
 body {
-  background-color: #477599;
+  /*background-color: #477599;*/
+  background-color:#fff;
 
 }
 .connectLayers {
   position: relative
 }
 
-#loginBackgroundImage {
+#bigPicture  {
   z-index: 100;
   margin: -1em;
   padding: 0;
   position: absolute;  /*this keeps the login on top of the image*/
 }
 
-#loginBackground {
-  width: 100%;
+#bigPicture {
+  width: 25%;
 }
 
+li a{
+  /*font-family: 'Nixie One', cursive;*/
+  /*font-family: 'Sue Ellen Francisco', cursive;*/
+  font-family: 'Patrick Hand SC', cursive;
+  font-size: 2.25em;
+  color: #245799;
+  margin-top: -1em;
+  margin-right: .5em;
+}
+
+
 .boxForLogin {
-     border-radius: 25px;
+     /*border-radius: 25px;
      width: 50%;
-     padding: 2%;
+     padding: 2%;*/
      /*border: 25px solid navy;*/
-     margin: auto;
+     /*margin: auto;
      background-color:#F5F0EB;
      position: absolute;
      top: 45%;
      left:25%;
-     z-index: 5000;
+     z-index: 5000;*/
 }
 
 #myModal {
-    z-index: 6000;
+    /*z-index: 6000;*/
 }
 
-.navStyle {
-  padding: .5em;
-  margin: 0em 1em;
+
+#jotLogoLogin {
+  max-width: 45%;
+  padding: 0 0 2em;
+  margin: 0 25%;
 }
 
-.jotLogo {
-width: 25%}
+.welcomeDash {
+  width: 100%;
+}
+
+#local .btn {
+  color: white;
+  margin: 0% 20% 5%;
+}
+
+.wrapper {
+  border-radius: 25px 25px;
+  max-width: 400px;
+  margin-top: 80px;
+  margin-bottom: 80px;
+  background-color: #5C8F99;
+  border-radius: 25px;
+  z-index:5000;
+}
+
+.form-signin {
+  border-radius: 25px;
+  max-width: 380px;
+  padding: 35px 35px 45px;
+  margin 0 auto;
+  background-color: #5C8F99;
+  z-index: 5000;
+}
+
+p {
+  font-family: 'Patrick Hand SC', cursive;
+  font-size: 1em;
+  margin-left: 45%;
+  padding: 0;
+  color: #245799;
+}
