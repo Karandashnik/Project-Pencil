@@ -262,7 +262,6 @@ var CreateBookingView = Backbone.View.extend({
 
     this.clearAll();
   }
-
 });
 
 var BookingView = Backbone.View.extend({
