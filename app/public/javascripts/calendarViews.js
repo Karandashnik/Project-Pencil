@@ -32,12 +32,25 @@ var CalendarDayView = Backbone.View.extend({
     var newBooking = this.model.get("bookings").pop();
     var newBookingCount = existingDay.get("bookings").push(newBooking);
     existingDay.set("bookingCount", newBookingCount);
-    existingDay.save();
+    existingDay.save(existingDay.attributes, {
+      success: _.bind(function (model, response) {
+        console.log(response);
+      }, this),
+      error: _.bind(function (model, response) {
+        alert('wrong');
+      }, this)
+    });
   },
   saveNewDay: function() {
     console.log("saving day");
-    this.collection.create(this.model);
+    this.collection.create(this.model, {
+      success: _.bind(function (model, response) {
+        console.log(response);
     this.markCalendar(this.model.get("dateId"));
-  },
-
+      }, this),
+      error: _.bind(function (model, response) {
+        alert('wrong');
+      }, this)
+    });
+  }
 });
