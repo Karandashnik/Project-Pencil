@@ -1,3 +1,6 @@
+var Backbone = require('backbone'),
+    KidModel = require('../models/KidModel.js');
+
 var KidCollection = Backbone.Collection.extend ({
   model: KidModel,
   url: '/kids',
@@ -6,3 +9,5 @@ var KidCollection = Backbone.Collection.extend ({
     this.deferred = this.fetch({data: {username: currentUser}});
   }
 });
+
+module.exports = KidCollection;

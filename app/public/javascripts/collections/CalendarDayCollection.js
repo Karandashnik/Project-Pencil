@@ -1,3 +1,6 @@
+var Backbone = require('backbone'),
+    CalendarDayModel = require('../models/CalendarDayModel.js');
+
 var CalendarDayCollection = Backbone.Collection.extend({
   model: CalendarDayModel,
   url: '/days',
@@ -6,3 +9,5 @@ var CalendarDayCollection = Backbone.Collection.extend({
     this.deferred = this.fetch({data: {user: currentUser}});
   }
 });
+
+module.exports = CalendarDayCollection;

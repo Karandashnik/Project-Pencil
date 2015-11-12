@@ -1,3 +1,5 @@
+var BookingView = require('./BookingView.js');
+
 var UsersBookingView = Backbone.View.extend({
   render: function() {
     console.log('hello');
@@ -31,3 +33,5 @@ var UsersBookingView = Backbone.View.extend({
     $("#upcomingBookings").append(bookingView.$el);
   },
 });
+
+module.exports = UsersBookingView;

@@ -1,12 +1,12 @@
-///////////////////////////////////////////////
-//////////////userKids View///////////////////
-///////////////////////////////////////////////
+var Backbone = require('backbone'),
+    AddKidView = require('./AddKidView.js'),
+    EditKidView = require('./EditKidView.js');
+
 var UserKidsView = Backbone.View.extend({
   initialize: function() {
-    // this.listenTo(this.collection, "add", this.render);
-    // this.listenTo(this.collection, "remove", this.render);
-    this.listenTo(this.collection, "update", this.render);
-
+    this.listenTo(this.collection, "add", this.render);
+    this.listenTo(this.collection, "remove", this.render);
+    this.listenTo(this.collection, "change", this.render);
   },
 
   events: {
@@ -16,12 +16,8 @@ var UserKidsView = Backbone.View.extend({
 
   editKid: function(event) {
     var changeKid = event.target.id;
-    //console.log(changeKid);
-    //console.log(this.collection);
     var editKidModel = this.collection.findWhere({kidFirstName: changeKid});
-    //console.log(editKidModel);
     var editKidView = new EditKidView({collection: main.kidCollection, model: editKidModel});
-    //console.log(editKidModel);
     editKidView.render();
     $('#kidList').append(editKidView.$el);
   },
@@ -54,3 +50,5 @@ var UserKidsView = Backbone.View.extend({
   }
 
 });
+
+module.exports = UserKidsView;

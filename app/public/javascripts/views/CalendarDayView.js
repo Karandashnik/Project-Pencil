@@ -1,6 +1,5 @@
-///////////////////////////////////////
-///////////CALENDAR VIEWS//////////////
-///////////////////////////////////////
+var Backbone = require("backbone");
+
 var CalendarDayView = Backbone.View.extend({
 
   render: function() {
@@ -46,7 +45,7 @@ var CalendarDayView = Backbone.View.extend({
     this.collection.create(this.model, {
       success: _.bind(function (model, response) {
         console.log(response);
-    this.markCalendar(this.model.get("dateId"));
+        this.markCalendar(this.model.get("dateId"));
       }, this),
       error: _.bind(function (model, response) {
         alert('wrong');
@@ -54,3 +53,5 @@ var CalendarDayView = Backbone.View.extend({
     });
   }
 });
+
+module.exports = CalendarDayView;

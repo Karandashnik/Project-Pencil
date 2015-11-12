@@ -1,3 +1,6 @@
+var Backbone = require('backbone'),
+    BookingModel = require('../models/BookingModel.js');
+
 var BookingCollection = Backbone.Collection.extend({
   model: BookingModel,
   url: '/bookings',
@@ -6,3 +9,5 @@ var BookingCollection = Backbone.Collection.extend({
     this.deferred = this.fetch({data: {user: currentUser}});
   }
 });
+
+module.exports = BookingCollection;

@@ -1,3 +1,5 @@
+var Backbone = require('backbone');
+
 var CalendarDayModel = Backbone.Model.extend({
   defaults: {
     date: "",
@@ -7,3 +9,5 @@ var CalendarDayModel = Backbone.Model.extend({
     bookings: []
   }
 });
+
+module.exports = CalendarDayModel;

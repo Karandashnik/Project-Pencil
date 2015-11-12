@@ -1,3 +1,5 @@
+var Backbone = require('backbone');
+
 var AddKidView = Backbone.View.extend({
 
   events: {
@@ -61,3 +63,5 @@ var AddKidView = Backbone.View.extend({
     this.$el.html($kidModal);
   }
 });
+
+module.exports = AddKidView;

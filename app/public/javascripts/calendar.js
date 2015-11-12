@@ -1,3 +1,6 @@
+var BookingModel = require('./models/BookingModel.js'),
+    CreateBookingView = require('./views/CreateBookingView.js');
+
 var Calendar = function() {
 	var wrap;
 	var label;
@@ -162,3 +165,5 @@ var Calendar = function() {
 			createCal: createCal
 			};
 };
+
+module.exports = Calendar;

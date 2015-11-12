@@ -1,3 +1,5 @@
+var Backbone = require('backbone');
+
 var BookingView = Backbone.View.extend({
   render: function() {
     var date = new Date(this.model.date);
@@ -8,3 +10,5 @@ var BookingView = Backbone.View.extend({
     this.$el.html(bookingHtml);
   }
 });
+
+module.exports = BookingView;

@@ -1,6 +1,4 @@
-
-
-
+var Backbone = require('backbone');
 
 var KidModel = Backbone.Model.extend({
   defaults: {
@@ -8,6 +6,8 @@ var KidModel = Backbone.Model.extend({
     kidLastName: "",
     kidMidInitial: "",
     kidFullName: "",
-    username:"", //for the associated parent//
+    username:"" //for the associated parent//
   }
 });
+
+module.exports = KidModel;

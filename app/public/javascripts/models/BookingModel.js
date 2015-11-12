@@ -1,3 +1,5 @@
+var Backbone = require('backbone');
+
 var BookingModel = Backbone.Model.extend({
   defaults: {
     service: "",
@@ -7,3 +9,5 @@ var BookingModel = Backbone.Model.extend({
     dateId: ""
   }
 });
+
+module.exports = BookingModel;
