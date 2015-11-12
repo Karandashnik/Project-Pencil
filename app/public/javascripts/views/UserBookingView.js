@@ -1,6 +1,6 @@
 var UsersBookingView = Backbone.View.extend({
   render: function() {
-    console.log('hello');
+    //console.log('hello');
     var self = this;
     this.collection.deferred.done(function() {
       $("#upcomingBookings").html("<h3>Upcoming Care Bookings</h3>");

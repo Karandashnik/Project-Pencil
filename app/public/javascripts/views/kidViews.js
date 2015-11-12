@@ -23,17 +23,22 @@ events: {
 },
 
 saveChanges: function() {
-  event.preventDefault();
+  //event.preventDefault();
   var firstName = $('#editFirstName').val();
   var midInit = $('#editMidInit').val();
   var lastName = $('#editLastName').val();
   var fullName = firstName + ' ' + midInit + ' ' + lastName;
-  this.model.set("kidFirstName", firstName);
-  this.model.set("kidMidInitial", midInit);
-  this.model.set("kidLastName", lastName);
-  this.model.set("kidFullName", fullName);
+  this.model.save({kidFirstName: firstName, kidMidInitial: midInit, kidLastName: lastName, kidFullName: fullName}, {
+    success: _.bind(function (model, response) {
+      console.log(response);
+      //$("#bookingNotification").prepend("<div class= 'col-md-8 col-md-offset-2'><h4>Your appointments were successfully saved.</h4></div>")
+    }, this),
+    error: _.bind(function (model, response) {
+      alert('wrong');
+    }, this)
+  });
   console.log(this.model);
-  this.model.save();
+  //this.model.save();
   this.clearAll();
 },
 
@@ -50,7 +55,7 @@ deleteOne: function() {
 },
 
 render: function() {
-  
+
   var firstName = this.model.get("kidFirstName");
   var midInit = this.model.get("kidMidInitial");
   var lastName = this.model.get("kidLastName");

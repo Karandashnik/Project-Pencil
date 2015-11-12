@@ -3,10 +3,16 @@
 ///////////////////////////////////////////////
 var UserKidsView = Backbone.View.extend({
   initialize: function() {
-    // this.listenTo(this.collection, "add", this.render);
+    this.listenTo(this.collection, "add", this.listenToModel);
     // this.listenTo(this.collection, "remove", this.render);
     this.listenTo(this.collection, "update", this.render);
+  },
 
+  listenToModel: function(newModel) {
+    this.listenTo(newModel, "sync", function(model) {
+      console.log("models are changinggggg" , model);
+      this.render();
+    });
   },
 
   events: {
@@ -20,7 +26,7 @@ var UserKidsView = Backbone.View.extend({
     //console.log(this.collection);
     var editKidModel = this.collection.findWhere({kidFirstName: changeKid});
     //console.log(editKidModel);
-    var editKidView = new EditKidView({collection: main.kidCollection, model: editKidModel});
+    var editKidView = new EditKidView({collection: this.collection, model: editKidModel});
     //console.log(editKidModel);
     editKidView.render();
     $('#kidList').append(editKidView.$el);

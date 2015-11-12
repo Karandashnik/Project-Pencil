@@ -116,12 +116,11 @@ router.post('/kids', function(req, res, next){
 });
 
 router.put('/kids/:id', function(req,res,next) {
-  db.put('kids', req.params.id, req.body)
-  .then(function (result) {
-    console.log("Kid was updated...");
-    console.log(result.path);
-    var id = result.path.key;
-    res.send({id: id});
+  db.put('kids', req.params.id, req.body).then(function (result) {
+    //this isn't the RIGHT way to do it, but works for now...shouldn't have to return kid object
+    db.get("kids", result.path.key).then(function (kid) {
+      res.send(kid.body);
+    });
   })
 });
 
