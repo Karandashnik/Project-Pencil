@@ -80,7 +80,7 @@ router.put('/days/:id', function(req, res, next) {
     console.log(result);
     res.send({});
   })
-})
+});
 
 router.get('/days', function(req, res, next){
   db.search('days', req.query.user)
@@ -147,18 +147,12 @@ router.get('/kids', function(req, res, next){
   })
 });
 
-// // router.get('/kids', function(req, res, next) {
-// //   db.newSearchBuilder()
-// //   .collection('kids')
-// // .sort(field_name, 'asc')  //asc for ascending order//
-// // var editKid = what user entered
-// // .query(editKid)
-// // .then(function (res) {
-// //  var change = result.body.results;
-// //  console.log("this is the " + change);
-// // });
-//
-// });
+router.delete('/kids/:id', function(req, res, next) {
+  db.remove('kids', req.params.id, true)
+  .then(function (result) {
+    res.send({});
+  })
+})
 
 //===============================================
 //                 booking routes

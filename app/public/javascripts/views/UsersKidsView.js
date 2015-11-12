@@ -1,16 +1,14 @@
 ///////////////////////////////////////////////
-//////////////userKids View///////////////////
+//////////////UserKidsView///////////////////
 ///////////////////////////////////////////////
 var UserKidsView = Backbone.View.extend({
   initialize: function() {
     this.listenTo(this.collection, "add", this.listenToModel);
-    // this.listenTo(this.collection, "remove", this.render);
     this.listenTo(this.collection, "update", this.render);
   },
 
   listenToModel: function(newModel) {
     this.listenTo(newModel, "sync", function(model) {
-      console.log("models are changinggggg" , model);
       this.render();
     });
   },
@@ -22,12 +20,8 @@ var UserKidsView = Backbone.View.extend({
 
   editKid: function(event) {
     var changeKid = event.target.id;
-    //console.log(changeKid);
-    //console.log(this.collection);
     var editKidModel = this.collection.findWhere({kidFirstName: changeKid});
-    //console.log(editKidModel);
     var editKidView = new EditKidView({collection: this.collection, model: editKidModel});
-    //console.log(editKidModel);
     editKidView.render();
     $('#kidList').append(editKidView.$el);
   },
@@ -39,18 +33,14 @@ var UserKidsView = Backbone.View.extend({
   },
 
   render: function() {
-    // var self = this;
     var addKidButton = '<button class = "addKidView btn btn-warning btn-lg" id="addKid" data-toggle="modal" data-target="#kidModal">Add Child</button>';
-
     var kiddos = this.collection.pluck("kidFullName");
-    console.log(kiddos);
     var title = "<h4 class='listTitle'>" + 'Registered Children' + "</h4>";
     var listBody = "";
     for (var i = 0; i < kiddos.length; i++) {
-
       var listContents =
-        "<div class= 'col-xs-6 col-md-3 oneKid' + id="+kiddos[i] +" >" + kiddos[i]  +
-        "<button type='button' class='btn btn-xs btn-info editKid' data-toggle='modal' data-target='#editKidModal' id="+kiddos[i] +"</button>" +
+        "<div class= 'oneKid' id=" + kiddos[i] + ">" + kiddos[i] +
+        "<button type='button' class='btn btn-xs btn-info editKid' data-toggle='modal' data-target='#editKidModal' id=" + kiddos[i] + ">Edit</button>" +
         "</div>" +
         "</div>";
       listBody += listContents;
@@ -58,5 +48,4 @@ var UserKidsView = Backbone.View.extend({
     this.$el.html(addKidButton + '<br>' +  title + listBody);
 
   }
-
 });
