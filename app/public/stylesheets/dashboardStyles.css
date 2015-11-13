@@ -1,38 +1,47 @@
 body {
-  background-color: #477599;
+  background-color: #F5F0EB;
 }
 
+.container {
+  border-radius: 25px;
+  background-color: #fff;
+  padding
+
+}
+
+.welcomeDash {
+  width: 200px;
+  margin-left: 35%;
+}
+
+.jotLogo {
+  width: 100%;
+}
 .boxForBookings {
   border-radius: 25px;
-  width: 60%;
+  width: 400px;
   padding: 2%;
   margin: auto;
   background-color:#F5F0EB;
 }
 
-/*#kidList {
-  border-radius: 25px;
-  margin: 5em;
-  padding: 5%;
-  margin: auto;
-  background-color:#F5F0EB;
-}*/
-
-#styleforKidList {
-  border-radius: 50%;
-  width: 30em;
-  height: 30em;
-  padding: 4em;
-  margin: 1em;
-  background-color:#F5F0EB;
+input[type=submit] {
+  font-size: 2em;
+  border-radius: 35px;
 }
 
+#seeCalendar {
+  /*width: 200px;*/
+}
+
+
+
+
 .oneKid {
-  font-size: 1.5em;
+  font-size: 1em;
 }
 
 .yourKids {
-
   list-style: none;
   /*display: block;*/
   padding: 2%;

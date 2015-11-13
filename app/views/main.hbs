@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" media="screen">
   <link href="stylesheets/dashboardStyles.css" rel="stylesheet" media="screen">
 </head>
+<div class="container">
 <!--this script is needed to get rid of the '#_=_' hash that Facebook sends with the callback-->
 <script type="text/javascript">
     if (window.location.hash && window.location.hash == '#_=_') {
@@ -31,29 +32,32 @@
         }
     }
 </script>
-<!-- <div class="logoDecoration">
-  <img src="IMGS/jotTempLogo3A.png" class="img-responsive haydnTitle" alt="haydn logo">
-</div> -->
-{{#if user}}
-  <div class="welcomeDash">
-    <h1>Jot</h1>
-    <img src="images/jotLogo.png" class="jotLogo">
-  </div>
 
-    <!-- <div>
-      <p>Username: {{user.username}}</p>
-      <p>First Name: {{user.firstName}}</p>
-      <p>Last Name: {{user.lastName}}</p>
-    </div> -->
-
-    <form id= "seeCalendar" action = "/calendar" method="get"><input type="submit" value = "See Calendar"></form>
-  <div id="styleforKidList">
-    <div id="kidList"></div>
-  </div>
-  <div class="boxForBookings">
-    <div id="upcomingBookings">
+  <div class="row">
+    <div class="col-xs-12">
+        {{#if user}}
+          <div class="welcomeDash">
+            <img src="images/jotLogo.png" class="jotLogo">
+          </div>
     </div>
   </div>
+  <div class="row">
+    <div class="col-xs-6 col-md-4">
+      <form id= "seeCalendar" class="btn btn-default" action = "/calendar" method="get"><input type="submit" value = "See Calendar"></form>
+    </div>
+
+    <div class="col-xs-6 col-md-4">
+      <div id="styleforKidList">
+        <div id="kidList"></div>
+      </div>
+    </div>
+    <div class="col-xs-6 col-md-4">
+      <div class="boxForBookings">
+        <div id="upcomingBookings">
+        </div>
+      </div>
+    </div>
+
 <script>
 var currentUser = "{{user.username}}";
 </script>
@@ -71,3 +75,5 @@ var currentUser = "{{user.username}}";
   </script>
 
 {{/if}}
+
+</div>
