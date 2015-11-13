@@ -15,80 +15,39 @@
   <link href="stylesheets/jotStyles.css" rel="stylesheet" media="screen">
 </head>
 <body>
-   <div class="navbar navbar-fixed-top" id="topNav" role="navigation">
-      <div class="container">
-        <!-- this is the hamburger collapse menu -->
-         <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        </div>
+  <div class="container">
+    <div class="row">
+     <div class="navbar navbar-fixed-top" id="topNav" role="navigation">
+          <!-- this is the hamburger collapse menu -->
+           <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+    </div>
+    <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-left">
+            <li><a href="#">How it Works</a></li>
+            <li><a href="#">About</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right navStyle ">
+            <li><a href="#">Log In</a></li>
+            <li><a href="#">Sign Up</a></li>
+          </ul>
     </div>
   </div>
-      <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav navbar-left">
-          <li><a href="#">How it Works</a></li>
-          <li><a href="#">About</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right navStyle ">
-          <li><a href="#">Log In</a></li>
-          <li><a href="#">Sign Up</a></li>
-        </ul>
-      </div>
-
-<div class="container">
   <div class="row">
-
-
     <div class="col-xs-12 col-md-6 col-md-offset-4 col-lg-4 col-lg-offset-4">
 <!-- Sign In Form-->
-<div class= "wrapper">
-  <form id="local-sign-in" class= "form-signin" action="/login" method="post">
-    <div class="logoInLogin">
-      <img src="images/jotLogoWebLarge.png" id= "jotLogoLogin" alt="backgroundImage">
-    </div>
-    <!-- <h1 class="form-signin-heading">My Jot</h1> -->
-    <div class="form-group">
-      <label for="inputUsername" class='sr-only'>Username</label>
-      <input type="text" id="inputUsername" class="form-control" placeholder="Username" required="" autofocus="" name="username">
-    </div>
-    <div class="form-group">
-      <label for="inputPassword" class='sr-only'>Password</label>
-      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="" name="password">
-    </div>
-    <div class="form-group">
-      <button class="btn btn-primary btn-lg btn-block" type="submit">Sign in</button>
-    </div>
-    <div class="form-group">
-      <a href="/auth/facebook" class="btn btn-primary btn-lg btn-block" role="button"><span class="glyphicon glyphicon-user"></span> Sign in with Facebook</a>
-    </div>
-  </form>
-  <div id="local">
-    <button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal">I don't have an account yet</button>
-  </div>
-</div>
-</div>
-</div>
-</div>
-
-<!-- <div class="container" id="loginBackgroundImage">
-  <img src="images/admissionsKidsBackup.jpg" class="img-responsive img-rounded" id= "loginBackground" alt="backgroundImage">
-</div> -->
-<!-- <div class="container" id="loginBackgroundImage">
-  <img src="images/jotLogoWebLarge.png" class="img-responsive img-rounded" id= "loginBackground" alt="backgroundImage">
-</div> -->
-
-
-
-<!--
-  <div class= "container-fluid boxForLogin">
-    <div class = "row">
-      <div class="col-md-6">
+      <div class= "wrapper">
         <form id="local-sign-in" class= "form-signin" action="/login" method="post">
-          <h1 class="form-signin-heading">My Jot</h1>
+          <div class="logoInLogin">
+            <img src="images/jotLogoWebLarge.png" id= "jotLogoLogin" alt="backgroundImage">
+          </div>
+          <!-- <h1 class="form-signin-heading">My Jot</h1> -->
           <div class="form-group">
             <label for="inputUsername" class='sr-only'>Username</label>
             <input type="text" id="inputUsername" class="form-control" placeholder="Username" required="" autofocus="" name="username">
@@ -110,74 +69,96 @@
       </div>
     </div>
   </div>
-</div> -->
+  <!-- </div> -->
+
 
 <!-- Modal/Pop-up for Signing Up -->
+
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
-
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Sign Up</h4>
+        <h2 class="modal-title">Sign Up</h2>
       </div>
       <div class="modal-body">
         <form id="local-reg" action="/local-reg" method="post">
           <div class="row">
-            <div class="form-group col-sm-6">
-              <h1 class="form-signin-heading">Sign Up</h1>
-            </div>
-          </div>
-          <div class="row">
-            <div class="form-group col-sm-6">
+            <div class="form-group">
               <label for="inputEmail" class="sr-only">Email address</label>
               <input type="email" id="inputEmail" class="form-control" placeholder="Email Address" required="" autofocus="" name="email">
             </div>
           </div>
           <div class="row">
-            <div class="form-group col-sm-6">
+            <div class="form-group">
               <label for="inputFirstName" class="sr-only">First Name</label>
               <input type="text" id="inputFirstName" class="form-control" placeholder="First name" required="" autofocus="" name="firstName">
             </div>
           </div>
           <div class="row">
-            <div class="form-group col-sm-6">
+            <div class="form-group">
               <label for="inputLastName" class="sr-only">Last Name</label>
               <input type="text" id="inputLastName" class="form-control" placeholder="Last name" required="" autofocus="" name="lastName">
             </div>
           </div>
           <div class="row">
-            <div class="form-group col-sm-6">
+            <div class="form-group">
+              <label for="radio-inline" >Allow Multiple Caregivers Access?</label>
+              <label class="radio-inline"><input type="radio" name="optradio">Yes</label>
+              <label class="radio-inline"><input type="radio" name="optradio">No</label>
+              <!-- <div id="question">
+                <a href="#"> What&rsquo;s this?</a>
+            <div class="nowShowText" id = "textforFamily">
+              <p>Choose yes to create family ID to share with other caregivers who will need to make reservations.<p>
+            </div> -->
+
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group">
               <label for="inputUsername" class="sr-only">Create Username</label>
               <input type="text" id="inputUsername" class="form-control" placeholder="Create Username" required="" autofocus="" name="username">
             </div>
           </div>
           <div class="row">
-            <div class="form-group col-sm-6">
+            <div class="form-group">
               <label for="inputPassword" class="sr-only">Create Password</label>
               <input type="password" id="inputPassword" class="form-control" placeholder="Create Password" required="" name="password">
             </div>
           </div>
           <div class="row">
-            <div class="form-group col-sm-6">
+          <div class="form-group">
               <button class="btn btn-primary btn-lg btn-block" type="submit">Sign Up</button>
             </div>
-          </div>
-        </form>
-      </div>
+        </div>
+      </form>
       <div class="modal-footer">
+        <div class="form-group">
         <button type="button" class="btn btn-default" data-dismiss="modal">Nevermind</button>
+      </div>
+      </div>
       </div>
     </div>
   </div>
-</div>
 
 <footer>
-  <p>&copy;2015 Ogle &amp; Goodwin </p>
+      <p>&copy;2015 Ogle &amp; Goodwin </p>
 
 </footer>
+</div>
 </body>
 <script>
 var currentUser = '';
 </script>
+
+<script>
+
+$("question").click(function() {
+  $('textforFamily').addClass('showText');
+});
+
+});
+
+ </script>

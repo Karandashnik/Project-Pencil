@@ -19,10 +19,11 @@ body {
 }
 
 li a{
-  /*font-family: 'Nixie One', cursive;*/
-  /*font-family: 'Sue Ellen Francisco', cursive;*/
-  font-family: 'Patrick Hand SC', cursive;
-  font-size: 2.25em;
+  font-family: 'Nixie One', sans-serif;
+  /*font-family: 'Patrick Hand SC', cursive;*/
+  /*font-size: 2.25em;*/
+  font-size: 1.25em;
+  padding: 1.5em;
   color: #245799;
   margin-top: -1em;
   margin-right: .5em;
@@ -42,11 +43,6 @@ li a{
      z-index: 5000;*/
 }
 
-#myModal {
-    /*z-index: 6000;*/
-}
-
-
 #jotLogoLogin {
   max-width: 45%;
   padding: 0 0 2em;
@@ -63,6 +59,7 @@ li a{
 }
 
 .wrapper {
+  font-family: 'Nixie One', sans-serif;
   border-radius: 25px 25px;
   max-width: 400px;
   margin-top: 80px;
@@ -82,9 +79,37 @@ li a{
 }
 
 p {
-  font-family: 'Patrick Hand SC', cursive;
-  font-size: 1em;
-  margin-left: 45%;
-  padding: 0;
+  font-family: 'Nixie One', sans-serif;
   color: #245799;
+  text-align: center;
+  margin-bottom: -1em;
+  font-size: 1.25em;
+}
+
+.noShowText {
+  display: none;
+}
+
+.showText {
+  font-size: 1em;
+}
+
+/******************************
+*********Register Modal ********/
+
+#myModal {
+  font-family: 'Nixie One', sans-serif;
+}
+
+#myModal p {
+  font-family: 'Nixie One', sans-serif;
+}
+
+#myModal .form-group {
+  max-width: 250px;
+  margin: 1em auto;
+}
+
+#myModal h2 {
+  font-weight: bolder;
 }
