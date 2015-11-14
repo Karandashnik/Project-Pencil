@@ -84,6 +84,7 @@ var CreateBookingView = Backbone.View.extend({
     this.model.clear();
     this.$el.html("");
     $('.modal-backdrop').remove();
+    $('body').removeClass('modal-open');
   },
 
   _getKidName: function (radio) {

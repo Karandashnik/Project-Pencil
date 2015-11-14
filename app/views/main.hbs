@@ -13,6 +13,7 @@
   <link href='https://fonts.googleapis.com/css?family=Patrick+Hand' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" media="screen">
   <link href="stylesheets/dashboardStyles.css" rel="stylesheet" media="screen">
+  <link rel="stylesheet" href="/stylesheets/calendarStyle.css" media="screen">
 </head>
 <div class="container-responsive">
 
@@ -53,10 +54,20 @@
         <div id="upcomingBookings">
         </div>
     </div>
+  </div>
 
-      <div class="col-xs-12 col-sm-4">
-        <form id= "seeCalendar" class="btn btn-default calendarBtn" action = "/calendar" method="get"><input type="submit" value = "See Calendar"></form>
-      </div>
+  <div id="calendar">
+  	<div id="bookingNotification"></div>
+    <div class="calHeader">
+      <span class="left button" id="prev">&lang;</span>
+      <span class="month-year" id="label"> </span>
+      <span class="right button" id="next"> &rang; </span>
+    </div>
+    <table id ="weekdays"></table>
+    <div id="calGrid">
+      <table class="curr">
+     </table>
+   </div>
   </div>
 <script>
 var currentUser = "{{user.username}}";

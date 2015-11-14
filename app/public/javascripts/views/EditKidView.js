@@ -25,6 +25,7 @@ clearAll: function() {
   this.model.clear();
   this.$el.html("");
   $('.modal-backdrop').remove();
+  $('body').removeClass('modal-open');
 },
 
 deleteChild: function() {
