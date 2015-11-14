@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <title>Jot</title>
+  <link rel="icon" type="image/png" href="images/jotFavicon.png"/>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
+  <meta name="description" content="Finally a simple, intuitive scheduling app for small businesses and organizations."
+  <meta name="keywords" content="scheduling, appointments, small business, quick, easy, intuitive">
   <meta name="author" content="">
-  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.rc.1/handlebars.min.js"></script>
+   <link href='https://fonts.googleapis.com/css?family=Cabin' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" media="screen">
-
-  <title>Jot</title>
-
+  <link href="stylesheets/jotStyles.css" rel="stylesheet" media="screen">
+</head>
   <body>
-
-    <div class="container">
+<!-- <div class="container-fluid"> -->
         <nav class="navbar navbar-default" role="navigation">
-
-      <div class="container-fluid">
+            <div class="container">
+              <!-- <div class="container-fluid"> -->
 
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
@@ -27,6 +28,7 @@
           <span class="icon-bar"></span>
         </button>
       </div>
+    </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -39,7 +41,7 @@
                 </p>
                 </li>
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-right topNav">
                   <li>
                     <a href="/calendar">Go to Calendar</a>
                   </li>
@@ -54,9 +56,9 @@
               {{/if}}
           </ul>
         </div><!-- /.navbar-collapse -->
-      </div><!-- /.container-fluid -->
+    <!-- /.container-fluid -->
     </nav>
-
+  </div>
     {{#if error}}
       <p class="alert alert-warning">{{error}}</p>
     {{/if}}

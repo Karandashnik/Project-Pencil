@@ -1,5 +1,5 @@
 body {
-  background: NavajoWhite;
+  background: #477599;
 }
 
 .bookingError {
@@ -101,7 +101,7 @@ body {
 
 #calendar #calGrid td.today {
    background:#ededed;
-    color:#8c8c8c;
+    color:#477599;
     box-shadow:1px 1px 0px #fff inset;
     -moz-box-shadow:1px 1px 0px #fff inset;
     -webkit-box-shadow:1px 1px 0px #fff inset;

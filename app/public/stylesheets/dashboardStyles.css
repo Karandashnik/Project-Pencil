@@ -1,0 +1,132 @@
+body {
+  background-color: #5C8F99;
+  font-family: 'Cabin', sans-serif;
+}
+
+/********************************
+***** Dashboard Container********
+********************************/
+
+.container-responsive {
+  border-radius: 25px;
+  background-color: #fff;
+  padding:2em;
+  margin: 2em;
+  width: auto;
+  /*position: relative;*/
+}
+
+/*controls width of jot logo */
+.welcomeDash {
+  width: 200px;
+  /*margin-right: 35%;*/
+}
+
+.welcomeDash .jotLogo {
+  width: 100%;
+  margin-left: 10%;
+  /*width: 200px;*/
+}
+
+/********************************
+***** Calendar Container********
+********************************/
+
+input[type=submit] {
+  font-size: 2em;
+  border-radius: 35px;
+}
+
+/********************************
+***** Bookings Style********
+********************************/
+.boxForBookings {
+  /*margin-left: 2em;*/
+  border-radius: 25px;
+  max-width: 450px;
+  min-width: 250px;
+  height: auto;
+  padding: 2%;
+  background-color:#F5F0EB;
+}
+
+#upcomingBookings ul {
+  list-style: none;
+  padding-top: 2%;
+}
+
+#upcomingBookings li {
+  font-size: 1.25em;
+}
+
+
+
+
+
+
+/********************************
+***** KidList Style********
+********************************/
+
+/*The div that the list of kids is in*/
+#styleforKidList {
+  border-radius: 25px;
+  margin-right: 1em;
+  max-width: 450px;
+  min-width: 250px;
+  height:   auto;
+  padding: 2%;
+  background-color: #F5F0EB;
+}
+
+/*The names in white box inside #styleforKidList */
+.list-group-item {
+  max-width: 100%;
+  padding: 10px;
+  margin-bottom: 1em;
+  font-size: 1.25em;
+}
+
+h3 {
+font-family: 'Cabin', sans-serif;
+text-align: center;
+}
+
+/*the little edit icon on edit kids*/
+.editIcon {
+  width: 2em;
+  padding: 2%;
+}
+
+/********************************
+***** Media Querry Style********
+********************************/
+@media only screen
+and (max-device-width: 700px) {
+  #styleforKidList {
+    margin-left: 0;
+    min-width: 250;
+
+  }
+  .list-group-item {
+    max-width: 100%;
+    margin-bottom: 1em;
+    font-size: .8em;
+    }
+
+    #upcomingBookings li {
+    font-size: .9em;
+    }
+    .welcomeDash {
+      width: 100%;
+      padding-bottom: 1em;
+      /*margin-right: 35%;*/
+    }
+
+    .welcomeDash .jotLogo {
+      width: 100%;
+      margin-left: 0%;
+      /*width: 200px;*/
+    }
+
+}
