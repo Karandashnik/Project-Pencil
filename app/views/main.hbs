@@ -73,15 +73,8 @@
 var currentUser = "{{user.username}}";
 </script>
 {{else}}
-  <div>
-    <h1>Jot</h1>
-    <p>
-      <a href="/signin" class="btn btn-primary btn-lg" role="button">
-        Sign in!
-      </a>
-    </p>
-  </div>
   <script>
+  window.location = "/signin";
   var currentUser = '';
   </script>
 </div>
