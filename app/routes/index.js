@@ -67,6 +67,7 @@ router.get('/calendar', function(req, res){
 });
 
 router.post('/days', function(req, res, next){
+  console.log("WHY THE FUCK AM I POSTING THIS???");
   db.post('days',req.body)
   .then(function (result) {
     var id = result.path.key;
@@ -75,12 +76,13 @@ router.post('/days', function(req, res, next){
 });
 
 router.put('/days/:id', function(req, res, next) {
+  console.log("OMG YESSSSS");
   db.put('days', req.params.id, req.body)
   .then(function (result) {
     console.log(result);
     res.send({});
   })
-})
+});
 
 router.get('/days', function(req, res, next){
   db.search('days', req.query.user)
@@ -103,7 +105,14 @@ router.get('/days', function(req, res, next){
   .fail(function (err) {
     console.log(err);
   })
-})
+});
+
+router.delete('/days/:id', function(req, res, next) {
+  db.remove('days', req.params.id, true)
+  .then(function (result) {
+    res.send({});
+  })
+});
 //===============================================
 //                kid routes
 //===============================================
@@ -116,12 +125,11 @@ router.post('/kids', function(req, res, next){
 });
 
 router.put('/kids/:id', function(req,res,next) {
-  db.put('kids', req.params.id, req.body)
-  .then(function (result) {
-    console.log("Kid was updated...");
-    console.log(result.path);
-    var id = result.path.key;
-    res.send({id: id});
+  db.put('kids', req.params.id, req.body).then(function (result) {
+    //this isn't the RIGHT way to do it, but works for now...shouldn't have to return kid object
+    db.get("kids", result.path.key).then(function (kid) {
+      res.send(kid.body);
+    });
   })
 });
 
@@ -148,18 +156,12 @@ router.get('/kids', function(req, res, next){
   })
 });
 
-// // router.get('/kids', function(req, res, next) {
-// //   db.newSearchBuilder()
-// //   .collection('kids')
-// // .sort(field_name, 'asc')  //asc for ascending order//
-// // var editKid = what user entered
-// // .query(editKid)
-// // .then(function (res) {
-// //  var change = result.body.results;
-// //  console.log("this is the " + change);
-// // });
-//
-// });
+router.delete('/kids/:id', function(req, res, next) {
+  db.remove('kids', req.params.id, true)
+  .then(function (result) {
+    res.send({});
+  })
+});
 
 //===============================================
 //                 booking routes
@@ -167,14 +169,21 @@ router.get('/kids', function(req, res, next){
   router.post('/bookings', function(req, res, next){
     db.post('bookings',req.body)
     .then(function (result) {
-      console.log("POSTING BOOKING!");
       var id =result.path.key;
       res.send({id: id});
     })
   });
 
+  router.put('/bookings/:id', function(req,res,next) {
+    db.put('bookings', req.params.id, req.body).then(function (result) {
+      //this isn't the RIGHT way to do it, but works for now...shouldn't have to return booking object
+      db.get('bookings', result.path.key).then(function(booking) {
+        res.send(booking.body);
+      });
+    });
+  });
+
   router.get('/bookings', function(req, res, next){
-    console.log(req.query.user);
     db.search('bookings', req.query.user)
     .then(function (result) {
       var bookingResults = result.body.results;
@@ -197,10 +206,11 @@ router.get('/kids', function(req, res, next){
     })
   });
 
-//===============================================
-//                 dashboard routes
-//===============================================
-
-
+  router.delete('/bookings/:id', function(req, res, next) {
+    db.remove('bookings', req.params.id, true)
+    .then(function (result) {
+      res.send(result.body);
+    })
+  });
 
 module.exports = router;

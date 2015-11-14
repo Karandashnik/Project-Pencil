@@ -60,7 +60,6 @@ var CreateBookingView = Backbone.View.extend({
   _getDateString: function () {
     var date = this.model.get("date");
     var options = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
-
     return date.toLocaleString('en-US', options);
   },
 
@@ -68,7 +67,6 @@ var CreateBookingView = Backbone.View.extend({
     main.kidCollection.deferred.done(_.bind(function () {
       var formBody = this._getFormBody(main.kidCollection.pluck("kidFirstName"));
       var modal = this._getModal(formBody, this._getDateString());
-
       this.$el.html(modal);
     }, this))
   },
@@ -88,8 +86,9 @@ var CreateBookingView = Backbone.View.extend({
     $('.modal-backdrop').remove();
   },
 
-  _getKidObject: function (radio) {
-    return main.kidCollection.findWhere({kidFirstName: radio.name}).attributes;
+  _getKidName: function (radio) {
+    var kid = main.kidCollection.findWhere({kidFirstName: radio.name});
+    return main.kidCollection.findWhere({kidFirstName: radio.name}).get("kidFirstName");
   },
 
   _findBookings: function (kids) {
@@ -103,7 +102,7 @@ var CreateBookingView = Backbone.View.extend({
           if (radio.checked) {
             newBookings.push({
               service: radio.value,
-              kid: this._getKidObject(radio),
+              kid: this._getKidName(radio),
               user: currentUser,
               date: this.model.get("date"),
               dateId: this.model.get("dateId")
@@ -119,12 +118,11 @@ var CreateBookingView = Backbone.View.extend({
   collectBookings: function () {
     var kids = main.kidCollection.pluck("kidFirstName");
     var newBookings = this._findBookings(kids) || [];
-
     newBookings.length === 0 ? this._bookingNullError() : this._doesBookingExist(newBookings);
   },
 
   _bookingNamesMatch: function (bookingA, bookingB) {
-    return bookingA.get('kid').kidFirstName === bookingB.kid.kidFirstName;
+    return bookingA.get('kid') === bookingB.kid;
   },
 
   _getBookingByDateId: function (booking) {
@@ -189,7 +187,7 @@ var CreateBookingView = Backbone.View.extend({
 
   _getKidNames: function (bookings) {
     return _.map(bookings, function (booking) {
-      return booking.kid.kidFirstName;
+      return booking.kid;
     });
   },
 
@@ -203,7 +201,7 @@ var CreateBookingView = Backbone.View.extend({
 
   _addBookingModalMessage: function (message) {
     $("#bookingModalMsg").html("");
-    $("#bookingModalMsg").prepend(message)
+    $("#bookingModalMsg").append(message)
   },
 
   _bookingExistsError: function (alreadyExists) {
@@ -220,18 +218,16 @@ var CreateBookingView = Backbone.View.extend({
       kidString = kidNames.join(', ');
       this._addBookingModalMessage(this._getMultipleKidsMessage(kidString, lastKid));
     } else {
-      kidString = alreadyExists[0].kid.kidFirstName;
+      kidString = alreadyExists[0].kid;
       this._addBookingModalMessage(this._getSingleKidsMessage(kidString));
     }
   },
 
   _constructCalendarModel: function (booking) {
     return new CalendarDayModel({
-      date: booking.date,
       dateId: booking.dateId,
-      bookings: [booking],
       user: currentUser,
-      bookingCount: 1
+    //  bookingCount: 1
     });
   },
 
@@ -246,66 +242,11 @@ var CreateBookingView = Backbone.View.extend({
     main.calendarDayCollection.deferred.done(_.bind(function () {
       _.each(bookingsArray, function (booking) {
         var calendarDayView = this._constructCalendarDayView(this._constructCalendarModel(booking));
-
-        calendarDayView.investigateNewModel();
-        this.collection.create(booking, {
-          success: _.bind(function (model, response) {
-            console.log(response);
-            //$("#bookingNotification").prepend("<div class= 'col-md-8 col-md-offset-2'><h4>Your appointments were successfully saved.</h4></div>")
-          }, this),
-          error: _.bind(function (model, response) {
-            alert('wrong');
-          }, this)
-        });
+        calendarDayView.investigateNewBooking();
+        this.collection.create(booking);
       }, this);
     }, this));
 
     this.clearAll();
   }
-});
-
-var BookingView = Backbone.View.extend({
-  render: function() {
-    var date = new Date(this.model.date);
-    var options = { weekday: 'short', year: 'numeric', month: 'long', day: 'numeric' };
-    var dateString = date.toLocaleString('en-US', options);
-    var service = this.model.service === 'Both'? 'Morning Care & After Care' : this.model.service;
-    var bookingHtml = "<ul><li>" + dateString + ": " + this.model.kid.kidFirstName + " has " + service + "</li></ul>";
-    this.$el.html(bookingHtml);
-  }
-});
-
-var UsersBookingView = Backbone.View.extend({
-  render: function() {
-    console.log('hello');
-    var self = this;
-     this.collection.deferred.done(function() {
-  		$("#upcomingBookings").html("<h3>Upcoming Care Bookings</h3>");
-  		//Get all the tasks associated with a user
-      if (self.collection.length !== 0) {
-        listOfBookings = [];
-        self.collection.each(function(model){
-          var booking = {date: model.get("date"), dateId: model.get("dateId"), kid: model.get("kid"), service: model.get("service"), user: currentUser};
-          listOfBookings.push(booking);
-        });
-        listOfBookings.sort(self.sortBookings);
-        listOfBookings.forEach(self.appendBooking, self);
-      } else {
-  			$("#upcomingBookings").append("<p> You currently don't have any care scheduled.</p>");
-  		}
-    })
-	},
-  initialize: function() {
-    this.listenTo(this.collection, "add", this.render);
-    this.listenTo(this.collection, "remove", this.render);
-  },
-  sortBookings: function(a,b) {
-    return new Date(a.date) - new Date(b.date);
-  },
-	appendBooking: function(newModel) {
-		var bookingView = new BookingView({model: newModel, collection: main.bookingCollection});
-		bookingView.render();
-		$("#upcomingBookings").append(bookingView.$el);
-	}
-
 });

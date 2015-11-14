@@ -1,7 +1,7 @@
 var BookingModel = Backbone.Model.extend({
   defaults: {
     service: "",
-    kid: {},
+    kid: "",
     user: "",
     date: "",
     dateId: ""

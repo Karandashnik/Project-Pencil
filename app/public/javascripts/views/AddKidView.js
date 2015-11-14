@@ -1,19 +1,13 @@
 var AddKidView = Backbone.View.extend({
 
   events: {
-    'click #clearAddKid' : 'clearAddKid',
-    'click #submit' : 'saveKid'
+    'click #saveKidAddAnother' : 'saveKidAddAnother',
+    'click #saveKidClose' : 'saveKidClose'
   },
 
-  clearAddKid: function(){
-    document.getElementById("firstName").value = "";
-    document.getElementById("midInit").value = "";
-    document.getElementById("lastName").value = "";
-  },
-
-  saveKid: function(event) {
+  saveKidAddAnother: function(event) {
     // is called to allow the post request to give response
-    event.preventDefault();
+    //event.preventDefault();
     var firstName = $('#firstName').val();
     var midInit = $('#midInit').val();
     var lastName = $('#lastName').val();
@@ -22,6 +16,22 @@ var AddKidView = Backbone.View.extend({
     document.getElementById("firstName").value = "";
     document.getElementById("midInit").value = "";
     document.getElementById("lastName").value = "";
+  },
+
+  saveKidClose: function(event) {
+    // is called to allow the post request to give response
+    //event.preventDefault();
+    var firstName = $('#firstName').val();
+    var midInit = $('#midInit').val();
+    var lastName = $('#lastName').val();
+    var fullName = firstName + ' ' + midInit + ' ' + lastName;
+    this.collection.create({kidFirstName: firstName, kidLastName: lastName, kidMidInitial: midInit, kidFullName: fullName, username: currentUser});
+    this.clearAll();
+  },
+
+  clearAll: function() {
+    this.$el.html("");
+    $('.modal-backdrop').remove();
   },
 
   initialize: function() {
@@ -51,9 +61,9 @@ var AddKidView = Backbone.View.extend({
       "</div>" +
         // "</form"> +
       "<div class='modal-footer'>" +
-      "<button type='submit' class='btn btn-warning' id='submit'>Submit</button>" +
-      "<button type='reset' class='btn btn-success' id='clearAddKid'>Clear</button>" +
-      "<button type='button' class='btn btn-primary clear' data-dismiss='modal'>Nevermind</button>" +
+      "<button type='submit' class='btn btn-warning' id='saveKidAddAnother'>Save & Add Another</button>" +
+      "<button type='submit' class='btn btn-warning' id='saveKidClose'>Save & Close</button>" +
+      "<button type='button' class='btn btn-primary clear' data-dismiss='modal'>Done</button>" +
       "</div>" +
       "</div>" +
       "</div>" +
