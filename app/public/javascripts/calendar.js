@@ -23,7 +23,8 @@ var Calendar = function() {
 		 switchMonth(true);
 		});
 		//adds event listener to dayviews so modal pops up to create booking
-		$('#calendar').on('click', '.dayView', 	function(event) {
+
+		$('#calendar').on('click', '.dayView', function(event) {
 				var id = event.target.id;
 				var yearMonthDay = id.split("-");
 				var year = yearMonthDay[0];
