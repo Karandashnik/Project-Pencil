@@ -18,16 +18,25 @@ var UsersBookingView = Backbone.View.extend({
       }
     })
   },
+
   initialize: function() {
-    this.listenTo(this.collection, "add", this.render);
-    this.listenTo(this.collection, "remove", this.render);
+    this.listenTo(this.collection, "add", this.listenToModel);
+    this.listenTo(this.collection, "update", this.render);
   },
+
+  listenToModel: function(newModel) {
+    this.listenTo(newModel, "sync", function(model) {
+      this.render();
+    });
+  },
+
   sortBookings: function(a,b) {
     return new Date(a.date) - new Date(b.date);
   },
+
   appendBooking: function(newModel) {
     var bookingView = new BookingView({model: newModel, collection: main.bookingCollection});
     bookingView.render();
     $("#upcomingBookings").append(bookingView.$el);
-  },
+  }
 });

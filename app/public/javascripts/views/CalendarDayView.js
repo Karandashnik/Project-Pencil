@@ -15,41 +15,53 @@ var CalendarDayView = Backbone.View.extend({
       }
     })
   },
+
+  initialize: function() {
+    this.listenTo(this.collection, "add", this.render);
+    this.listenTo(this.collection, "update", this.render);
+  },
+
   markCalendar: function(id) {
-    console.log("rendering calendarDayView");
     $("#" + id).addClass("calendarDayNumber");
   },
-  investigateNewModel: function() {
-    console.log("investigating new model");
+  investigateNewBooking: function() {
     var self = this;
     this.collection.deferred.done(function() {
       var existingDay = self.collection.findWhere({dateId: self.model.get("dateId")});
-      existingDay ? self.updateExistingDay(existingDay) : self.saveNewDay();
+      if (!existingDay) {
+        self.saveNewDay();
+      }
     })
   },
-  updateExistingDay: function(existingDay) {
-    console.log("update existing day");
-    var newBooking = this.model.get("bookings").pop();
-    var newBookingCount = existingDay.get("bookings").push(newBooking);
-    existingDay.set("bookingCount", newBookingCount);
-    existingDay.save(existingDay.attributes, {
-      success: _.bind(function (model, response) {
-        console.log(response);
-      }, this),
-      error: _.bind(function (model, response) {
-        alert('wrong');
-      }, this)
-    });
+  updateExistingDayOne: function(existingDay) {
+    console.log("In updateExistingDayOne");
+    var newBookingCount = main.bookingCollection.find({dateId: this.model.get("dateId")}).length + 1;
+    existingDay.save({bookingCount: newBookingCount, id: existingDay.get("id")});
   },
+
+  // updateExistingDayTwo: function() {
+  //   console.log("In updateExistingDayTwo");
+  //   var newBookingCount = main.bookingCollection.find({dateId: this.model.get("dateId")}).length + 1;
+  //   this.model.save({bookingCount: newBookingCount, id: this.model.get("id")});
+  // },
+
+  // waitForSync: function() {
+  //   console.log("in waitForSync");
+  //   this.listenTo(this.collection, "sync", function() {
+  //     console.log("in waitForSync listenTo");
+  //     this.updateExistingDayTwo();
+  //   });
+  // },
+
   saveNewDay: function() {
-    console.log("saving day");
+    console.log("In saveNewDay");
     this.collection.create(this.model, {
       success: _.bind(function (model, response) {
         console.log(response);
     this.markCalendar(this.model.get("dateId"));
       }, this),
       error: _.bind(function (model, response) {
-        alert('wrong');
+        console.log('wrong');
       }, this)
     });
   }

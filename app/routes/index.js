@@ -67,6 +67,7 @@ router.get('/calendar', function(req, res){
 });
 
 router.post('/days', function(req, res, next){
+  console.log("WHY THE FUCK AM I POSTING THIS???");
   db.post('days',req.body)
   .then(function (result) {
     var id = result.path.key;
@@ -75,6 +76,7 @@ router.post('/days', function(req, res, next){
 });
 
 router.put('/days/:id', function(req, res, next) {
+  console.log("OMG YESSSSS");
   db.put('days', req.params.id, req.body)
   .then(function (result) {
     console.log(result);
@@ -152,7 +154,7 @@ router.delete('/kids/:id', function(req, res, next) {
   .then(function (result) {
     res.send({});
   })
-})
+});
 
 //===============================================
 //                 booking routes
@@ -160,14 +162,21 @@ router.delete('/kids/:id', function(req, res, next) {
   router.post('/bookings', function(req, res, next){
     db.post('bookings',req.body)
     .then(function (result) {
-      console.log("POSTING BOOKING!");
       var id =result.path.key;
       res.send({id: id});
     })
   });
 
+  router.put('/bookings/:id', function(req,res,next) {
+    db.put('bookings', req.params.id, req.body).then(function (result) {
+      //this isn't the RIGHT way to do it, but works for now...shouldn't have to return booking object
+      db.get('bookings', result.path.key).then(function(booking) {
+        res.send(booking.body);
+      });
+    });
+  });
+
   router.get('/bookings', function(req, res, next){
-    console.log(req.query.user);
     db.search('bookings', req.query.user)
     .then(function (result) {
       var bookingResults = result.body.results;
@@ -190,10 +199,11 @@ router.delete('/kids/:id', function(req, res, next) {
     })
   });
 
-//===============================================
-//                 dashboard routes
-//===============================================
-
-
+  router.delete('/bookings/:id', function(req, res, next) {
+    db.remove('bookings', req.params.id, true)
+    .then(function (result) {
+      res.send(result.body);
+    })
+  });
 
 module.exports = router;
