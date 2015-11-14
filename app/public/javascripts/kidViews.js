@@ -16,6 +16,7 @@ var UserKidsView = Backbone.View.extend({
 
   editKid: function(event) {
     var changeKid = event.target.id;
+    console.log(event);
     console.log(changeKid);
     //console.log(this.collection);
     var editKidModel = this.collection.findWhere({kidFirstName: changeKid});
@@ -38,13 +39,12 @@ var UserKidsView = Backbone.View.extend({
 
     var kiddos = this.collection.pluck("kidFullName");
     var kiddoF = this.collection.pluck("kidFirstName");
-    console.log(kiddoF);
     var title = "<h3 class='listTitle'>" + 'Registered Children' + "</h3>";
     var listBody = "";
     // var styleListOpen = "<div class='list-group'>";
     // var styleListClose = "</div>";
     for (var i = 0; i < kiddos.length; i++) {
-      var listContents = "<button type='button''data-toggle='modal' data-target='#editKidModal' class='list-group-item editKid oneKid' id=" +kiddoF[i]+ " + >" + kiddos[i] + "<img/img src='images/magicwand.png' class='editIcon' + >" +
+      var listContents = "<button type='button''data-toggle='modal' data-target='editKidModal' class='list-group-item editKid oneKid' id=" +kiddoF[i]+ " + >" + kiddos[i] + "<img/img src='images/magicwand.png' class='editIcon' + >" +
       "</button>";
 
                        listBody += listContents;

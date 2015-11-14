@@ -17,11 +17,14 @@ background-color:#fff;
   width: 25%;
 }
 
-li a{
+.topNav li{
+  padding: 1em;
+  margin-top: 1.5em;
+  margin: 1em;
+}
 
-  /*font-family: 'Nixie One', sans-serif;*/
-  font-family: 'Patrick Hand SC', sans-serif;
-  /*font-size: 2.25em;*/
+
+li a{
   font-size: 1.25em;
   padding: 1.5em;
   color: #245799;
@@ -29,19 +32,6 @@ li a{
   margin-right: .5em;
 }
 
-
-.boxForLogin {
-     /*border-radius: 25px;
-     width: 50%;
-     padding: 2%;*/
-     /*border: 25px solid navy;*/
-     /*margin: auto;
-     background-color:#F5F0EB;
-     position: absolute;
-     top: 45%;
-     left:25%;
-     z-index: 5000;*/
-}
 
 #jotLogoLogin {
   max-width: 45%;

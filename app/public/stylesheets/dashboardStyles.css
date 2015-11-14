@@ -1,5 +1,5 @@
 body {
-  background-color: #F5F0EB;
+  background-color: #5C8F99;
   font-family: 'Cabin', sans-serif;
 }
 
@@ -7,11 +7,12 @@ body {
 ***** Dashboard Container********
 ********************************/
 
-.containerDash {
+.container-responsive {
   border-radius: 25px;
   background-color: #fff;
-  padding:3em;
+  padding:2em;
   margin: 2em;
+  width: auto;
   /*position: relative;*/
 }
 
@@ -19,11 +20,12 @@ body {
 .welcomeDash {
   width: 200px;
   /*margin-right: 35%;*/
-  position: fixed;
 }
 
-.jotLogo {
+.welcomeDash .jotLogo {
   width: 100%;
+  margin-left: 10%;
+  /*width: 200px;*/
 }
 
 /********************************
@@ -39,12 +41,23 @@ input[type=submit] {
 ***** Bookings Style********
 ********************************/
 .boxForBookings {
+  /*margin-left: 2em;*/
   border-radius: 25px;
-  width: 400px;
+  max-width: 450px;
+  min-width: 250px;
+  height: auto;
   padding: 2%;
   background-color:#F5F0EB;
 }
 
+#upcomingBookings ul {
+  list-style: none;
+  padding-top: 2%;
+}
+
+#upcomingBookings li {
+  font-size: 1.25em;
+}
 
 
 
@@ -58,7 +71,10 @@ input[type=submit] {
 /*The div that the list of kids is in*/
 #styleforKidList {
   border-radius: 25px;
-  width: 400px;;
+  margin-right: 1em;
+  max-width: 450px;
+  min-width: 250px;
+  height:   auto;
   padding: 2%;
   background-color: #F5F0EB;
 }
@@ -80,4 +96,37 @@ text-align: center;
 .editIcon {
   width: 2em;
   padding: 2%;
+}
+
+/********************************
+***** Media Querry Style********
+********************************/
+@media only screen
+and (max-device-width: 700px) {
+  #styleforKidList {
+    margin-left: 0;
+    min-width: 250;
+
+  }
+  .list-group-item {
+    max-width: 100%;
+    margin-bottom: 1em;
+    font-size: .8em;
+    }
+
+    #upcomingBookings li {
+    font-size: .9em;
+    }
+    .welcomeDash {
+      width: 100%;
+      padding-bottom: 1em;
+      /*margin-right: 35%;*/
+    }
+
+    .welcomeDash .jotLogo {
+      width: 100%;
+      margin-left: 0%;
+      /*width: 200px;*/
+    }
+
 }
