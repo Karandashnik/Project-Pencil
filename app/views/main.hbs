@@ -9,11 +9,11 @@
   <meta name="description" content="Finally a simple, intuitive scheduling app for small businesses and organizations."
   <meta name="keywords" content="scheduling, appointments, small business, quick, easy, intuitive">
   <meta name="author" content="">
-  <!-- <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.rc.1/handlebars.min.js"></script> -->
+  <link href='https://fonts.googleapis.com/css?family=Patrick+Hand' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" media="screen">
   <link href="stylesheets/dashboardStyles.css" rel="stylesheet" media="screen">
 </head>
-<div class="container">
+<div class="container containerDash">
 <!--this script is needed to get rid of the '#_=_' hash that Facebook sends with the callback-->
 <script type="text/javascript">
     if (window.location.hash && window.location.hash == '#_=_') {
@@ -34,7 +34,7 @@
 </script>
 
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-4">
         {{#if user}}
           <div class="welcomeDash">
             <img src="images/jotLogo.png" class="jotLogo">
@@ -42,22 +42,17 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-6 col-md-4">
+    <div class="col-xs-12 col-sm-4">
       <form id= "seeCalendar" class="btn btn-default" action = "/calendar" method="get"><input type="submit" value = "See Calendar"></form>
     </div>
-
-    <div class="col-xs-6 col-md-4">
-      <div id="styleforKidList">
+    <div class="col-xs-6 col-sm-4" id="styleforKidList">
         <div id="kidList"></div>
-      </div>
     </div>
-    <div class="col-xs-6 col-md-4">
-      <div class="boxForBookings">
+    <div class="col-xs-6 col-sm-4 boxForBookings">
         <div id="upcomingBookings">
         </div>
-      </div>
     </div>
-
+  </div>
 <script>
 var currentUser = "{{user.username}}";
 </script>
@@ -73,7 +68,5 @@ var currentUser = "{{user.username}}";
   <script>
   var currentUser = '';
   </script>
-
-{{/if}}
-
 </div>
+{{/if}}

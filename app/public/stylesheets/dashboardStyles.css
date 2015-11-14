@@ -2,50 +2,71 @@ body {
   background-color: #F5F0EB;
 }
 
-.container {
+/********************************
+***** Dashboard Container********
+********************************/
+
+.containerDash {
   border-radius: 25px;
   background-color: #fff;
-  padding
-
+  padding:3em;
+  margin: 2em;
+  /*position: relative;*/
 }
 
+/*controls width of jot logo */
 .welcomeDash {
   width: 200px;
-  margin-left: 35%;
+  /*margin-right: 35%;*/
+  position: fixed;
 }
 
 .jotLogo {
   width: 100%;
 }
-.boxForBookings {
-  border-radius: 25px;
-  width: 400px;
-  padding: 2%;
-  margin: auto;
-  background-color:#F5F0EB;
-}
+
+/********************************
+***** Calendar Container********
+********************************/
 
 input[type=submit] {
   font-size: 2em;
   border-radius: 35px;
 }
 
-#seeCalendar {
-  /*width: 200px;*/
-}
-
-
-
-
-.oneKid {
-  font-size: 1em;
-}
-
-.yourKids {
-  list-style: none;
-  /*display: block;*/
+/********************************
+***** Bookings Style********
+********************************/
+/*.boxForBookings {
+  border-radius: 25px;
+  width: 400px;
   padding: 2%;
+  background-color:#F5F0EB;
+}
+*/
+
+
+
+
+
+
+/********************************
+***** KidList Style********
+********************************/
+
+/*The div that the list of kids is in*/
+#styleforKidList {
+  font-family: 'Raleway', sans-serif;
+  border-radius: 25px 25px;
+  width: 350px;;
+  padding: 5%;
+  background-color: #F5F0EB;
 }
 
-#seeCalendar {
+/*The names in white box inside #styleforKidList */
+.list-group-item {
+  max-width: 100%;
+  padding: 10px;
+  margin-bottom: 1em;
+  font-size: 1.25em;
 }
