@@ -105,7 +105,14 @@ router.get('/days', function(req, res, next){
   .fail(function (err) {
     console.log(err);
   })
-})
+});
+
+router.delete('/days/:id', function(req, res, next) {
+  db.remove('days', req.params.id, true)
+  .then(function (result) {
+    res.send({});
+  })
+});
 //===============================================
 //                kid routes
 //===============================================

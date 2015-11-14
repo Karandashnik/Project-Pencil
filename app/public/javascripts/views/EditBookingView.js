@@ -54,7 +54,8 @@ deleteBooking: function() {
 checkCalendarDay: function(model) {
   var bookingsOnSameDay = this.collection.where({dateId: model.get("dateId")});
   if (bookingsOnSameDay.length <= 1) {
-    console.log("IN THE DAMN THANG");
+    var dayModel = main.calendarDayCollection.findWhere({dateId: model.get("dateId")});
+    dayModel.destroy();
     //this ID exists in calendar.hbs but IT DOESN'T SEEEE ITTTT :-(
     console.log(document.getElementById(model.get("dateId")));
   }
