@@ -1,7 +1,6 @@
 body {
-
-  font-family: 'Patrick Hand SC', Fallback, sans-serif;
-  background-color:#fff;
+font-family: 'Cabin', sans-serif;
+background-color:#fff;
 }
 .connectLayers {
   position: relative

@@ -1,5 +1,6 @@
 body {
   background-color: #F5F0EB;
+  font-family: 'Cabin', sans-serif;
 }
 
 /********************************
@@ -37,13 +38,13 @@ input[type=submit] {
 /********************************
 ***** Bookings Style********
 ********************************/
-/*.boxForBookings {
+.boxForBookings {
   border-radius: 25px;
   width: 400px;
   padding: 2%;
   background-color:#F5F0EB;
 }
-*/
+
 
 
 
@@ -56,10 +57,9 @@ input[type=submit] {
 
 /*The div that the list of kids is in*/
 #styleforKidList {
-  font-family: 'Raleway', sans-serif;
-  border-radius: 25px 25px;
-  width: 350px;;
-  padding: 5%;
+  border-radius: 25px;
+  width: 400px;;
+  padding: 2%;
   background-color: #F5F0EB;
 }
 
@@ -69,4 +69,15 @@ input[type=submit] {
   padding: 10px;
   margin-bottom: 1em;
   font-size: 1.25em;
+}
+
+h3 {
+font-family: 'Cabin', sans-serif;
+text-align: center;
+}
+
+/*the little edit icon on edit kids*/
+.editIcon {
+  width: 2em;
+  padding: 2%;
 }
