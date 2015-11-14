@@ -1,6 +1,8 @@
 var main = {};
 $(function() { //when DOM is ready...
-
+  var calendar = Calendar();
+  calendar.init();
+  calendar.createDays();
  //create kid stuff
  main.kidCollection = new KidCollection();
  main.addKidView = new AddKidView({collection: main.kidCollection});

@@ -15,8 +15,8 @@
 </head>
   <body>
 <!-- <div class="container-fluid"> -->
-        <nav class="navbar navbar-default" role="navigation">
-            <div class="container">
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container">
               <!-- <div class="container-fluid"> -->
 
       <!-- Brand and toggle get grouped for better mobile display -->
@@ -31,34 +31,27 @@
     </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
-            <li>
-              {{#if user}}
-                <p class="navbar-text">
-                  <strong>Hi,</strong>
-                  {{user.firstName}}
-                </p>
-                </li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right topNav">
-                  <li>
-                    <a href="/calendar">Go to Calendar</a>
-                  </li>
-                  <li>
-                    <a href="/">My Dashboard</a>
-                  </li>
-                  <li>
-                    <a href="/logout">Log Out</a>
-                  </li>
-              {{else}}
-                </li>
-              {{/if}}
-          </ul>
-        </div><!-- /.navbar-collapse -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li>
+          {{#if user}}
+          <p class="navbar-text">
+          <strong>Hi,</strong>
+          {{user.firstName}}
+          </p>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right topNav">
+        <li>
+          <a href="/logout">Log Out</a>
+        </li>
+        {{else}}
+        </li>
+        {{/if}}
+      </ul>
+    </div><!-- /.navbar-collapse -->
     <!-- /.container-fluid -->
     </nav>
-  </div>
     {{#if error}}
       <p class="alert alert-warning">{{error}}</p>
     {{/if}}
@@ -103,7 +96,7 @@
 
 <script type="text/javascript" src="javascripts/main.js"></script>
 
-</head>
+
 
 
 

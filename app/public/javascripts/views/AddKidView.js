@@ -27,6 +27,7 @@ var AddKidView = Backbone.View.extend({
     var fullName = firstName + ' ' + midInit + ' ' + lastName;
     this.collection.create({kidFirstName: firstName, kidLastName: lastName, kidMidInitial: midInit, kidFullName: fullName, username: currentUser});
     this.clearAll();
+    $('body').removeClass('modal-open');
   },
 
   clearAll: function() {

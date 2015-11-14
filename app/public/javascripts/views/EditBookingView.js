@@ -36,6 +36,7 @@ clearAll: function(currBooking) {
   currBooking.clear();
   this.$el.html("");
   $('.modal-backdrop').remove();
+  $('body').removeClass('modal-open');
 },
 
 clearError: function() {
@@ -49,15 +50,17 @@ deleteBooking: function() {
   this.checkCalendarDay(model);
   model.destroy();
   this.clearAll(model);
+  $('body').removeClass('modal-open');
 },
 
 checkCalendarDay: function(model) {
   var bookingsOnSameDay = this.collection.where({dateId: model.get("dateId")});
   if (bookingsOnSameDay.length <= 1) {
     var dayModel = main.calendarDayCollection.findWhere({dateId: model.get("dateId")});
+    $("#" + dayModel.get("dateId")).removeClass("calendarDayNumber");
     dayModel.destroy();
     //this ID exists in calendar.hbs but IT DOESN'T SEEEE ITTTT :-(
-    console.log(document.getElementById(model.get("dateId")));
+
   }
 },
 
