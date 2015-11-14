@@ -2,89 +2,26 @@ body {
 font-family: 'Cabin', sans-serif;
 background-color:#fff;
 }
-.connectLayers {
-  position: relative
+
+/********************************
+*****Background Image Area *****
+********************************/
+.jumbotron {
+  max-width: 3000px;
+  background-color: #D9BFA6;
 }
 
-#bigPicture  {
-  z-index: 100;
-  margin: -1em;
-  padding: 0;
-  position: absolute;  /*this keeps the login on top of the image*/
-}
-
-#bigPicture {
-  width: 25%;
-}
-
-.topNav li{
-  padding: 1em;
-  margin-top: 1.5em;
-  margin: 1em;
+#heroImage {
+  margin: .25em;
+  padding: .25em;
+  width:  100%;
+  border-radius: 15px;
 }
 
 
-li a{
-  font-size: 1.25em;
-  padding: 1.5em;
-  color: #245799;
-  margin-top: -1em;
-  margin-right: .5em;
-}
-
-
-#jotLogoLogin {
-  max-width: 45%;
-  padding: 0 0 2em;
-  margin: 0 25%;
-}
-
-.welcomeDash {
-  width: 100%;
-}
-
-#local .btn {
-  color: white;
-  margin: 0% 20% 5%;
-}
-
-.wrapper {
-  font-family: 'Raleway', sans-serif;
-  border-radius: 25px 25px;
-  max-width: 400px;
-  margin-top: 80px;
-  margin-bottom: 80px;
-  background-color: #5C8F99;
-  border-radius: 25px;
-  z-index:5000;
-}
-
-.form-signin {
-  border-radius: 25px;
-  max-width: 380px;
-  padding: 35px 35px 45px;
-  margin 0 auto;
-  background-color: #5C8F99;
-  z-index: 5000;
-}
-
-p {
-  font-family: 'Patrick Hand SC', sans-serif;  color: #245799;
-  text-align: center;
-  margin-bottom: -1em;
-  font-size: 1.25em;
-}
-
-.noShowText {
-  display: none;
-}
-
-.showText {
-  font-size: 1em;
-}
-
-/******************************
-*********Register Modal ********/
+/********************************
+*********Register Modal *********
+********************************/
 
 #myModal {
 font-family: 'Patrick Hand SC', sans-serif;
