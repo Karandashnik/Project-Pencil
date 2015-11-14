@@ -29,8 +29,23 @@ clearAll: function() {
 },
 
 deleteChild: function() {
+  this.deleteKidBookings();
   this.model.destroy();
   this.clearAll();
+},
+
+deleteKidBookings: function() {
+  var relatedKidBookings = main.bookingCollection.where({kid: this.model.get("kidFirstName")});
+  relatedKidBookings.forEach(function(model) {
+    var relatedDateBookings = main.bookingCollection.where({dateId: model.get("dateId")});
+    console.log(relatedDateBookings);
+    if (relatedDateBookings.length <= 1) {
+      var dayModel = main.calendarDayCollection.findWhere({dateId: model.get("dateId")});
+      $("#" + model.get("dateId")).removeClass("calendarDayNumber");
+      dayModel.destroy();
+    }
+    model.destroy();
+  })
 },
 
 render: function() {

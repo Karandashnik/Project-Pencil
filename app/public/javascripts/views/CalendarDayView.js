@@ -24,6 +24,7 @@ var CalendarDayView = Backbone.View.extend({
   markCalendar: function(id) {
     $("#" + id).addClass("calendarDayNumber");
   },
+
   investigateNewBooking: function() {
     var self = this;
     this.collection.deferred.done(function() {
@@ -33,6 +34,7 @@ var CalendarDayView = Backbone.View.extend({
       }
     })
   },
+
   updateExistingDayOne: function(existingDay) {
     console.log("In updateExistingDayOne");
     var newBookingCount = main.bookingCollection.find({dateId: this.model.get("dateId")}).length + 1;
