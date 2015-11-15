@@ -1,17 +1,40 @@
 
+.dayDiv {
+  position: relative;*/
+  z-index: 5000;
+}
 
 .jotBall {
-  opacity: 0.8;
-  z-index:-1;
+  position: absolute;
+  left: 25%;
+  top: 20%;
+  opacity: 0.6;
+  z-index:100;
 }
+
+#bookingModalBody {
+  position: relative;
+  z-index: 5000;
+}
+
+.modalContent {
+  position: relative;
+  z-index: 5000;
+}
+
+td {
+  position: relative;
+  z-index: 200;
+}
+
 
 .calendarNumber {
+  position: relative;
   display: inline;
+  z-index:5500;
 }
 
-.dayDiv {
-  position: relative;
-}
+
 
 #calendar {
   -moz-box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
