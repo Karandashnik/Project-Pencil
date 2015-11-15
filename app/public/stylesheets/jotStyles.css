@@ -1,6 +1,5 @@
 
 body {
-
 font-family: 'Cabin', sans-serif;
 font-size: 1.5em;
 background-color:#fff;
@@ -73,8 +72,7 @@ background-color:#fff;
 
 .loginBtn {
   border: none;
-  background-color: #77B3D4;
-  opacity: 1;
+  background-color: #0C3D6E;
 }
 
 #local .newAccountLink {
@@ -85,11 +83,12 @@ background-color:#fff;
 *********Register Modal *********
 ********************************/
 
-.modal-content {
+#myModal .modal-content {
   -webkit-border-radius: 25px !important;
   -moz-border-radius: 25px !important;
   border-radius: 25px !important;
-  width: 600px;
+  width: 500px;
+  margin: 0 auto;
 }
 
 #myModal {
@@ -118,7 +117,6 @@ background-color:#fff;
 }
 
 #myModal .modal-footer {
-  background-color: ##77B3D4;
   border: none;
 }
 

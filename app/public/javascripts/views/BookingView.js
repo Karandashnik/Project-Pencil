@@ -7,7 +7,7 @@ var BookingView = Backbone.View.extend({
     var service = this.model.service === 'Both'? 'Morning Care & After Care' : this.model.service;
     var openGroup = "<ul class='list-group'>"
     var closeGroup = "</ul>"
-    var bookingHtml = "<li class='list-group-item bookingListText'>" + dateString + ": " + this.model.kid + " has " + service + editButton + "</li>";
+    var bookingHtml = "<li class='list-group-item bookingListText'>" + dateString + ": </br>" + this.model.kid + " has " + service + editButton +"</li>";
     this.$el.html(openGroup + bookingHtml + closeGroup);
   },
 

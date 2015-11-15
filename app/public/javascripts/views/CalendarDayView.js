@@ -24,6 +24,7 @@ var CalendarDayView = Backbone.View.extend({
   markCalendar: function(id) {
   //  $("#" + id).addClass("calendarDayNumber");
     $("#" + id).append("<img class='jotBall' src='images/jotBall.png' alt='kid icon'>")
+    $("#" + id).addClass("bookingDay");
   },
 
   investigateNewBooking: function() {

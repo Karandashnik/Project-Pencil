@@ -29,7 +29,7 @@ saveNewService: function() {
 editBookingError: function() {
   console.log("in editBookingError");
   $("#editBookingError").html("");
-  $("#editBookingError").append("<p class='bookingError'>You must select a service to save changes.</p>")
+  $("#editBookingError").append("<h5 class='bookingError'>You must select a service to save changes.</h5>")
 },
 
 clearAll: function(currBooking) {
@@ -59,9 +59,8 @@ checkCalendarDay: function(model) {
     var dayModel = main.calendarDayCollection.findWhere({dateId: model.get("dateId")});
     var day = model.get("dateId").split("-")[2];
     $("#" + dayModel.get("dateId")).html(day);
+    $("#" + id).removeClass("bookingDay");
     dayModel.destroy();
-    //this ID exists in calendar.hbs but IT DOESN'T SEEEE ITTTT :-(
-
   }
 },
 
@@ -72,34 +71,37 @@ render: function() {
   var kid = this.model.kid;
   var dateId = this.model.dateId;
   var service = this.model.service === 'Both' ? 'Morning Care & After Care' : this.model.service;
-  var $editBookingModal = "<div id='editBookingModal' class='modal fade' role='dialog'>" +
-              "<div class='modal-dialog'>" +
-              "<div class='modal-content'>" +
-              "<div class='modal-header'>" +
-              "<button type='button' class='close clear' data-dismiss='modal'>&times;</button>" +
-              "<h4 class='modal-title'>Edit Booking Details</h4>" +
-              "</div>" +
-              "<div class='modal-body'>" +
-              "<div class='row'>" +
-              "<div class='form-group col-md-9 col-md-offset-1'>" +
-              "<h4 class='kids'> Current booking for " + kid + " on " + dateString + " is " + service + ".</h4>" +
-              "<div class='input-group'>" +
-              "<h4>Edit</h4>" +
-              "<label class='radio-inline'><input id='morningRadio' name='" + kid + " " + dateId + "' type='radio' value='Morning Care'>Morning Care</label>" +
-              "<label class='radio-inline'><input id='afterRadio' name='" + kid + " " + dateId + "' type='radio' value='After Care'>After Care</label>" +
-              "<label class='radio-inline'><input id='bothRadio' name='" + kid + " " + dateId + "' type='radio' value='Both'>Both</label>" +
-              "<div id=editBookingError class='errorMsg'></div>" +
-              "</div>" +
-              "</div>" +
-              "</div>" +
-              "</div>" +
-              "<div class='modal-footer'>" +
-              "<button type='submit' class='btn btn-warning' id='saveBookingChanges'>Save Changes</button>" +
-              "<button type='button' class='btn btn-danger' id='deleteBooking'>Delete Booking</button>" +
-              "<button type='button' class='btn btn-primary clear' id='nevermind' data-dismiss='modal'>Nevermind</button>" +
-              "</div>" +
-              "</div>" +
-              "</div>" +
+  var $editBookingModal =
+              "<div id='editBookingModal' class='modal fade' role='dialog'>" +
+                "<div class='modal-dialog'>" +
+                  "<div class='modal-content'>" +
+                    "<div class='modal-header'>" +
+                      "<button type='button' class='close clear' data-dismiss='modal'>&times;</button>" +
+                      "<h4 class='modal-title'>Edit Booking Details</h4>" +
+                    "</div>" +
+                    "<div class='modal-body'>" +
+                      "<div class='row'>" +
+                        "<div class='form-group'>" +
+                          "<h4 id='currentBookingInfo'> Current booking for " + kid + " on " + dateString + " is " + service + ".</h4>" +
+                            "<div class='input-group list-group' id='editBookingOptions'>" +
+                              "<li class='list-group-item'>" +
+                                "<h4>Edit</h4>" +
+                                "<label class='radio-inline bookingRadio'><input id='morningRadio' name='" + kid + " " + dateId + "' type='radio' value='Morning Care'>Morning Care</label>" +
+                                "<label class='radio-inline bookingRadio'><input id='afterRadio' name='" + kid + " " + dateId + "' type='radio' value='After Care'>After Care</label>" +
+                                "<label class='radio-inline bookingRadio'><input id='bothRadio' name='" + kid + " " + dateId + "' type='radio' value='Both'>Both</label>" +
+                              "</li>" +
+                              "<div id=editBookingError class='errorMsg'></div>" +
+                            "</div>" +
+                          "</div>" +
+                        "</div>" +
+                      "</div>" +
+                    "<div class='modal-footer'>" +
+                      "<button type='submit' class='btn btn-primary' id='saveBookingChanges'>Save Changes</button>" +
+                      "<button type='button' class='btn btn-primary' id='deleteBooking'>Delete Booking</button>" +
+                      "<button type='button' class='btn btn-default clear' id='nevermind' data-dismiss='modal'>Nevermind</button>" +
+                    "</div>" +
+                  "</div>" +
+                "</div>" +
               "</div>";
               this.$el.html($editBookingModal);
   },

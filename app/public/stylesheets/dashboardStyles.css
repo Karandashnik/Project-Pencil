@@ -15,6 +15,11 @@ body {
   font-size: 1.25em;
   text-decoration: none;
 }
+
+a:hover {
+
+}
+
 #nameSpot {
   font-size: 3em;
 }
@@ -113,6 +118,9 @@ body {
 
 .editBookingButton {
   background-color: #E09A5E;
+  color: white;
+  display: block;
+  float: right;
 }
 /********************************
 ***** KidList Style********
@@ -123,6 +131,14 @@ body {
 
 #addKid {
   background-color: #E09A5E;
+  color: white;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#addKid:hover {
+  color: black;
 }
 
 
@@ -156,8 +172,228 @@ text-align: center;
   padding: 2%;
 }
 
+.editKidBtn {
+  background-color: #E09A5E;
+  color: white;
+  display: block;
+  float: right;
+}
+
+/****************Add Kid Modal*****************/
+#kidModal .modal-content {
+  -webkit-border-radius: 25px !important;
+  -moz-border-radius: 25px !important;
+  border-radius: 25px !important;
+  width: 400px;
+  margin: 0 auto;
+}
+
+#kidModal .form-group {
+  max-width: 250px;
+  margin: 1em auto;
+}
+
+#kidModal h2 {
+  font-weight: bolder;
+}
+
+#kidModal .modal-body {
+  background-color: #DBDBDB;
+}
+
+#kidModal .modal-header {
+  background-color: #77B3D4;
+  border: none;
+  -webkit-border-radius: 25px 25px 0px 0px!important;
+  -moz-border-radius: 25px 25px 0px 0px!important;
+  border-radius: 25px 25px 0px 0px !important;
+}
+
+#kidModal .modal-footer {
+  border: none;
+}
+
+.saveKidBtn {
+  border: none;
+  background-color: #0C3D6E;
+  opacity: 1;
+}
+
+/********Edit Kid Modal*****************/
+#editKidModal .modal-content {
+  -webkit-border-radius: 25px !important;
+  -moz-border-radius: 25px !important;
+  border-radius: 25px !important;
+  width: 400px;
+  margin: 0 auto;
+}
+
+#editKidModal .form-group {
+  max-width: 250px;
+  margin: 1em auto;
+}
+
+#editKidModal h2 {
+  font-weight: bolder;
+}
+
+#editKidModal .modal-body {
+  background-color: #DBDBDB;
+}
+
+#editKidModal .modal-header {
+  background-color: #77B3D4;
+  border: none;
+  -webkit-border-radius: 25px 25px 0px 0px!important;
+  -moz-border-radius: 25px 25px 0px 0px!important;
+  border-radius: 25px 25px 0px 0px !important;
+}
+
+#editKidModal .modal-footer {
+  border: none;
+}
+
+#saveChanges {
+  border: none;
+  background-color: #0C3D6E;
+}
+
+#deleteChild {
+  border: none;
+  background-color: #C75C5C;
+}
+
+/*********Create Booking Modal*******************/
+#bookingModal .modal-content {
+  -webkit-border-radius: 25px !important;
+  -moz-border-radius: 25px !important;
+  border-radius: 25px !important;
+  width: 600px;
+  margin: 0 auto;
+}
+
+#bookingModal .form-group {
+  max-width: 400px;
+  margin: 1em auto;
+}
+
+#bookingModal h2 {
+  font-weight: bolder;
+}
+
+#bookingModal .modal-body {
+  background-color: #DBDBDB;
+}
+
+#bookingModal .modal-header {
+  background-color: #77B3D4;
+  border: none;
+  -webkit-border-radius: 25px 25px 0px 0px!important;
+  -moz-border-radius: 25px 25px 0px 0px!important;
+  border-radius: 25px 25px 0px 0px !important;
+}
+
+#bookingModal .modal-footer {
+  border: none;
+}
+
+#saveBooking {
+  max-width: 250px;
+  border: none;
+  background-color: #0C3D6E;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+#bookingModal .list-group-item {
+  max-width: 80%;
+  border-radius: 25px;
+  padding: 0px;
+  margin-bottom: 0.7em;
+}
+
+.bookingRadio {
+  font-size: 0.7em;
+  padding: 10px 30px;
+}
+
+.kids {
+  text-align: left;
+  padding-left: 10px;
+}
+
+.bookingError {
+  color:  #C75C5C;
+  text-align: center;
+}
+
+/*********Edit Booking Modal*******************/
+#editBookingModal .modal-content {
+  -webkit-border-radius: 25px !important;
+  -moz-border-radius: 25px !important;
+  border-radius: 25px !important;
+  width: 500px;
+  margin: 0 auto;
+}
+
+#editBookingModal .form-group {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+#editBookingModal h2 {
+  font-weight: bolder;
+}
+
+#editBookingModal .modal-body {
+  background-color: #DBDBDB;
+}
+
+#editBookingModal .modal-header {
+  background-color: #77B3D4;
+  border: none;
+  -webkit-border-radius: 25px 25px 0px 0px!important;
+  -moz-border-radius: 25px 25px 0px 0px!important;
+  border-radius: 25px 25px 0px 0px !important;
+}
+
+#editBookingModal .modal-footer {
+  border: none;
+}
+
+#saveBookingChanges {
+  border: none;
+  background-color: #0C3D6E;
+}
+
+#editBookingModal .list-group-item {
+  border-radius: 25px;
+  max-width: 90%;
+  margin-bottom: 0.7em;
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+}
+
+#editBookingOptions {
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+  font-size: 1.5em;
+}
+
+#currentBookingInfo {
+  margin: 20px 40px;
+}
+#deleteBooking {
+  border: none;
+  background-color: #C75C5C;
+}
+
 /********************************
-***** Media Querry Style********
+***** Media Query Style********
 ********************************/
 @media only screen
 and (max-device-width: 700px) {
@@ -175,6 +411,11 @@ and (max-device-width: 700px) {
     #upcomingBookings li {
     font-size: .9em;
     }
+
+    #noBookingsMsg {
+      color: blue !important;
+    }
+
     .welcomeDash {
       width: 100%;
       padding-bottom: 1em;
