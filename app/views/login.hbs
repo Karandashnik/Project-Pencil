@@ -58,10 +58,10 @@
             <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="" name="password">
           </div>
           <div class="form-group">
-            <button class="btn btn-primary btn-lg btn-block" type="submit">Sign in</button>
+            <button class="btn btn-primary btn-lg btn-block loginBtn" type="submit">Sign in</button>
           </div>
           <div class="form-group">
-            <a href="/auth/facebook" class="btn btn-primary btn-lg btn-block" role="button"><span class="glyphicon glyphicon-user"></span> Sign in with Facebook</a>
+            <a href="/auth/facebook" class="btn btn-primary btn-lg btn-block loginBtn" role="button"><span class="glyphicon glyphicon-user"></span> Sign in with Facebook</a>
           </div>
         </form>
         <div id="local">
@@ -161,8 +161,6 @@ var currentUser = '';
 
 $("question").click(function() {
   $('textforFamily').addClass('showText');
-});
-
 });
 
  </script>

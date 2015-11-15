@@ -120,7 +120,14 @@ var Calendar = function() {
 						var tdTag = "<td></td>"
 						calendarHtml += tdTag;
 					} else {
-						var tdTag = "<td id=" + year + "-" + month + "-" + day + " class=dayView data-toggle=modal data-target=#bookingModal>" + day + "</td>";
+						var today = new Date().setHours(0,0,0,0);
+						var calendarDay = new Date(year, month, day);
+						var dayIndex = calendarDay.getDay();
+						if (calendarDay < today || (dayIndex === 0 || dayIndex === 6)) {
+						  var tdTag = "<td id=" + year + "-" + month + "-" + day + " class='blockOut'>" + day + "</td>";
+						} else {
+							var tdTag = "<td id=" + year + "-" + month + "-" + day + " class='dayView' data-toggle='modal' data-target='#bookingModal'>" + day + "</td>";
+						}
 						calendarHtml += tdTag;
 					}
 				}

@@ -100,8 +100,15 @@ body {
 }
 
 #calendar #calGrid td.today {
-   background:#ededed;
-    color:#477599;
+   background: #5190ED;
+   color: black;
+    box-shadow:1px 1px 0px #fff inset;
+    -moz-box-shadow:1px 1px 0px #fff inset;
+    -webkit-box-shadow:1px 1px 0px #fff inset;
+}
+
+.blockOut {
+   background:#D3D3D3;
     box-shadow:1px 1px 0px #fff inset;
     -moz-box-shadow:1px 1px 0px #fff inset;
     -webkit-box-shadow:1px 1px 0px #fff inset;
