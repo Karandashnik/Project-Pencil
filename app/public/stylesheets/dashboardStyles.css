@@ -10,6 +10,8 @@ body {
   /*font-size: 1.5em;*/
 }
 
+
+
 .navbar-text {
   color: #fff;
   font-size: 1.25em;
@@ -22,6 +24,12 @@ a:hover {
 
 #nameSpot {
   font-size: 3em;
+}
+
+.navJotLogo {
+  width: 70px;
+  margin-right: 1em;
+  margin-top: .6em;
 }
 
 /********************************
@@ -61,7 +69,7 @@ a:hover {
 }
 
 #calendar {
-  margin-top: 0;
+  margin-top: .1em;
   padding-top: 0;
   width: 100%;
   height: 100%;
@@ -116,6 +124,11 @@ a:hover {
   letter-spacing: 1.1px;
 }
 
+#upcomingBookings p {
+  margin-left: 3.5em;
+
+}
+
 .editBookingButton {
   background-color: #E09A5E;
   color: white;
@@ -126,7 +139,8 @@ a:hover {
 ***** KidList Style********
 ********************************/
 .kidBox {
-  margin-top: .5em;
+  margin-top: .1em;
+  padding-top: .3em;
 }
 
 #addKid {
