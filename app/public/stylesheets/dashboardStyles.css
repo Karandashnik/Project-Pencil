@@ -19,6 +19,12 @@ body {
   font-size: 3em;
 }
 
+.navJotLogo {
+  width: 70px;
+  margin-right: 1em;
+  margin-top: .6em;
+}
+
 /********************************
 ***** Dashboard Container********
 ********************************/
@@ -56,7 +62,7 @@ body {
 }
 
 #calendar {
-  margin-top: 0;
+  margin-top: .1em;
   padding-top: 0;
   width: 100%;
   height: 100%;
@@ -118,7 +124,8 @@ body {
 ***** KidList Style********
 ********************************/
 .kidBox {
-  margin-top: .5em;
+  margin-top: .1em;
+  padding-top: .3em;
 }
 
 #addKid {

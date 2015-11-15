@@ -168,3 +168,18 @@ td {
 #calendar #calGrid table.temp {
   position: absolute;
 }
+/********************************
+*****Media Query Area *****
+********************************/
+@media only screen
+and (max-device-width: 700px) {
+
+#calendar td {
+      width:34px;
+      height:34px;
+      line-height:34px;
+  }
+
+
+
+}
