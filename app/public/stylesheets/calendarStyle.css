@@ -1,4 +1,3 @@
-
 .dayDiv {
   position: relative;*/
   z-index: 5000;
@@ -167,4 +166,52 @@ td {
 }
 #calendar #calGrid table.temp {
   position: absolute;
+}
+/********************************
+*****Media Query Area *****
+********************************/
+@media only screen
+and (max-device-width: 700px) {
+
+  #calendar .header span {
+    line-height:34px;
+
+  }
+
+  #calendar .calHeader .button {
+    width: 24px;
+    text-align: center;
+    position: absolute;
+  }
+
+  #calendar .calHeader .month-year {
+    letter-spacing: 1px;
+    width: 100%;
+    text-align: center;
+  }
+
+  #calendar td {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+  }
+
+  #calendar .calHeader span {
+    display: inline-block;
+    line-height: 50x;
+  }
+
+  #calendar .calHeader {
+    font-size: 1.85em;
+  }
+
+  .jotBall {
+    left: 15%;
+    top: 0%;
+    width: 32px;
+    height: 32px;
+  }
+
+
+
 }
