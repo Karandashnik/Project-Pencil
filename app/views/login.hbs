@@ -82,86 +82,61 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <ul class="regModalTop">
-          <li><h2 class="modal-title">Sign Up</h2></li>
-          <li><img src="images/jotLogoWebLarge.png" id= "jotLogoLogin" alt="logo"></li>
+        <h2 class="modal-title">Sign Up</h2>
       </div>
       <div class="modal-body">
+        <img src="images/jotLogoWebLarge.png" id= "jotLogoLogin" alt="logo">
         <form id="local-reg" action="/local-reg" method="post">
-          <div class="row">
-            <div class="form-group">
-              <label for="inputEmail" class="sr-only">Email address</label>
-              <input type="email" id="inputEmail" class="form-control" placeholder="Email Address" required="" autofocus="" name="email">
-            </div>
-          </div>
-          <div class="row">
-            <div class="form-group">
-              <label for="inputFirstName" class="sr-only">First Name</label>
-              <input type="text" id="inputFirstName" class="form-control" placeholder="First name" required="" autofocus="" name="firstName">
-            </div>
-          </div>
-          <div class="row">
-            <div class="form-group">
-              <label for="inputLastName" class="sr-only">Last Name</label>
-              <input type="text" id="inputLastName" class="form-control" placeholder="Last name" required="" autofocus="" name="lastName">
-            </div>
-          </div>
-          <div class="row">
-            <div class="form-group">
-              <label for="radio-inline" >Allow Multiple Caregivers Access to my bookings?</label>
-              <label class="radio-inline"><input type="radio" name="optradio">Yes</label>
-              <label class="radio-inline"><input type="radio" name="optradio">No</label>
-              <!-- <div id="question">
-                <a href="#"> What&rsquo;s this?</a>
-            <div class="nowShowText" id = "textforFamily">
-              <p>Choose yes to create family ID to share with other caregivers who will need to make reservations.<p>
-            </div> -->
-
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="form-group">
-              <label for="inputUsername" class="sr-only">Create Username</label>
-              <input type="text" id="inputUsername" class="form-control" placeholder="Create Username" required="" autofocus="" name="username">
-            </div>
-          </div>
-          <div class="row">
-            <div class="form-group">
-              <label for="inputPassword" class="sr-only">Create Password</label>
-              <input type="password" id="inputPassword" class="form-control" placeholder="Create Password" required="" name="password">
-            </div>
-          </div>
-          <div class="row">
           <div class="form-group">
-              <button class="btn btn-primary btn-lg btn-block loginBtn" type="submit">Sign Up</button>
-            </div>
+            <label for="inputFirstName" class="sr-only">First Name</label>
+            <input type="text" id="inputFirstName" class="form-control" placeholder="First name" required="" autofocus="" name="firstName">
+          </div>
+          <div class="form-group">
+            <label for="inputLastName" class="sr-only">Last Name</label>
+            <input type="text" id="inputLastName" class="form-control" placeholder="Last name" required="" autofocus="" name="lastName">
+          </div>
+          <div class="form-group">
+            <label for="inputEmail" class="sr-only">Email address</label>
+            <input type="email" id="inputEmail" class="form-control" placeholder="Email Address" required="" autofocus="" name="email">
+          </div>
+          <div class="form-group">
+            <label for="inputUsername" class="sr-only">Create Username</label>
+            <input type="text" id="inputUsername" class="form-control" placeholder="Create Username" required="" autofocus="" name="username">
+          </div>
+          <div class="form-group">
+            <label for="inputPassword" class="sr-only">Create Password</label>
+            <input type="password" id="inputPassword" class="form-control" placeholder="Create Password" required="" name="password">
+          </div>
+          <div class="form-group">
+            <label for="radio-inline" >Allow multiple caregivers access to my bookings?</label>
+            <label class="radio-inline"><input type="radio" name="optradio">Yes</label>
+            <label class="radio-inline"><input type="radio" name="optradio">No</label>
+            <!-- <div id="question">
+              <a href="#"> What&rsquo;s this?</a>
+          <div class="nowShowText" id = "textforFamily">
+            <p>Choose yes to create family ID to share with other caregivers who will need to make reservations.<p>            </div> -->
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary btn-lg btn-block loginBtn" type="submit">Sign Up</button>
+          </div>
         </div>
       </form>
       <div class="modal-footer">
-        <div class="form-group">
         <button type="button" class="btn btn-default" data-dismiss="modal">Nevermind</button>
-      </div>
-      </div>
       </div>
     </div>
   </div>
+</div>
 
 <footer>
-      <p>&copy;2015 Ogle &amp; Goodwin </p>
-
+  <p>&copy;2015 Ogle &amp; Goodwin </p>
 </footer>
 </div>
 </body>
 <script>
 var currentUser = '';
+// $("question").click(function() {
+//   $('textforFamily').addClass('showText');
+// });
 </script>
-
-<script>
-
-$("question").click(function() {
-  $('textforFamily').addClass('showText');
-});
-
- </script>
- </div>
+</html>
