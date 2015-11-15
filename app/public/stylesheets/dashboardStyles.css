@@ -4,16 +4,28 @@ body {
 }
 
 .mainNav {
-  background-color: #B8B8B8;
-  font-size: 1.5em;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  background-color: #C75C5C;
+  /*font-size: 1.5em;*/
 }
 
+.navbar-text {
+  color: #fff;
+  font-size: 1.25em;
+  text-decoration: none;
+}
+#nameSpot {
+  font-size: 3em;
+}
 
 /********************************
 ***** Dashboard Container********
 ********************************/
 .container {
   background-color: #D9BFA6;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
 }
 
 /*controls width of jot logo */
@@ -33,6 +45,10 @@ body {
 ********************************/
 .boxCal {
   margin-top: .25em;
+}
+
+.calThumb {
+  padding-top:  1em;
 }
 
 .calCaption {
@@ -70,7 +86,6 @@ body {
   width: 100%;
 }
 
-
 /********************************
 ***** Bookings Style********
 ********************************/
@@ -101,6 +116,14 @@ body {
 /********************************
 ***** KidList Style********
 ********************************/
+.kidBox {
+  margin-top: .5em;
+}
+
+#addKid {
+  background-color: #E09A5E;
+}
+
 
 /*The div that the list of kids is in*/
 #styleforKidList {

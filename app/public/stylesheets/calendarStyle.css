@@ -10,13 +10,13 @@
   -moz-box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
   -webkit-box-shadow: 0px 3xp 3px rgba(0, 0, 0, 0.25);
   margin: 50px auto;
-  font: 26px/1.5 "Helvetica Neue", Helvatica, Arial, sans-serif;
+  font: 1.25em/1.5 "Helvetica Neue", Helvatica, Arial, sans-serif;
   display: table;
 }
 
 #calendar .calHeader {
   cursor: default;
-  background: DarkRed;
+  background: #77B3D4;
   height: 64px;
   position: relative;
   color: #fff;
@@ -26,8 +26,10 @@
     -moz-border-radius-topright: 5px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
+  font-size: 2.65em;
   font-weight: normal;
-  text-shadow: 0px -1px 0 #87260C;
+  /*text-shadow: 0px -1px 0 #87260C;*/
+  padding-bottom: .5%;
 }
 
 #calendar .calHeader span {
@@ -35,37 +37,31 @@
   line-height: 64px;
 }
 
+/*This is the Month Label*/
 #calendar .calHeader .button {
   width: 53px;
-
   text-align: center;
   position: absolute;
 }
 
 #calendar .calHeader .left.button {
   left: 0;
-  /*border-right:1px solid #ae2a0c;*/
-  /*-webkit-border-top-left-radius: 5px;
-  -moz-border-radius-topleft: 5px;*/
   border-top-left-radius: 5px;
 }
 
 #calendar .calHeader .right.button {
   right:0;
     top:0;
-    /*border-left:1px solid #ae2a0c;*/
-    /*-webkit-border-top-right-radius: 5px;
-    -moz-border-radius-topright: 5px;*/
     border-top-right-radius: 5px;
 }
 
 #calendar .calHeader .button:hover {
-  background: -moz-linear-gradient(top, #d94215, #bb330f);
-  background: -webkit-gradient(linear, left top, left bottom, from(#d94215), to(#bb330f));
+  background: -moz-linear-gradient(top, #C75C5C, #bb330f);
+  background: -webkit-gradient(linear, left top, left bottom, from(#C75C5C), to(#bb330f));
 }
 
 #calendar .calHeader .month-year {
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
   width: 100%;
   text-align: center;
 }
@@ -75,34 +71,35 @@
   border-collapse: collapse;
 }
 
+/*This centers the numbers on the calendar*/
 #calendar td {
   color:#2b2b2b;
-    width:50px;
-    height:50px;
-    line-height:30px;
+    width:90px;
+    height:90px;
+    line-height:90px;
     text-align:center;
     /*border:1px solid #fff;*/
     cursor:default;
 }
 
-#calendar #days td {
+/*#calendar #days td {
     height:26px;
     line-height: 26px;
     font-size:90%;
-    color:#DarkRed;
-}
+    color: #C75C5C;
+}*/
 
-#calendar #days td:not(:last-child) {
+/*#calendar #days td:not(:last-child) {
   border-right: 1px solid #fff;
-}
+}*/
 
-#calendar #calGrid td.today {
-   background: #5190ED;
+/*#calendar #calGrid td.today {
+   background: #77B3D4;;
    color: black;
     box-shadow:1px 1px 0px #fff inset;
     -moz-box-shadow:1px 1px 0px #fff inset;
     -webkit-box-shadow:1px 1px 0px #fff inset;
-}
+}*/
 
 .blockOut {
    background:#D3D3D3;
@@ -115,8 +112,8 @@
   color:#fff;
     text-shadow: #6C1A07 0px -1px;
     background:#CD310D;
-    background: -moz-linear-gradient(top, #b32b0c, #cd310d);
-    background: -webkit-gradient(linear, left top, left bottom, from(#b32b0c), to(#cd310d));
+    background: -moz-linear-gradient(top, #C75C5C, #cd310d);
+    background: -webkit-gradient(linear, left top, left bottom, from(#C75C5C), to(#cd310d));
     -moz-box-shadow:0px 0px 0px;
     -webkit-box-shadow:0px 0px 0px;
 }

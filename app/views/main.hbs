@@ -46,18 +46,19 @@
           </button>
         </div>
   </div>
-  <div class="navbar-collapse collapse">
+  <div class="navbar-collapse collapse mainNav">
           <ul class="nav navbar-nav navbar-left">
-              <li><p class="navbar-text">
+              <li><p class="navbar-text" id="nameSpot">
               {{#if user}}
-              <strong>Hi,</strong>
-              {{user.firstName}}
+              <strong>Hi </strong>
+              {{user.firstName}} &#33;
               </p></li>
-            <li><a href="#">How it Works</a></li>
-            <li><a href="#">Our Story</a></li>
+
           </ul>
           <ul class="nav navbar-nav navbar-right navStyle ">
-            <li><a href="/logout">Log Out</a></li>
+            <li><a href ="#" class="navbar-text">How it Works</a></li>
+            <li><a href="#"class="navbar-text">Our Story</a></li>
+            <li><a href="/logout" class="navbar-text">Log Out</a></li>
           </ul>
   </div>
 </div>
@@ -82,15 +83,7 @@
     </div>
   </div>
 
-  <div class="col-sm-6 col-md-4">
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="thumbnail">
-          <img src="images/clipboard.png" alt="booking icon">
-            <div id="upcomingBookings"></div>
-          </div>
-      </div>
-    </div>
+  <div class="col-sm-6 col-md-4 kidBox">
     <div class="row">
       <div class="col-xs-12">
         <div class="thumbnail">
@@ -98,6 +91,15 @@
           <div id="kidList"></div>
         </div>
       </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="thumbnail">
+          <img src="images/clipboard.png" alt="booking icon">
+            <div id="upcomingBookings"></div>
+          </div>
+      </div>
+
     </div>
   </div>
 </div>
