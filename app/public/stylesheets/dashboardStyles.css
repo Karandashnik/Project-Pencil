@@ -3,6 +3,12 @@ body {
   font-family: 'Cabin', sans-serif;
 }
 
+.mainNav {
+  background-color: #B8B8B8;
+  font-size: 1.5em;
+}
+
+
 /********************************
 ***** Dashboard Container********
 ********************************/
