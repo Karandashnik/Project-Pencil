@@ -3,7 +3,7 @@
 ///////////////////////////////////////////////
 var UserKidsView = Backbone.View.extend({
   initialize: function() {
-    this.listenTo(this.collection, "add", this.listenToModel);
+  //  this.listenTo(this.collection, "add", this.listenToModel);
     this.listenTo(this.collection, "update", this.render);
   },
 
@@ -33,8 +33,7 @@ var UserKidsView = Backbone.View.extend({
   },
 
   render: function() {
-    var addKidButton = '<button class="addKidView btn btn-lg" id="addKid" data-toggle="modal" data-target="#kidModal">Add Child</button>';
-    var editKidButton = '<button class="editKidBtn btn btn-xs" id="editKid" data-toggle="modal" data-target="#editKidModal">Edit</button>';
+    var addKidButton = "<button class='addKidView btn btn-lg' id='addKid' data-toggle='modal' data-target='#kidModal'>Add Child</button>";
     var kiddos = this.collection.pluck("kidFullName");
     var kiddoF = this.collection.pluck("kidFirstName");
     var title = "<h3 class='listTitle'>" + 'Registered Children' + "</h3>";
@@ -42,11 +41,11 @@ var UserKidsView = Backbone.View.extend({
     var styleListOpen = "<div class='list-group'>";
     var styleListClose = "</div>";
     for (var i = 0; i < kiddos.length; i++) {
-      var listContents = "<li class='list-group-item editKid oneKid' id=" +kiddoF[i]+ " + >" + kiddos[i] + editKidButton +
-      "</li>";
+      var editKidButton = "<button class='editKidBtn btn btn-xs editKid' id=" + kiddoF[i] + " data-toggle='modal' data-target='#editKidModal'>Edit</button>";
+      var listContents = "<li class='list-group-item editKid oneKid'>" + kiddos[i] + editKidButton + "</li>";
       listBody += listContents;
     }
-    this.$el.html(title + styleListOpen + listBody  + styleListClose + addKidButton);
+    this.$el.html(title + styleListOpen + listBody + styleListClose + addKidButton);
 
   }
 });

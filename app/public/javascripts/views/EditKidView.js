@@ -52,8 +52,11 @@ deleteKidBookings: function() {
 
 render: function() {
   var firstName = this.model.get("kidFirstName");
+  console.log(firstName);
   var midInit = this.model.get("kidMidInitial");
+  console.log(midInit);
   var lastName = this.model.get("kidLastName");
+  console.log(lastName);
   var $editKidModal =
               "<div id='editKidModal' class='modal fade' role='dialog'>" +
                 "<div class='modal-dialog'>" +
