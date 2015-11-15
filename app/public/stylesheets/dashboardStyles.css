@@ -1,24 +1,24 @@
 body {
-  background-color: #5C8F99;
+  background-color: #fff;
   font-family: 'Cabin', sans-serif;
 }
+
+.mainNav {
+  background-color: #B8B8B8;
+  font-size: 1.5em;
+}
+
 
 /********************************
 ***** Dashboard Container********
 ********************************/
-
-.container-responsive {
-  border-radius: 25px;
-  background-color: #fff;
-  padding:2em;
-  margin: 2em;
-  width: auto;
-  /*position: relative;*/
+.container {
+  background-color: #D9BFA6;
 }
 
 /*controls width of jot logo */
 .welcomeDash {
-  width: 200px;
+  width: 100px;
   /*margin-right: 35%;*/
 }
 
@@ -31,11 +31,45 @@ body {
 /********************************
 ***** Calendar Container********
 ********************************/
-
-input[type=submit] {
-  font-size: 2em;
-  border-radius: 35px;
+.boxCal {
+  margin-top: .25em;
 }
+
+.calCaption {
+  background-color: #D9BFA6;
+}
+
+#calendar {
+  margin-top: 0;
+  padding-top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#label {
+  width: 100%;
+  height: 100%;
+}
+
+#next {
+  width: 100%;
+  height: 100%;
+}
+
+#calGrid {
+  width: 100%;
+  height: 100%;
+}
+
+#weekdays {
+  width: 100%;
+  height: 100%;
+}
+
+.curr {
+  width: 100%;
+}
+
 
 /********************************
 ***** Bookings Style********
