@@ -1,16 +1,18 @@
 var BookingView = Backbone.View.extend({
   render: function() {
     var date = new Date(this.model.date);
-    var editButton = "<button type='button' class='btn btn-xs btn-info' data-toggle='modal' data-target='#editBookingModal' id='editBooking'>Edit</button>";
+    var editButton = "<button type='button' class='btn btn-xs editBookingButton' data-toggle='modal' data-target='#editBookingModal' id='editBooking'>Edit</button>";
     var options = { weekday: 'short', year: 'numeric', month: 'long', day: 'numeric' };
     var dateString = date.toLocaleString('en-US', options);
     var service = this.model.service === 'Both'? 'Morning Care & After Care' : this.model.service;
-    var bookingHtml = "<p>" + dateString + ": " + this.model.kid + " has " + service + editButton + "</p>";
-    this.$el.html(bookingHtml);
+    var openGroup = "<ul class='list-group'>"
+    var closeGroup = "</ul>"
+    var bookingHtml = "<li class='list-group-item bookingListText'>" + dateString + ": " + this.model.kid + " has " + service + editButton + "</li>";
+    this.$el.html(openGroup + bookingHtml + closeGroup);
   },
 
   initialize: function() {
-    
+
   },
 
   events: {
