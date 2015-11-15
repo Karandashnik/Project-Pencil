@@ -41,18 +41,6 @@ var Calendar = function() {
 		});
 	}
 
-	function prepareCreateBookingView() {
-		var day = event.target.id;
-		var monthYear = label.text().trim().split(" ");
-		var month = months.indexOf(monthYear[0]);
-		var year = monthYear[1];
-		var date = new Date(year, month, day);
-		var bookingModel = new BookingModel({date: date, user: currentUser})
-		var createBookingView = new CreateBookingView({collection: main.bookingCollection, model: bookingModel});
-		createBookingView.render();
-		$("#calendar").append(createBookingView.$el);
-	}
-
 	function createDays() {
 		for (var i = 0; i < weekdays.length; i++) {
 			var dW = weekdays[i];
