@@ -1,16 +1,24 @@
 
-.bookingError {
-  color: red;
+
+.jotBall {
+  opacity: 0.8;
+  z-index:-1;
 }
-.calendarDayNumber {
-  font-size: 1.5em;
+
+.calendarNumber {
+  display: inline;
+}
+
+.dayDiv {
+  position: relative;
 }
 
 #calendar {
   -moz-box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
   -webkit-box-shadow: 0px 3xp 3px rgba(0, 0, 0, 0.25);
   margin: 50px auto;
-  font: 1.25em/1.5 "Helvetica Neue", Helvatica, Arial, sans-serif;
+  font: 1.25em/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+
   display: table;
 }
 

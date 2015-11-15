@@ -17,12 +17,13 @@ var CalendarDayView = Backbone.View.extend({
   },
 
   initialize: function() {
-    this.listenTo(this.collection, "add", this.render);
-    this.listenTo(this.collection, "update", this.render);
+    //this.listenTo(this.collection, "add", this.render);
+    //this.listenTo(this.collection, "update", this.render);
   },
 
   markCalendar: function(id) {
-    $("#" + id).addClass("calendarDayNumber");
+  //  $("#" + id).addClass("calendarDayNumber");
+    $("#" + id).append("<img class='jotBall' src='images/jotBall.png' alt='kid icon'>")
   },
 
   investigateNewBooking: function() {

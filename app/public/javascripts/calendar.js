@@ -124,9 +124,9 @@ var Calendar = function() {
 						var calendarDay = new Date(year, month, day);
 						var dayIndex = calendarDay.getDay();
 						if (calendarDay < today || (dayIndex === 0 || dayIndex === 6)) {
-						  var tdTag = "<td id=" + year + "-" + month + "-" + day + " class='blockOut'>" + day + "</td>";
+						  var tdTag = "<td id=" + year + "-" + month + "-" + day + " class='blockOut dayDiv'><h4 class='calendarNumber'>" + day + "</h4></td>";
 						} else {
-							var tdTag = "<td id=" + year + "-" + month + "-" + day + " class='dayView' data-toggle='modal' data-target='#bookingModal'>" + day + "</td>";
+							var tdTag = "<td id=" + year + "-" + month + "-" + day + " class='dayView dayDiv' data-toggle='modal' data-target='#bookingModal'><h4 class='calendarNumber'>" + day + "</h4></td>";
 						}
 						calendarHtml += tdTag;
 					}

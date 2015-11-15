@@ -57,7 +57,8 @@ checkCalendarDay: function(model) {
   var bookingsOnSameDay = this.collection.where({dateId: model.get("dateId")});
   if (bookingsOnSameDay.length <= 1) {
     var dayModel = main.calendarDayCollection.findWhere({dateId: model.get("dateId")});
-    $("#" + dayModel.get("dateId")).removeClass("calendarDayNumber");
+    var day = model.get("dateId").split("-")[2];
+    $("#" + dayModel.get("dateId")).html(day);
     dayModel.destroy();
     //this ID exists in calendar.hbs but IT DOESN'T SEEEE ITTTT :-(
 
