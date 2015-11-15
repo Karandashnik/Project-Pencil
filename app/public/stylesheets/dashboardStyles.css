@@ -10,6 +10,8 @@ body {
   /*font-size: 1.5em;*/
 }
 
+
+
 .navbar-text {
   color: #fff;
   font-size: 1.25em;
@@ -115,6 +117,11 @@ body {
   font-weight: 400;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   letter-spacing: 1.1px;
+}
+
+#upcomingBookings p {
+  margin-left: 3.5em;
+
 }
 
 .editBookingButton {
