@@ -42,11 +42,9 @@
     <div class="jumbotron">
       <img src="images/admissionsKidsBackup.jpg" id="heroImage" alt="background-image">
     </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-12 col-md-6 col-md-offset-4 col-lg-4 col-lg-offset-4">
+    <div class="wrapper">
 <!-- Sign In Form-->
-      <div class= "wrapper">
+        <img src="images/jotLogoWebLarge.png" class= "jotLogo" alt="logo">
         <form id="local-sign-in" class= "form-signin" action="/login" method="post">
           <div class="logoInLogin">
             <!-- <img src="images/jotLogoWebLarge.png" id= "jotLogoLogin" alt="backgroundImage"> -->
@@ -68,11 +66,12 @@
           </div>
         </form>
         <div id="local">
-          <button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal">I don't have an account yet</button>
+          <button type="button" class="btn btn-link newAccountLink" data-toggle="modal" data-target="#myModal">I don't have an account yet</button>
+
         </div>
       </div>
     </div>
-  </div>
+
   <!-- </div> -->
 
 
@@ -84,7 +83,9 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h2 class="modal-title">Sign Up</h2>
+        <ul class="regModalTop">
+          <li><h2 class="modal-title">Sign Up</h2></li>
+          <li><img src="images/jotLogoWebLarge.png" id= "jotLogoLogin" alt="logo"></li>
       </div>
       <div class="modal-body">
         <form id="local-reg" action="/local-reg" method="post">
