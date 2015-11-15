@@ -70,6 +70,9 @@ background-color:#fff;
   margin-bottom: .25em;
 }
 
+.loginBtn {
+  border: none;
+}
 
 #local .newAccountLink {
   text-decoration: none;
@@ -154,11 +157,5 @@ background-color:  #B8B8B8;
 #myModal .regModalTop li {
   padding-right: 1em;
   margin: 1em;
-
-}
-
-
-
-
 
 }

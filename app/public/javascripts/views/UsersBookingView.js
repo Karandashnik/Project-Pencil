@@ -12,7 +12,8 @@ var UsersBookingView = Backbone.View.extend({
           listOfBookings.push(booking);
         });
         listOfBookings.sort(self.sortBookings);
-        listOfBookings.forEach(self.appendBooking, self);
+        var filteredBookings = listOfBookings.filter(self.dropOldBookings);
+        filteredBookings.forEach(self.appendBooking, self);
       } else {
         $("#upcomingBookings").append("<p> You currently don't have any care scheduled.</p>");
       }
@@ -32,6 +33,10 @@ var UsersBookingView = Backbone.View.extend({
 
   sortBookings: function(a,b) {
     return new Date(a.date) - new Date(b.date);
+  },
+
+  dropOldBookings: function(booking) {
+    return new Date(booking.date) >= new Date().setHours(0,0,0,0);
   },
 
   appendBooking: function(newModel) {
