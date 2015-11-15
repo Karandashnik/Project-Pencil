@@ -3,11 +3,15 @@
   z-index: 5000;
 }
 
+a:hover {
+  background-color: none;
+}
+
 .jotBall {
   position: absolute;
   left: 25%;
   top: 20%;
-  opacity: 0.6;
+  opacity: 0.8;
   z-index:100;
 }
 
@@ -33,6 +37,9 @@ td {
   z-index:5500;
 }
 
+.bookingDay {
+  color: white !important;
+}
 
 
 #calendar {
@@ -97,7 +104,6 @@ td {
 }
 
 #calendar table {
-  background: #navajoWhite;
   border-collapse: collapse;
 }
 

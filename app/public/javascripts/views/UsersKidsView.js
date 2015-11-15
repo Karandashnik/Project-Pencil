@@ -33,7 +33,8 @@ var UserKidsView = Backbone.View.extend({
   },
 
   render: function() {
-    var addKidButton = '<button class = "addKidView btn btn-warning btn-lg" id="addKid" data-toggle="modal" data-target="#kidModal">Add Child</button>';
+    var addKidButton = '<button class="addKidView btn btn-lg" id="addKid" data-toggle="modal" data-target="#kidModal">Add Child</button>';
+    var editKidButton = '<button class="editKidBtn btn btn-xs" id="editKid" data-toggle="modal" data-target="#editKidModal">Edit</button>';
     var kiddos = this.collection.pluck("kidFullName");
     var kiddoF = this.collection.pluck("kidFirstName");
     var title = "<h3 class='listTitle'>" + 'Registered Children' + "</h3>";
@@ -41,8 +42,8 @@ var UserKidsView = Backbone.View.extend({
     var styleListOpen = "<div class='list-group'>";
     var styleListClose = "</div>";
     for (var i = 0; i < kiddos.length; i++) {
-      var listContents = "<button type='button' data-toggle='modal' data-target='#editKidModal' class='list-group-item editKid oneKid' id=" +kiddoF[i]+ " + >" + kiddos[i] +
-      "</button>";
+      var listContents = "<li class='list-group-item editKid oneKid' id=" +kiddoF[i]+ " + >" + kiddos[i] + editKidButton +
+      "</li>";
       listBody += listContents;
     }
     this.$el.html(title + styleListOpen + listBody  + styleListClose + addKidButton);
