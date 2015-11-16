@@ -442,4 +442,43 @@ and (max-device-width: 700px) {
       /*width: 200px;*/
     }
 
+    #bookingModal .modal-content {
+      width: 300px;
+      margin: 0 auto;
+    }
+
+    #bookingModal .form-group {
+      max-width: 280px;
+      margin: .5em auto;
+    }
+
+    #bookingModal h2 {
+      font-weight: bolder;
+      font-size: .5em;
+    }
+
+    #saveBooking {
+      max-width: 150px;
+    }
+
+    #editKidModal .modal-content {
+      width: 300px;
+    }
+
+    #editKidModal .form-group {
+      max-width: 250px;
+      margin: 1em auto;
+    }
+
+    #editKidModal h2 {
+      font-weight: bolder;
+    }
+
+    #editBookingModal .modal-content {
+      width: 350px;
+      margin: 0 auto;
+    }
+
+
+
 }
