@@ -1,7 +1,12 @@
 var express = require('express');
 var router = express.Router();
 var orch = require('orchestrate');
-var config = require('../config');
+var config = {};
+if (process.env.HEROKU) {
+	config.dbKey = process.env.DBKEY;
+} else {
+	config = require('../config');
+}
 var passport = require('passport');
 var LocalStrategy = require('passport-local');
 var FacebookStrategy = require('passport-facebook');

@@ -1,7 +1,12 @@
-var bcrypt = require('bcryptjs'),
-    Q = require('q'),
-    config = require('./config.js'), //config file contains all tokens and other private info
-    db = require('orchestrate')(config.dbKey); //config.dbKey holds Orchestrate token
+var bcrypt = require('bcryptjs');
+var Q = require('q');
+var config = {};
+if (process.env.HEROKU) {
+	config.dbKey = process.env.DBKEY;
+} else {
+  config = require('./config');
+};
+var db = require('orchestrate')(config.dbKey); //config.dbKey holds Orchestrate token
 
 //used in local-signup strategy
 exports.localReg = function (username, password, email, firstName, lastName) {

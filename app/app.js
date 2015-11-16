@@ -15,8 +15,15 @@ var _ = require('underscore');
 var Backbone = require('backbone');
 var LocalStrategy = require('passport-local');
 var FacebookStrategy = require('passport-facebook');
-var fbConfig = require('./fb.js');
-var config = require('./config.js'); //config file contains all tokens and other private info
+var fbConfig = {};
+var config = {};
+if (process.env.HEROKU) {
+	config.dbKey = process.env.DBKEY;
+  fbConfig.fbKey = process.env.FBKEY;
+} else {
+	config = require('./config');
+  fbConfig = require('./fb.js');
+}
 var funct = require('./functions.js'); //funct file contains our helper functions for our Passport and database work
 
 var routes = require('./routes/index');
