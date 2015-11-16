@@ -42,7 +42,7 @@ var UserKidsView = Backbone.View.extend({
     var styleListClose = "</div>";
     for (var i = 0; i < kiddos.length; i++) {
       var editKidButton = "<button class='editKidBtn btn btn-xs editKid' id=" + kiddoF[i] + " data-toggle='modal' data-target='#editKidModal'>Edit</button>";
-      var listContents = "<li class='list-group-item editKid oneKid'>" + kiddos[i] + editKidButton + "</li>";
+      var listContents = "<li class='list-group-item oneKid'>" + kiddos[i] + editKidButton + "</li>";
       listBody += listContents;
     }
     this.$el.html(title + styleListOpen + listBody + styleListClose + addKidButton);

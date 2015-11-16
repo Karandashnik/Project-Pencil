@@ -9,6 +9,16 @@ var EditKidView = Backbone.View.extend({
 events: {
   'click #saveChanges' : 'saveChanges',
   'click #deleteChild' : 'deleteChild',
+  'click #editKidNevermind' : 'clearInputs'
+},
+
+clearInputs: function() {
+  $('#editKidModal').on('hidden.bs.modal', function () {
+        $('#editFirstName').val("");
+        $('#editMidInit').val("");
+        $('#editLastName').val("");
+        $('#editKidModal').remove();
+   });
 },
 
 saveChanges: function() {
@@ -81,7 +91,7 @@ render: function() {
                     "<div class='modal-footer'>" +
                       "<button type='button' class='btn btn-primary' id='saveChanges'>Save Changes</button>" +
                       "<button type='button' class='btn btn-primary' id='deleteChild'>Delete</button>" +
-                      "<button type='button' class='btn btn-default clear' data-dismiss='modal'>Nevermind</button>" +
+                      "<button id='editKidNevermind' type='button' class='btn btn-default clear' data-dismiss='modal'>Nevermind</button>" +
                     "</div>" +
                   "</div>" +
                 "</div>" +
