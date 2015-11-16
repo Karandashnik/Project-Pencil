@@ -124,7 +124,7 @@ passport.use('local-signup', new LocalStrategy(
 passport.use('facebook', new FacebookStrategy({
   clientID        : fbConfig.appID,
   clientSecret    : fbConfig.appSecret,
-  callbackURL     : fbConfig.callbackUrl,
+  callbackURL     : fbConfig.callbackURL,
   //passReqToCallback: true,
   profileFields: ['id', 'name', 'displayName', 'picture.type(large)', 'email']
 },
