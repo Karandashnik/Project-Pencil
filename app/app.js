@@ -19,13 +19,14 @@ var fbConfig = {};
 var config = {};
 if (process.env.HEROKU) {
 	config.dbKey = process.env.DBKEY;
-  fbConfig.fbKey = process.env.FBKEY;
+  fbConfig.appSecret = process.env.APPSECRET;
+  fbConfig.appID = process.env.APPID;
+  fbConfig.callBackUrl = process.env.CALLBACKURL;
 } else {
 	config = require('./config');
   fbConfig = require('./fb.js');
 }
 var funct = require('./functions.js'); //funct file contains our helper functions for our Passport and database work
-
 var routes = require('./routes/index');
 
 var app = express();
