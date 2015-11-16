@@ -21,7 +21,7 @@ if (process.env.HEROKU) {
 	config.dbKey = process.env.DBKEY;
   fbConfig.appSecret = process.env.FACEBOOK_SECRET;
   fbConfig.appID = process.env.FACEBOOK_APP_ID;
-  fbConfig.callBackUrl = process.env.CALLBACKURL;
+  fbConfig.callbackURL = process.env.CALLBACKURL;
 } else {
 	config = require('./config');
   fbConfig = require('./fb.js');
