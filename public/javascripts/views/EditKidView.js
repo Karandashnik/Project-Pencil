@@ -53,7 +53,7 @@ deleteKidBookings: function() {
       var dayModel = main.calendarDayCollection.findWhere({dateId: model.get("dateId")});
       var day = model.get("dateId").split("-")[2];
       $("#" + model.get("dateId")).html(day);
-      //$("#" + id).removeClass("bookingDay");
+      $("#" + model.get("dateId")).removeClass("bookingDay");
       dayModel.destroy();
     }
     model.destroy();

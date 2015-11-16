@@ -59,7 +59,7 @@ checkCalendarDay: function(model) {
     var dayModel = main.calendarDayCollection.findWhere({dateId: model.get("dateId")});
     var day = model.get("dateId").split("-")[2];
     $("#" + dayModel.get("dateId")).html(day);
-    //$("#" + id).removeClass("bookingDay");
+    $("#" + dayModel.get("dateId")).removeClass("bookingDay");
     dayModel.destroy();
   }
 },
