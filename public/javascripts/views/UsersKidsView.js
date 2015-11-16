@@ -3,7 +3,7 @@
 ///////////////////////////////////////////////
 var UserKidsView = Backbone.View.extend({
   initialize: function() {
-  //  this.listenTo(this.collection, "add", this.listenToModel);
+    this.listenTo(this.collection, "add", this.listenToModel);
     this.listenTo(this.collection, "update", this.render);
   },
 

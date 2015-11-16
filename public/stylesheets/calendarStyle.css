@@ -130,12 +130,16 @@ td {
 }*/
 
 /*#calendar #calGrid td.today {
-   background: #77B3D4;;
+   background: #77B3D4;
    color: black;
     box-shadow:1px 1px 0px #fff inset;
     -moz-box-shadow:1px 1px 0px #fff inset;
     -webkit-box-shadow:1px 1px 0px #fff inset;
 }*/
+
+#calendar #calGrid td.today {
+  background: #77B3D4;
+}
 
 .blockOut {
    background:#D3D3D3;
