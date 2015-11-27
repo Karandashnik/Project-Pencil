@@ -1,7 +1,6 @@
 .dayDiv {
   position: relative;
-  z-index: 5000;
-  font-size: 4.0vmin;
+  font-size: 3.7vmin;
 }
 
 a:hover {
@@ -109,25 +108,6 @@ td {
     cursor:default;
 }
 
-/*#calendar #days td {
-    height:26px;
-    line-height: 26px;
-    font-size:90%;
-    color: #C75C5C;
-}*/
-
-/*#calendar #days td:not(:last-child) {
-  border-right: 1px solid #fff;
-}*/
-
-/*#calendar #calGrid td.today {
-   background: #77B3D4;
-   color: black;
-    box-shadow:1px 1px 0px #fff inset;
-    -moz-box-shadow:1px 1px 0px #fff inset;
-    -webkit-box-shadow:1px 1px 0px #fff inset;
-}*/
-
 #calendar #calGrid td.today {
   background: #77B3D4;
 }
@@ -171,6 +151,8 @@ td {
 /********************************
 *****Media Query Area *****
 ********************************/
+
+
 @media only screen
 and (max-device-width: 700px) {
 
@@ -186,7 +168,7 @@ and (max-device-width: 700px) {
 
   #calendar .calHeader .month-year {
     letter-spacing: 1px;
-    width: 80%;
+    width: 100%;
     text-align: center;
   }
 
@@ -202,15 +184,7 @@ and (max-device-width: 700px) {
   }
 
   #calendar .calHeader {
-    font-size: 1.85em;
+    font-size: 8vmin;
   }
-
-
-}
-
-@media only screen
-  and (min-device-width: 320px)
-  and (max-device-width: 480px)
-  and (-webkit-min-device-pixel-ratio: 2) {
 
 }
