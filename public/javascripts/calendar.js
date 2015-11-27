@@ -123,10 +123,11 @@ var Calendar = function() {
 						var today = new Date().setHours(0,0,0,0);
 						var calendarDay = new Date(year, month, day);
 						var dayIndex = calendarDay.getDay();
+						var dateId = year + "-" + month + "-" + day;
 						if (calendarDay < today || (dayIndex === 0 || dayIndex === 6)) {
-						  var tdTag = "<td id=" + year + "-" + month + "-" + day + " class='blockOut dayDiv'><h4 class='calendarNumber'>" + day + "</h4></td>";
+						  var tdTag = "<td id=" + dateId + " class='blockOut dayDiv'>" + day + "</td>";
 						} else {
-							var tdTag = "<td id=" + year + "-" + month + "-" + day + " class='dayView dayDiv' data-toggle='modal' data-target='#bookingModal'><h4 class='calendarNumber'>" + day + "</h4></td>";
+							var tdTag = "<td id=" + dateId + " class='dayView dayDiv' data-toggle='modal' data-target='#bookingModal'>" + day + "</td>";
 						}
 						calendarHtml += tdTag;
 					}
