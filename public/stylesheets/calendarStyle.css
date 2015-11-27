@@ -1,18 +1,10 @@
 .dayDiv {
-  position: relative;*/
-  z-index: 5000;
+  position: relative;
+  font-size: 3.7vmin;
 }
 
 a:hover {
   background-color: none;
-}
-
-.jotBall {
-  position: absolute;
-  left: 25%;
-  top: 20%;
-  opacity: 0.8;
-  z-index:100;
 }
 
 #bookingModalBody {
@@ -30,17 +22,22 @@ td {
   z-index: 200;
 }
 
-
-.calendarNumber {
-  position: relative;
-  display: inline;
-  z-index:5500;
-}
-
 .bookingDay {
   color: white !important;
+  background-image: url("../images/jotBall.png") !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: 50% !important;
 }
-
+.bookingDay:hover {
+  color:#fff;
+    text-shadow: #6C1A07 0px -1px;
+    background:#CD310D;
+    background: -moz-linear-gradient(top, #C75C5C, #cd310d);
+    background: -webkit-gradient(linear, left top, left bottom, from(#C75C5C), to(#cd310d));
+    -moz-box-shadow:0px 0px 0px;
+    -webkit-box-shadow:0px 0px 0px;
+}
 
 #calendar {
   -moz-box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
@@ -76,17 +73,18 @@ td {
 
 /*This is the Month Label*/
 #calendar .calHeader .button {
-  width: 53px;
   text-align: center;
   position: absolute;
 }
 
 #calendar .calHeader .left.button {
+  width: 10%;
   left: 0;
   border-top-left-radius: 5px;
 }
 
 #calendar .calHeader .right.button {
+  width: 10%;
   right:0;
     top:0;
     border-top-right-radius: 5px;
@@ -118,27 +116,9 @@ td {
     cursor:default;
 }
 
-/*#calendar #days td {
-    height:26px;
-    line-height: 26px;
-    font-size:90%;
-    color: #C75C5C;
-}*/
-
-/*#calendar #days td:not(:last-child) {
-  border-right: 1px solid #fff;
-}*/
-
-/*#calendar #calGrid td.today {
-   background: #77B3D4;
-   color: black;
-    box-shadow:1px 1px 0px #fff inset;
-    -moz-box-shadow:1px 1px 0px #fff inset;
-    -webkit-box-shadow:1px 1px 0px #fff inset;
-}*/
-
 #calendar #calGrid td.today {
   background: #77B3D4;
+  opacity: 0.8;
 }
 
 .blockOut {
@@ -180,11 +160,12 @@ td {
 /********************************
 *****Media Query Area *****
 ********************************/
+
+
 @media only screen
 and (max-device-width: 700px) {
 
   #calendar .header span {
-    line-height:34px;
 
   }
 
@@ -212,16 +193,7 @@ and (max-device-width: 700px) {
   }
 
   #calendar .calHeader {
-    font-size: 1.85em;
+    font-size: 8vmin;
   }
-
-  .jotBall {
-    left: 15%;
-    top: 0%;
-    width: 32px;
-    height: 32px;
-  }
-
-
 
 }
