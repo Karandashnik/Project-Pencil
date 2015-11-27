@@ -37,22 +37,23 @@ var CreateBookingView = Backbone.View.extend({
 
   _getFormBody: function (kids) {
     var formBody = "";
-
+    if (kids.length === 0) {
+      formBody = "<h4 class='bookingError'>You must add children before you can make any bookings.</h4>"
+    } else {
     _.each(kids, function (kid) {
-      var contents =  "<div class='list-group'>" +
-      "<div class='form-group list-group-item'>" +
+        var contents =  "<div class='list-group'>" +
+        "<div class='form-group list-group-item'>" +
         "<h3 class='kids'>" + kid + "</h3>" +
         "<div id=" + kid + " class='input-group'>" +
           "<label class='radio-inline bookingRadio'><input type='radio' name=" + kid + " value='Morning Care'>Morning Care</label>" +
           "<label class='radio-inline bookingRadio'><input type='radio' name=" + kid + " value='After Care'>After Care</label>" +
           "<label class='radio-inline bookingRadio'><input type='radio' name=" + kid + " value='Both'>Both</label>" +
         "</div>" +
-      "</div>" +
-    "</div>";
-
-      formBody += contents;
-    });
-
+        "</div>" +
+        "</div>";
+        formBody += contents;
+      });
+    }
     return formBody;
   },
 

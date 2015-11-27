@@ -467,6 +467,10 @@ and (max-device-width: 700px) {
     max-width: 150px;
   }
 
+  #kidModal .modal-content {
+    width: 300px;
+  }
+  
   #editKidModal .modal-content {
     width: 300px;
   }

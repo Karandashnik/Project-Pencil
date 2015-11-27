@@ -24,12 +24,20 @@ td {
 
 .bookingDay {
   color: white !important;
-  background-image: url("../images/jotBall.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 50%;
+  background-image: url("../images/jotBall.png") !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: 50% !important;
 }
-
+.bookingDay:hover {
+  color:#fff;
+    text-shadow: #6C1A07 0px -1px;
+    background:#CD310D;
+    background: -moz-linear-gradient(top, #C75C5C, #cd310d);
+    background: -webkit-gradient(linear, left top, left bottom, from(#C75C5C), to(#cd310d));
+    -moz-box-shadow:0px 0px 0px;
+    -webkit-box-shadow:0px 0px 0px;
+}
 
 #calendar {
   -moz-box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
@@ -110,6 +118,7 @@ td {
 
 #calendar #calGrid td.today {
   background: #77B3D4;
+  opacity: 0.8;
 }
 
 .blockOut {
