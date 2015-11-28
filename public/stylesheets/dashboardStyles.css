@@ -470,7 +470,7 @@ and (max-device-width: 700px) {
   #kidModal .modal-content {
     width: 300px;
   }
-  
+
   #editKidModal .modal-content {
     width: 300px;
   }
@@ -487,12 +487,6 @@ and (max-device-width: 700px) {
   #editBookingModal .modal-content {
     width: 300px;
     margin: 0 auto;
-  }
-
-  #editBookingModal .btn {
-    width: 70px;
-    height: auto;
-    word-wrap: normal;
   }
 
   .thumbnail img {
