@@ -64,10 +64,19 @@ checkCalendarDay: function(model) {
   }
 },
 
+getDateString: function(date) {
+  var dateObj = new Date(date);
+  var months =["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+	var weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  var dayOfWeek = weekdays[dateObj.getDay()];
+  var month = months[dateObj.getMonth()];
+  var dayNum = dateObj.getDate();
+  var year = dateObj.getFullYear();
+  return dayOfWeek + ", " + month + " " + dayNum + ", " + year;
+},
+
 render: function() {
-  var date = new Date(this.model.date);
-  var options = { weekday: 'long', month: 'long', day: 'numeric' };
-  var dateString = date.toLocaleString('en-US', options);
+  var dateString = this.getDateString(this.model.date);
   var kid = this.model.kid;
   var dateId = this.model.dateId;
   var service = this.model.service === 'Both' ? 'Morning Care & After Care' : this.model.service;

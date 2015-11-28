@@ -58,9 +58,14 @@ var CreateBookingView = Backbone.View.extend({
   },
 
   _getDateString: function () {
-    var date = this.model.get("date");
-    var options = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
-    return date.toLocaleString('en-US', options);
+    var dateObj = new Date(this.model.get("date"));
+    var months =["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    var weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    var dayOfWeek = weekdays[dateObj.getDay()];
+    var month = months[dateObj.getMonth()];
+    var dayNum = dateObj.getDate();
+    var year = dateObj.getFullYear();
+    return dayOfWeek + ", " + month + " " + dayNum + ", " + year;
   },
 
   render: function () {
