@@ -10,8 +10,6 @@ body {
   /*font-size: 1.5em;*/
 }
 
-
-
 .navbar-text {
   color: #fff;
   font-size: 1.25em;
@@ -131,7 +129,6 @@ a:hover {
 
 #upcomingBookings p {
   margin-left: 3.5em;
-
 }
 
 .editBookingButton {
@@ -235,7 +232,9 @@ text-align: center;
 .saveKidBtn {
   border: none;
   background-color: #0C3D6E;
-  opacity: 1;
+  width: 150px;
+  margin: 7px auto;
+  display: block;
 }
 
 /********Edit Kid Modal*****************/
@@ -275,11 +274,21 @@ text-align: center;
 #saveChanges {
   border: none;
   background-color: #0C3D6E;
+  width: 150px;
+  margin: 7px auto;
+  display: block;
 }
 
 #deleteChild {
   border: none;
   background-color: #C75C5C;
+  width: 150px;
+  margin: 7px auto;
+  display: block;
+}
+
+.inputLabels {
+  margin: -5px 0px -2px 2px;
 }
 
 /*********Create Booking Modal*******************/
@@ -334,8 +343,10 @@ text-align: center;
 
 .bookingRadio {
   font-size: 0.7em;
-  padding: 10px 30px;
 }
+ .createBookingRadio {
+   padding: 0px 10px 20px 40px;
+ }
 
 .kids {
   text-align: left;
@@ -348,12 +359,21 @@ text-align: center;
 }
 
 /*********Edit Booking Modal*******************/
+
+#currentBookingInfo {
+  text-align: center;
+}
+
 #editBookingModal .modal-content {
   -webkit-border-radius: 25px !important;
   -moz-border-radius: 25px !important;
   border-radius: 25px !important;
-  width: 500px;
+  width: 425px;
   margin: 0 auto;
+}
+
+#editBookingBody {
+  padding: 10px 50px;
 }
 
 #editBookingModal .form-group {
@@ -385,30 +405,35 @@ text-align: center;
 #saveBookingChanges {
   border: none;
   background-color: #0C3D6E;
+  margin: 0px auto 7px auto;
+  display: block;
+  width: 150px;
 }
 
 #editBookingModal .list-group-item {
   border-radius: 25px;
-  max-width: 90%;
-  margin-bottom: 0.7em;
-  margin-right: auto;
-  margin-left: auto;
-  display: block;
 }
 
 #editBookingOptions {
-  margin-right: auto;
-  margin-left: auto;
-  display: block;
+  width: 105%;
   font-size: 1.5em;
+  margin: -10px 0px 0px -10px;
 }
 
-#currentBookingInfo {
-  margin: 20px 40px;
-}
 #deleteBooking {
   border: none;
   background-color: #C75C5C;
+  margin: 0px auto;
+  display: block;
+  width: 150px;
+}
+
+#editHeading {
+  text-align: left;
+}
+
+.editBookingRadio {
+ padding-right: 17px;
 }
 
 /********************************
@@ -486,11 +511,43 @@ and (max-device-width: 700px) {
 
   #editBookingModal .modal-content {
     width: 300px;
-    margin: 0 auto;
+  }
+
+  #editBookingOptions .list-group-item {
+    margin-bottom: 0px;
+  }
+
+  #saveBookingChanges {
+    display: block;
+    margin: 0px auto 10px auto;
+  }
+
+  #deleteBooking {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .thumbnail img {
     width: 18%;
     height: auto;
+  }
+
+  .bookingRadio {
+    font-size: 0.9em;
+    padding: 5px 0px 5px 20px;
+  }
+
+  .createBookingRadio {
+    margin: 0px 50px 0px 10px;
+  }
+
+  #editBookingDate {
+    font-size: 1.4em;
+  }
+
+  .editBookingRadio {
+    margin-left: 10px;
+    display: block;
   }
 }
