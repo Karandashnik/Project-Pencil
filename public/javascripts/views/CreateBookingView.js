@@ -45,9 +45,9 @@ var CreateBookingView = Backbone.View.extend({
         "<div class='form-group list-group-item'>" +
         "<h3 class='kids'>" + kid + "</h3>" +
         "<div id=" + kid + " class='input-group'>" +
-          "<label class='radio-inline bookingRadio'><input type='radio' name=" + kid + " value='Morning Care'>Morning Care</label>" +
-          "<label class='radio-inline bookingRadio'><input type='radio' name=" + kid + " value='After Care'>After Care</label>" +
-          "<label class='radio-inline bookingRadio'><input type='radio' name=" + kid + " value='Both'>Both</label>" +
+          "<label class='radio-inline bookingRadio createBookingRadio'><input type='radio' name=" + kid + " value='Morning Care'>Morning Care</label>" +
+          "<label class='radio-inline bookingRadio createBookingRadio'><input type='radio' name=" + kid + " value='After Care'>After Care</label>" +
+          "<label class='radio-inline bookingRadio createBookingRadio'><input type='radio' name=" + kid + " value='Both'>Both</label>" +
         "</div>" +
         "</div>" +
         "</div>";

@@ -80,11 +80,13 @@ var AddKidView = Backbone.View.extend({
                 "<div class='form-group'>" +
                   "<div id='kidErrorMsg'> </div>" +
                 "</div>" +
+                "<div class='form-group'>" +
+                  "<button type='submit' class='btn btn-primary saveKidBtn' id='saveKidAddAnother'>Save & Add Another</button>" +
+                  "<button type='submit' class='btn btn-primary saveKidBtn' id='saveKidClose'>Save & Close</button>" +
+                "</div>" +
               "</div>" +
             "</div>" +
             "<div class='modal-footer'>" +
-              "<button type='submit' class='btn btn-primary saveKidBtn' id='saveKidAddAnother'>Save & Add Another</button>" +
-              "<button type='submit' class='btn btn-primary saveKidBtn' id='saveKidClose'>Save & Close</button>" +
               "<button type='button' class='btn btn-default clear' data-dismiss='modal'>Done</button>" +
             "</div>" +
           "</div>" +

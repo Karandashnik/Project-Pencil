@@ -1,6 +1,5 @@
 .dayDiv {
   position: relative;
-  font-size: 3.7vmin;
 }
 
 a:hover {
@@ -167,6 +166,10 @@ and (max-device-width: 700px) {
 
   #calendar .header span {
 
+  }
+
+  .dayDiv {
+    font-size: .6em;
   }
 
   #calendar .calHeader .button {

@@ -95,9 +95,9 @@ render: function() {
                           "<h3 id='editHeading'>Edit</h3>" +
                           "<div class='input-group list-group' id='editBookingOptions'>" +
                             "<li class='list-group-item'>" +
-                              "<label class='radio bookingRadio'><input id='morningRadio' name='" + kid + " " + dateId + "' type='radio' value='Morning Care'>Morning Care</label>" +
-                              "<label class='radio bookingRadio'><input id='afterRadio' name='" + kid + " " + dateId + "' type='radio' value='After Care'>After Care</label>" +
-                              "<label class='radio bookingRadio'><input id='bothRadio' name='" + kid + " " + dateId + "' type='radio' value='Both'>Both</label>" +
+                              "<label class='radio-inline bookingRadio editBookingRadio'><input id='morningRadio' name='" + kid + " " + dateId + "' type='radio' value='Morning Care'>Morning Care</label>" +
+                              "<label class='radio-inline bookingRadio editBookingRadio'><input id='afterRadio' name='" + kid + " " + dateId + "' type='radio' value='After Care'>After Care</label>" +
+                              "<label class='radio-inline bookingRadio editBookingRadio'><input id='bothRadio' name='" + kid + " " + dateId + "' type='radio' value='Both'>Both</label>" +
                             "</li>" +
                             "<div id=editBookingError class='errorMsg'>" +
                             "</div>" +
