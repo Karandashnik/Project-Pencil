@@ -18,6 +18,10 @@ router.get('/', function(req, res){
   res.render('main', {user: req.user});
 });
 
+router.get('/ourStory', function(req, res){
+	res.render('ourStory');
+});
+
 //===============================================
 //      login/register/authenticate routes
 //===============================================

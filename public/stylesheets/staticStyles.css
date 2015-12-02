@@ -1,0 +1,34 @@
+img {
+  margin-left: 5.5em;
+  margin-top: 1em;
+  margin-bottom: 2em;
+  align-items: center;
+  padding: .5em;
+  background-color: #F5F0EB;
+  border-radius: 25%;
+  max-width: 300px;
+  height: auto;
+}
+
+.jumbotron {
+background-color: #D9BFA6;
+}
+
+.textBox {
+  margin-top: 2em;
+  background-color: #C75C5C;
+  padding: .5em;
+  border-radius: 25px;
+  border-style: solid;
+  border-color: #F5F0EB;
+}
+
+
+h3 {
+  margin-top: 1em;
+  text-align: center;
+}
+
+h4 {
+  text-align: center;
+}
