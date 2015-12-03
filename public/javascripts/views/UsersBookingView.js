@@ -13,11 +13,15 @@ var UsersBookingView = Backbone.View.extend({
         });
         listOfBookings.sort(self.sortBookings);
         var filteredBookings = listOfBookings.filter(self.dropOldBookings);
-        filteredBookings.forEach(self.appendBooking, self);
+        filteredBookings.length === 0 ? self.noUpcomingBookingsMsg() : filteredBookings.forEach(self.appendBooking, self);
       } else {
-        $("#upcomingBookings").append("<h5 style='padding: 30px 0px 30px 30px'> You don't have any upcoming care scheduled.</h5>");
+        self.noUpcomingBookingsMsg();
       }
     })
+  },
+
+  noUpcomingBookingsMsg: function() {
+    $("#upcomingBookings").append("<h5 style='padding: 30px 0px 30px 30px'> You don't have any upcoming care scheduled.</h5>");
   },
 
   initialize: function() {
