@@ -1,13 +1,12 @@
-img {
-  margin-left: 5.5em;
-  margin-top: 1em;
-  margin-bottom: 2em;
-  align-items: center;
-  padding: .5em;
-  background-color: #F5F0EB;
-  border-radius: 25%;
+.textBox img {
+  border: none;
+  display: block;
+  margin: 10px auto;
   max-width: 300px;
   height: auto;
+  border-radius: 25px;
+  border-style: solid;
+  border-color: #F5F0EB;
 }
 
 .jumbotron {
@@ -31,4 +30,19 @@ h3 {
 
 h4 {
   text-align: center;
+}
+
+/********************************
+***** Media Query Style********
+********************************/
+
+
+@media only screen
+and (max-device-width: 700px) {
+  .textBox img {
+    max-width: 225px;
+  }
+ .textBox p {
+   font-size: 18px;
+ }
 }
