@@ -118,6 +118,9 @@ td {
 #calendar #calGrid td.today {
   background: #77B3D4;
   opacity: 0.8;
+  box-shadow:1px 1px 0px #fff inset;
+  -moz-box-shadow:1px 1px 0px #fff inset;
+  -webkit-box-shadow:1px 1px 0px #fff inset;
 }
 
 .blockOut {
