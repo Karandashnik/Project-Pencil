@@ -30,13 +30,15 @@
     <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-left">
             <li><a class="colorLink" href="#">How it Works</a></li>
-            <li><a class="colorLink" action ="/ourStory" method="get">Our Story</a></li>
           </ul>
 
           <ul class="nav navbar-nav navbar-right navStyle ">
-            <li><a class="colorLink" id="storyToDash" href="/main" class="navbar-text">Back to Dash</a></li>
-            <!-- <li><a class="colorLink" id="storyToLogin" href="/" class="navbar-text">Log In</a></li> -->
 
+            {{#if user}}
+            <li><a class="colorLink" id="storyToDash" href="/" class="navbar-text">Back to Dash</a></li>
+            {{else}}
+            <li><a class="colorLink" id="storyToLogin" href="/signin" class="navbar-text">Log In</a></li>
+            {{/if}}
           </ul>
     </div>
   </div>
@@ -72,46 +74,5 @@
 <footer>
   <p>&copy;2015 Ogle &amp; Goodwin </p>
 </footer>
-</div>
-</body>
-<script>
-
-
-$(document).ready(function() {
-// var currentUser = "{{user.username}}";
-if ("{{user.username}}") {
-  $('#storyToDash').show();
-  $('#storyToLogin').hide();
-}
-
-});
-// else {
-//   $('#storyToLogin').show();
-//   $('#storyToDash').hide();
-//   console.log('not a user');
-// }
-// });
-
-
-// if (currentUser){
-//   window.location ="/main";
-// }
-// else {
-//   window.location = "/signin";
-//   var currentUser = '';
-// }
-// });
-</script>
-<!-- <script src="/jquery/jquery.min.js"></script> -->
-
-
-
-
-
-<!-- <script>
-var currentUser = ''; -->
-<!-- // $("question").click(function() {
-//   $('textforFamily').addClass('showText');
-// }); -->
-<!-- </script>
-</html> -->
+<!-- </div>
+</body> -->
