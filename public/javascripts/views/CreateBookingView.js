@@ -37,29 +37,35 @@ var CreateBookingView = Backbone.View.extend({
 
   _getFormBody: function (kids) {
     var formBody = "";
-
+    if (kids.length === 0) {
+      formBody = "<h4 class='bookingError'>You must add children before you can make any bookings.</h4>"
+    } else {
     _.each(kids, function (kid) {
-      var contents =  "<div class='list-group'>" +
-      "<div class='form-group list-group-item'>" +
+        var contents =  "<div class='list-group'>" +
+        "<div class='form-group list-group-item'>" +
         "<h3 class='kids'>" + kid + "</h3>" +
         "<div id=" + kid + " class='input-group'>" +
-          "<label class='radio-inline bookingRadio'><input type='radio' name=" + kid + " value='Morning Care'>Morning Care</label>" +
-          "<label class='radio-inline bookingRadio'><input type='radio' name=" + kid + " value='After Care'>After Care</label>" +
-          "<label class='radio-inline bookingRadio'><input type='radio' name=" + kid + " value='Both'>Both</label>" +
+          "<label class='radio-inline bookingRadio createBookingRadio'><input type='radio' name=" + kid + " value='Morning Care'>Morning Care</label>" +
+          "<label class='radio-inline bookingRadio createBookingRadio'><input type='radio' name=" + kid + " value='After Care'>After Care</label>" +
+          "<label class='radio-inline bookingRadio createBookingRadio'><input type='radio' name=" + kid + " value='Both'>Both</label>" +
         "</div>" +
-      "</div>" +
-    "</div>";
-
-      formBody += contents;
-    });
-
+        "</div>" +
+        "</div>";
+        formBody += contents;
+      });
+    }
     return formBody;
   },
 
   _getDateString: function () {
-    var date = this.model.get("date");
-    var options = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
-    return date.toLocaleString('en-US', options);
+    var dateObj = new Date(this.model.get("date"));
+    var months =["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    var weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    var dayOfWeek = weekdays[dateObj.getDay()];
+    var month = months[dateObj.getMonth()];
+    var dayNum = dateObj.getDate();
+    var year = dateObj.getFullYear();
+    return dayOfWeek + ", " + month + " " + dayNum + ", " + year;
   },
 
   render: function () {

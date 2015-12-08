@@ -10,8 +10,6 @@ body {
   /*font-size: 1.5em;*/
 }
 
-
-
 .navbar-text {
   color: #fff;
   font-size: 1.25em;
@@ -23,7 +21,7 @@ a:hover {
 }
 
 #nameSpot {
-  font-size: 3em;
+  font-size: 2.5em;
 }
 
 .navJotLogo {
@@ -99,6 +97,11 @@ a:hover {
   width: 100%;
 }
 
+.thumbnail img {
+  width: 28%;
+  height: auto;
+}
+
 /********************************
 ***** Bookings Style********
 ********************************/
@@ -126,7 +129,6 @@ a:hover {
 
 #upcomingBookings p {
   margin-left: 3.5em;
-
 }
 
 .editBookingButton {
@@ -168,7 +170,7 @@ a:hover {
 }
 
 /*The names in white box inside #styleforKidList */
-.list-group-item {
+.oneKid {
   max-width: 100%;
   padding: 10px;
   margin-bottom: 1em;
@@ -230,7 +232,9 @@ text-align: center;
 .saveKidBtn {
   border: none;
   background-color: #0C3D6E;
-  opacity: 1;
+  width: 150px;
+  margin: 7px auto;
+  display: block;
 }
 
 /********Edit Kid Modal*****************/
@@ -270,11 +274,21 @@ text-align: center;
 #saveChanges {
   border: none;
   background-color: #0C3D6E;
+  width: 150px;
+  margin: 7px auto;
+  display: block;
 }
 
 #deleteChild {
   border: none;
   background-color: #C75C5C;
+  width: 150px;
+  margin: 7px auto;
+  display: block;
+}
+
+.inputLabels {
+  margin: -5px 0px -2px 2px;
 }
 
 /*********Create Booking Modal*******************/
@@ -329,8 +343,10 @@ text-align: center;
 
 .bookingRadio {
   font-size: 0.7em;
-  padding: 10px 30px;
 }
+ .createBookingRadio {
+   padding: 0px 10px 20px 40px;
+ }
 
 .kids {
   text-align: left;
@@ -343,12 +359,21 @@ text-align: center;
 }
 
 /*********Edit Booking Modal*******************/
+
+#currentBookingInfo {
+  text-align: center;
+}
+
 #editBookingModal .modal-content {
   -webkit-border-radius: 25px !important;
   -moz-border-radius: 25px !important;
   border-radius: 25px !important;
-  width: 500px;
+  width: 425px;
   margin: 0 auto;
+}
+
+#editBookingBody {
+  padding: 10px 50px;
 }
 
 #editBookingModal .form-group {
@@ -380,105 +405,149 @@ text-align: center;
 #saveBookingChanges {
   border: none;
   background-color: #0C3D6E;
+  margin: 0px auto 7px auto;
+  display: block;
+  width: 150px;
 }
 
 #editBookingModal .list-group-item {
   border-radius: 25px;
-  max-width: 90%;
-  margin-bottom: 0.7em;
-  margin-right: auto;
-  margin-left: auto;
-  display: block;
 }
 
 #editBookingOptions {
-  margin-right: auto;
-  margin-left: auto;
-  display: block;
+  width: 105%;
   font-size: 1.5em;
+  margin: -10px 0px 0px -10px;
 }
 
-#currentBookingInfo {
-  margin: 20px 40px;
-}
 #deleteBooking {
   border: none;
   background-color: #C75C5C;
+  margin: 0px auto;
+  display: block;
+  width: 150px;
+}
+
+#editHeading {
+  text-align: left;
+}
+
+.editBookingRadio {
+ padding-right: 17px;
 }
 
 /********************************
 ***** Media Query Style********
 ********************************/
+
+
 @media only screen
 and (max-device-width: 700px) {
   #styleforKidList {
     margin-left: 0;
     min-width: 250;
-
   }
   .list-group-item {
     max-width: 100%;
     margin-bottom: 1em;
-    font-size: .8em;
-    }
+    font-size: 1.2em;
+  }
 
-    #upcomingBookings li {
+  #upcomingBookings li {
     font-size: .9em;
-    }
+  }
 
-    #noBookingsMsg {
-      color: blue !important;
-    }
+  #noBookingsMsg {
+    color: blue !important;
+  }
 
-    .welcomeDash {
-      width: 100%;
-      padding-bottom: 1em;
-      /*margin-right: 35%;*/
-    }
+  .welcomeDash {
+    width: 100%;
+    padding-bottom: 1em;
+    /*margin-right: 35%;*/
+  }
 
-    .welcomeDash .jotLogo {
-      width: 100%;
-      margin-left: 0%;
-      /*width: 200px;*/
-    }
+  .welcomeDash .jotLogo {
+    width: 100%;
+    margin-left: 0%;
+    /*width: 200px;*/
+  }
 
-    #bookingModal .modal-content {
-      width: 300px;
-      margin: 0 auto;
-    }
+  #bookingModal .modal-content {
+    width: 300px;
+    margin: 0 auto;
+  }
 
-    #bookingModal .form-group {
-      max-width: 280px;
-      margin: .5em auto;
-    }
+  #bookingModal .form-group {
+    max-width: 280px;
+    margin: .5em auto;
+  }
 
-    #bookingModal h2 {
-      font-weight: bolder;
-      font-size: .5em;
-    }
+  #bookingModal h2 {
+    font-weight: bolder;
+    font-size: .5em;
+  }
 
-    #saveBooking {
-      max-width: 150px;
-    }
+  #saveBooking {
+    max-width: 150px;
+  }
 
-    #editKidModal .modal-content {
-      width: 300px;
-    }
+  #kidModal .modal-content {
+    width: 300px;
+  }
 
-    #editKidModal .form-group {
-      max-width: 250px;
-      margin: 1em auto;
-    }
+  #editKidModal .modal-content {
+    width: 300px;
+  }
 
-    #editKidModal h2 {
-      font-weight: bolder;
-    }
+  #editKidModal .form-group {
+    max-width: 250px;
+    margin: 1em auto;
+  }
 
-    #editBookingModal .modal-content {
-      width: 350px;
-      margin: 0 auto;
-    }
+  #editKidModal h2 {
+    font-weight: bolder;
+  }
 
+  #editBookingModal .modal-content {
+    width: 300px;
+  }
 
+  #editBookingOptions .list-group-item {
+    margin-bottom: 0px;
+  }
 
+  #saveBookingChanges {
+    display: block;
+    margin: 0px auto 10px auto;
+  }
+
+  #deleteBooking {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .thumbnail img {
+    width: 18%;
+    height: auto;
+  }
+
+  .bookingRadio {
+    font-size: 0.9em;
+    padding: 5px 0px 5px 20px;
+  }
+
+  .createBookingRadio {
+    margin: 0px 50px 0px 10px;
+  }
+
+  #editBookingDate {
+    font-size: 1.4em;
+  }
+
+  .editBookingRadio {
+    margin-left: 10px;
+    display: block;
+  }
 }

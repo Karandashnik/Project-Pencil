@@ -74,20 +74,22 @@ render: function() {
                     "</div>" +
                     "<div class='modal-body'>" +
                       "<div class='row'>" +
-                        "<div class='form-group'> <p>First Name</p>" +
+                        "<div class='form-group'> <p class='inputLabels'>First Name</p>" +
                           "<input class='form-control' type ='text' name='firstName' id ='editFirstName'value="+ firstName + ">" +
                         "</div>" +
-                        "<div class='form-group'> <p>Middle Initial</p>" +
+                        "<div class='form-group'> <p class='inputLabels'>Middle Initial</p>" +
                           "<input class='form-control' type ='text' name='midInit' id ='editMidInit' value="+ midInit + ">" +
                         "</div>" +
-                        "<div class='form-group'> <p>Last Name</p>" +
+                        "<div class='form-group'> <p class='inputLabels'>Last Name</p>" +
                           "<input class='form-control' type ='text' name='lastName' id ='editLastName' value=" + lastName + ">" +
+                        "</div>" +
+                        "<div class='form-group'>" +
+                          "<button type='button' class='btn btn-primary' id='saveChanges'>Save Changes</button>" +
+                          "<button type='button' class='btn btn-primary' id='deleteChild'>Delete</button>" +
                         "</div>" +
                       "</div>" +
                     "</div>" +
                     "<div class='modal-footer'>" +
-                      "<button type='button' class='btn btn-primary' id='saveChanges'>Save Changes</button>" +
-                      "<button type='button' class='btn btn-primary' id='deleteChild'>Delete</button>" +
                       "<button id='editKidNevermind' type='button' class='btn btn-default clear' data-dismiss='modal'>Nevermind</button>" +
                     "</div>" +
                   "</div>" +
