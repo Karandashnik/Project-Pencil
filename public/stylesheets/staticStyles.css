@@ -32,3 +32,11 @@ h3 {
 h4 {
   text-align: center;
 }
+
+#storyToDash {
+  /*display: none;*/
+}
+
+#storyToLogin {
+  /*display: none;*/
+}

@@ -21,7 +21,10 @@ router.get('/', function(req, res){
 router.get('/ourStory', function(req, res){
 	res.render('ourStory');
 });
-
+//
+router.get('/', function(req, res) {
+	res.render('/');
+});
 //===============================================
 //      login/register/authenticate routes
 //===============================================

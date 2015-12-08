@@ -9,6 +9,7 @@
   <meta name="description" content="Finally a simple, intuitive scheduling app for small businesses and organizations.">
   <meta name="keywords" content="scheduling, appointments, small business, quick, easy, intuitive">
   <link href='https://fonts.googleapis.com/css?family=Patrick+Hand' rel='stylesheet' type='text/css'>
+  <script src="/jquery/jquery.min.js"></script>
   <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" media="screen">
   <link href="stylesheets/staticStyles.css" rel="stylesheet" media="screen">
 </head>
@@ -30,10 +31,12 @@
           <ul class="nav navbar-nav navbar-left">
             <li><a class="colorLink" href="#">How it Works</a></li>
             <li><a class="colorLink" action ="/ourStory" method="get">Our Story</a></li>
-
           </ul>
+
           <ul class="nav navbar-nav navbar-right navStyle ">
-            <li><a href="#myModal" data-toggle="modal" data-target="#myModal">Sign Up</a></li>
+            <li><a class="colorLink" id="storyToDash" href="/main" class="navbar-text">Back to Dash</a></li>
+            <!-- <li><a class="colorLink" id="storyToLogin" href="/" class="navbar-text">Log In</a></li> -->
+
           </ul>
     </div>
   </div>
@@ -72,9 +75,43 @@
 </div>
 </body>
 <script>
-var currentUser = '';
-// $("question").click(function() {
-//   $('textforFamily').addClass('showText');
+
+
+$(document).ready(function() {
+// var currentUser = "{{user.username}}";
+if ("{{user.username}}") {
+  $('#storyToDash').show();
+  $('#storyToLogin').hide();
+}
+
+});
+// else {
+//   $('#storyToLogin').show();
+//   $('#storyToDash').hide();
+//   console.log('not a user');
+// }
+// });
+
+
+// if (currentUser){
+//   window.location ="/main";
+// }
+// else {
+//   window.location = "/signin";
+//   var currentUser = '';
+// }
 // });
 </script>
-</html>
+<!-- <script src="/jquery/jquery.min.js"></script> -->
+
+
+
+
+
+<!-- <script>
+var currentUser = ''; -->
+<!-- // $("question").click(function() {
+//   $('textforFamily').addClass('showText');
+// }); -->
+<!-- </script>
+</html> -->
