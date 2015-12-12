@@ -68,7 +68,6 @@ var CalendarMonthView = Backbone.View.extend({
 		var tempYear = parseInt(curr[1], 10);
 		month = month || ((next) ? ((curr[0] === "December") ? 0 : this.months.indexOf(curr[0]) + 1) : ( (curr[0] === "January") ? 11 : this.months.indexOf(curr[0]) - 1) );
 		year  = year  || ((next && month === 0) ? tempYear + 1 : (!next && month === 11) ? tempYear -1 : tempYear);
-		this.collection.add({month: month, year: year});
 		calendar = this.createCal(year, month);
 		$("#calGrid", wrap)
 		.find(".curr")
@@ -79,9 +78,12 @@ var CalendarMonthView = Backbone.View.extend({
 		.find(".temp")
 			.hide("fast", function() { $(this).remove();});
 		label.text(calendar.label);
+		this.collection.add({month: month, year: year});
+		console.log("just appended calendar");
 	},
 
 	createCal: function(year, month) {
+		console.log("started creating calendar");
 		var day = 1;
 		var haveDays = true;
 		var startDay = new Date(year, month, day).getDay(),
@@ -150,6 +152,7 @@ var CalendarMonthView = Backbone.View.extend({
 				}).addClass("today");
 			}
 			return this.calendarContents = { calendar : function () { return calendar.clone(); }, label : this.months[month] + " " + year };
+			console.log("done creating calendar");
 	}
 })
 //
