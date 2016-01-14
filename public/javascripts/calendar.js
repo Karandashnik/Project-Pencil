@@ -64,11 +64,14 @@ var CalendarMonthView = Backbone.View.extend({
 		var wrap = $("#calendar");
 		var label = wrap.find("#label");
 		var curr = label.text().trim().split(" ");  // replace this madness with moments.js //
-		var calendar;
 		var tempYear = parseInt(curr[1], 10);
-		month = month || ((next) ? ((curr[0] === "December") ? 0 : this.months.indexOf(curr[0]) + 1) : ( (curr[0] === "January") ? 11 : this.months.indexOf(curr[0]) - 1) );
-		year  = year  || ((next && month === 0) ? tempYear + 1 : (!next && month === 11) ? tempYear -1 : tempYear);
-		calendar = this.createCal(year, month);
+		if (month !== 0) {
+			var month = month || ((next) ? ((curr[0] === "December") ? 0 : this.months.indexOf(curr[0]) + 1) : ( (curr[0] === "January") ? 11 : this.months.indexOf(curr[0]) - 1) );
+		} else {
+			var month = 0;
+		}
+		var year  = year  || ((next && month === 0) ? tempYear + 1 : (!next && month === 11) ? tempYear -1 : tempYear);
+		var calendar = this.createCal(year, month);
 		$("#calGrid", wrap)
 		.find(".curr")
 			.removeClass("curr")
