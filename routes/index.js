@@ -16,12 +16,16 @@ var db = orch(config.dbKey);
 //displays our homepage
 router.get('/', function(req, res){
   res.render('main', {user: req.user});
+	console.log('BANANA', req);
 });
 
 router.get('/ourStory', function(req, res){
-	res.render('ourStory');
+	res.render('ourStory', {user: req.user});
 });
-
+//
+// router.get('/', function(req, res) {
+// 	res.render('/');
+// });
 //===============================================
 //      login/register/authenticate routes
 //===============================================

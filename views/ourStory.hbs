@@ -9,6 +9,7 @@
   <meta name="description" content="Finally a simple, intuitive scheduling app for small businesses and organizations.">
   <meta name="keywords" content="scheduling, appointments, small business, quick, easy, intuitive">
   <link href='https://fonts.googleapis.com/css?family=Patrick+Hand' rel='stylesheet' type='text/css'>
+  <script src="/jquery/jquery.min.js"></script>
   <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" media="screen">
   <link href="stylesheets/staticStyles.css" rel="stylesheet" media="screen">
 </head>
@@ -29,10 +30,16 @@
     <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-left">
             <li><a class="colorLink" href="#">How it Works</a></li>
-
           </ul>
+
           <ul class="nav navbar-nav navbar-right navStyle ">
-            <li><a href="/signin">Sign In</a></li>
+
+
+            {{#if user}}
+            <li><a class="colorLink" id="storyToDash" href="/" class="navbar-text">Back to Dash</a></li>
+            {{else}}
+            <li><a class="colorLink" id="storyToLogin" href="/signin" class="navbar-text">Log In</a></li>
+            {{/if}}
           </ul>
     </div>
   </div>
@@ -68,12 +75,5 @@
 <footer>
   <p class='copyright'>&copy;2015 Ogle &amp; Goodwin </p>
 </footer>
-</div>
-</body>
-<script>
-var currentUser = '';
-// $("question").click(function() {
-//   $('textforFamily').addClass('showText');
-// });
-</script>
-</html>
+<!-- </div>
+</body> -->
