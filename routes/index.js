@@ -16,7 +16,6 @@ var db = orch(config.dbKey);
 //displays our homepage
 router.get('/', function(req, res){
   res.render('main', {user: req.user});
-	console.log('BANANA', req);
 });
 
 router.get('/ourStory', function(req, res){
@@ -80,7 +79,6 @@ router.get('/calendar', function(req, res){
 });
 
 router.post('/days', function(req, res, next){
-  console.log("WHY THE FUCK AM I POSTING THIS???");
   db.post('days',req.body)
   .then(function (result) {
     var id = result.path.key;
@@ -89,7 +87,6 @@ router.post('/days', function(req, res, next){
 });
 
 router.put('/days/:id', function(req, res, next) {
-  console.log("OMG YESSSSS");
   db.put('days', req.params.id, req.body)
   .then(function (result) {
     console.log(result);
