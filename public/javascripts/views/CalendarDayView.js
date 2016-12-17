@@ -5,11 +5,13 @@ var CalendarDayView = Backbone.View.extend({
 
   render: function() {
     var self = this;
+    console.log("calendardayview is rendering");
     this.collection.deferred.done(function() {
-      var days = []
+      var days = [];
       self.collection.each(function(model) {
         days.push(model.get("dateId"));
       })
+      console.log(days);
       for (var i=0; i<days.length; i++) {
         self.markCalendar(days[i]);
       }
@@ -17,7 +19,7 @@ var CalendarDayView = Backbone.View.extend({
   },
 
   initialize: function() {
-    //this.listenTo(this.collection, "add", this.render);
+    this.listenTo(main.calendarMonthCollection, "add", this.render);
     //this.listenTo(this.collection, "update", this.render);
   },
 

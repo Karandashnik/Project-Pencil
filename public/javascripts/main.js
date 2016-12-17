@@ -1,8 +1,11 @@
 var main = {};
 $(function() { //when DOM is ready...
-  var calendar = Calendar();
-  calendar.init();
-  calendar.createDays();
+  main.calendarMonthCollection = new CalendarMonthCollection();
+  main.calendarMonthView = new CalendarMonthView({collection: main.calendarMonthCollection});
+  main.calendarMonthView.render();
+  // var calendar = Calendar();
+  // calendar.init();
+  // calendar.createDays();
  //create kid stuff
  main.kidCollection = new KidCollection();
  main.addKidView = new AddKidView({collection: main.kidCollection});
